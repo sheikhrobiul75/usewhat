@@ -6,7 +6,7 @@
 
     <title>UseWhat - Turn What You Have Into What You Need</title>
 
-    <meta name="description" content="Tell UseWhat what you have, and discover useful recipes, projects, money-saving ideas and more.">
+    <meta name="description" content="Tell UseWhat what you have and discover useful recipes, projects, money-saving ideas and more.">
 
     <style>
         * {
@@ -22,12 +22,12 @@
         }
 
         header {
-            background: white;
+            background: #ffffff;
             padding: 18px 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #eeeeee;
         }
 
         .logo {
@@ -42,7 +42,7 @@
         nav a {
             margin-left: 20px;
             text-decoration: none;
-            color: #555;
+            color: #555555;
             font-size: 15px;
         }
 
@@ -62,7 +62,7 @@
             color: #2563eb;
         }
 
-        .hero p {
+        .hero > p {
             max-width: 650px;
             margin: auto;
             font-size: 19px;
@@ -73,10 +73,10 @@
         .search-box {
             max-width: 720px;
             margin: 35px auto 0;
-            background: white;
+            background: #ffffff;
             padding: 25px;
             border-radius: 18px;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
         }
 
         .search-box h2 {
@@ -93,7 +93,7 @@
 
         .item {
             border: 1px solid #d8dee9;
-            background: white;
+            background: #ffffff;
             padding: 12px 18px;
             border-radius: 30px;
             cursor: pointer;
@@ -109,7 +109,7 @@
         .item.selected {
             background: #2563eb;
             border-color: #2563eb;
-            color: white;
+            color: #ffffff;
         }
 
         .find-btn {
@@ -119,42 +119,49 @@
             padding: 15px;
             border-radius: 10px;
             background: #2563eb;
-            color: white;
+            color: #ffffff;
             font-size: 17px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.2s;
         }
 
         .find-btn:hover {
             background: #1d4ed8;
         }
 
-        .results {
+        #results {
             margin-top: 25px;
             padding: 20px;
             background: #eff6ff;
             border-radius: 12px;
             text-align: left;
+            display: none;
         }
 
-        .results h3 {
+        #results h3 {
             font-size: 22px;
             margin-bottom: 10px;
         }
 
         .selected-text {
-            color: #5b6472;
+            color: #4b5563;
             line-height: 1.6;
         }
 
         .suggestion {
-            background: white;
-            padding: 14px;
+            background: #ffffff;
+            padding: 15px;
             margin-top: 10px;
             border-radius: 10px;
             font-weight: bold;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid #e5e7eb;
+        }
+
+        .suggestion small {
+            display: block;
+            margin-top: 6px;
+            color: #6b7280;
+            font-weight: normal;
         }
 
         .features {
@@ -167,11 +174,11 @@
         }
 
         .card {
-            background: white;
+            background: #ffffff;
             padding: 30px 25px;
             border-radius: 16px;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
         }
 
         .card .icon {
@@ -210,7 +217,7 @@
                 font-size: 36px;
             }
 
-            .hero p {
+            .hero > p {
                 font-size: 17px;
             }
 
@@ -220,14 +227,11 @@
 
             .features {
                 grid-template-columns: 1fr;
+                padding: 0 20px;
             }
 
             nav {
                 display: none;
-            }
-
-            .item {
-                padding: 11px 16px;
             }
         }
     </style>
@@ -259,8 +263,8 @@
 
     <p>
         Tell UseWhat what you already have at home.
-        We'll help you discover what you can make, save, reuse,
-        or even turn into money.
+        We'll help you discover what you can make, save,
+        reuse, or even turn into money.
     </p>
 
 
@@ -270,31 +274,47 @@
 
         <div class="items">
 
-            <button class="item" data-name="Tomato">🍅 Tomato</button>
+            <button type="button" class="item" data-item="Tomato">
+                🍅 Tomato
+            </button>
 
-            <button class="item" data-name="Egg">🥚 Egg</button>
+            <button type="button" class="item" data-item="Egg">
+                🥚 Egg
+            </button>
 
-            <button class="item" data-name="Rice">🍚 Rice</button>
+            <button type="button" class="item" data-item="Rice">
+                🍚 Rice
+            </button>
 
-            <button class="item" data-name="Potato">🥔 Potato</button>
+            <button type="button" class="item" data-item="Potato">
+                🥔 Potato
+            </button>
 
-            <button class="item" data-name="Onion">🧅 Onion</button>
+            <button type="button" class="item" data-item="Onion">
+                🧅 Onion
+            </button>
 
-            <button class="item" data-name="Bread">🍞 Bread</button>
+            <button type="button" class="item" data-item="Bread">
+                🍞 Bread
+            </button>
 
-            <button class="item" data-name="Carrot">🥕 Carrot</button>
+            <button type="button" class="item" data-item="Carrot">
+                🥕 Carrot
+            </button>
 
-            <button class="item" data-name="Chicken">🍗 Chicken</button>
+            <button type="button" class="item" data-item="Chicken">
+                🍗 Chicken
+            </button>
 
         </div>
 
 
-        <button class="find-btn">
+        <button type="button" class="find-btn" id="findBtn">
             🔍 Find What I Can Make
         </button>
 
 
-        <div id="results" class="results" style="display:none;"></div>
+        <div id="results"></div>
 
     </div>
 
@@ -358,196 +378,239 @@
 
 <script>
 
-    const items = document.querySelectorAll(".item");
-
-    const findBtn = document.querySelector(".find-btn");
-
-    const result = document.getElementById("results");
-
+    // Selected items
     let selectedItems = [];
 
 
-    /* ------------------------------
-       ITEM SELECTION
-    ------------------------------ */
-
-    items.forEach(item => {
-
-        item.addEventListener("click", function () {
-
-            const itemName = this.dataset.name;
+    // Get all item buttons
+    const itemButtons = document.querySelectorAll(".item");
 
 
+    // Get Find button
+    const findBtn = document.getElementById("findBtn");
+
+
+    // Get result box
+    const results = document.getElementById("results");
+
+
+    // Item button click
+    itemButtons.forEach(function(button) {
+
+        button.addEventListener("click", function() {
+
+            const itemName = button.getAttribute("data-item");
+
+
+            // If already selected, remove it
             if (selectedItems.includes(itemName)) {
 
-                selectedItems = selectedItems.filter(
-                    name => name !== itemName
-                );
+                selectedItems = selectedItems.filter(function(item) {
+                    return item !== itemName;
+                });
 
-                this.classList.remove("selected");
-
-            } else {
-
-                selectedItems.push(itemName);
-
-                this.classList.add("selected");
+                button.classList.remove("selected");
 
             }
 
+            // Otherwise select it
+            else {
 
-            /* Hide old result when selection changes */
+                selectedItems.push(itemName);
 
-            result.style.display = "none";
+                button.classList.add("selected");
+
+            }
 
         });
 
     });
 
 
-    /* ------------------------------
-       FIND WHAT I CAN MAKE
-    ------------------------------ */
+    // Find button click
+    findBtn.addEventListener("click", function() {
 
-    findBtn.addEventListener("click", function () {
 
+        // No item selected
         if (selectedItems.length === 0) {
 
-            alert("Please select at least one item.");
+            results.style.display = "block";
+
+            results.innerHTML = `
+                <h3>⚠️ Select Something First</h3>
+
+                <p style="margin-top:10px;">
+                    Please select at least one item above.
+                </p>
+            `;
 
             return;
-
         }
 
 
+        // Create suggestions
         let suggestions = [];
 
 
-        const has = function (name) {
+        // Helper function
+        function has(item) {
 
-            return selectedItems.includes(name);
+            return selectedItems.includes(item);
 
-        };
+        }
 
 
-        /* Tomato + Egg */
-
+        // Tomato + Egg
         if (has("Tomato") && has("Egg")) {
 
-            suggestions.push("🍳 Tomato Egg Scramble");
+            suggestions.push({
+                name: "🍳 Tomato Egg Scramble",
+                description: "A quick and simple egg dish with fresh tomato."
+            });
 
         }
 
 
-        /* Tomato + Rice */
-
+        // Tomato + Rice
         if (has("Tomato") && has("Rice")) {
 
-            suggestions.push("🍅 Tomato Rice");
+            suggestions.push({
+                name: "🍅 Tomato Rice",
+                description: "Turn your rice and tomato into a simple flavorful meal."
+            });
 
         }
 
 
-        /* Egg + Bread */
-
+        // Egg + Bread
         if (has("Egg") && has("Bread")) {
 
-            suggestions.push("🥪 Egg Sandwich");
+            suggestions.push({
+                name: "🥪 Egg Sandwich",
+                description: "Make a quick breakfast sandwich with egg and bread."
+            });
 
         }
 
 
-        /* Potato + Egg */
-
+        // Potato + Egg
         if (has("Potato") && has("Egg")) {
 
-            suggestions.push("🥔 Potato Egg Fry");
+            suggestions.push({
+                name: "🥔 Potato Egg Fry",
+                description: "A simple potato and egg meal you can make at home."
+            });
 
         }
 
 
-        /* Rice + Chicken */
-
+        // Rice + Chicken
         if (has("Rice") && has("Chicken")) {
 
-            suggestions.push("🍗 Chicken Fried Rice");
+            suggestions.push({
+                name: "🍗 Chicken Fried Rice",
+                description: "Use your rice and chicken to make a satisfying meal."
+            });
 
         }
 
 
-        /* Potato + Onion */
-
+        // Potato + Onion
         if (has("Potato") && has("Onion")) {
 
-            suggestions.push("🥔 Potato Onion Fry");
+            suggestions.push({
+                name: "🥔 Potato Onion Fry",
+                description: "A quick side dish using potato and onion."
+            });
 
         }
 
 
-        /* Carrot + Chicken */
-
+        // Carrot + Chicken
         if (has("Carrot") && has("Chicken")) {
 
-            suggestions.push("🥕 Chicken Carrot Stir-Fry");
+            suggestions.push({
+                name: "🥕 Chicken Carrot Stir-Fry",
+                description: "A simple stir-fry using chicken and carrot."
+            });
 
         }
 
 
-        /* Tomato + Onion */
-
-        if (has("Tomato") && has("Onion")) {
-
-            suggestions.push("🍅 Tomato Onion Salad");
-
-        }
-
-
-        /* Rice + Egg */
-
+        // Rice + Egg
         if (has("Rice") && has("Egg")) {
 
-            suggestions.push("🍚 Egg Fried Rice");
+            suggestions.push({
+                name: "🍚 Egg Fried Rice",
+                description: "A classic quick meal using rice and egg."
+            });
 
         }
 
 
-        /* Potato + Bread */
+        // Bread + Tomato
+        if (has("Bread") && has("Tomato")) {
 
-        if (has("Potato") && has("Bread")) {
-
-            suggestions.push("🥔 Potato Sandwich");
-
-        }
-
-
-        /* Chicken + Onion */
-
-        if (has("Chicken") && has("Onion")) {
-
-            suggestions.push("🍗 Chicken Onion Fry");
+            suggestions.push({
+                name: "🍞 Tomato Toast",
+                description: "Make a quick tomato toast with your bread."
+            });
 
         }
 
 
-        /* If no exact match */
+        // Potato + Carrot
+        if (has("Potato") && has("Carrot")) {
 
+            suggestions.push({
+                name: "🥔 Potato Carrot Mix",
+                description: "Combine potato and carrot for a simple vegetable dish."
+            });
+
+        }
+
+
+        // If no specific suggestion
         if (suggestions.length === 0) {
 
-            suggestions.push(
-                "💡 Try selecting another combination to discover more ideas."
-            );
+            suggestions.push({
+                name: "💡 Explore Your Ingredients",
+                description: "Try selecting two or more items to discover more ideas."
+            });
 
         }
 
 
-        /* ------------------------------
-           SHOW RESULTS
-        ------------------------------ */
+        // Build suggestions HTML
+        let suggestionHTML = "";
 
-        result.innerHTML = `
 
-            <h3>💡 What you can make</h3>
+        suggestions.forEach(function(suggestion) {
 
-            <p class="selected-text">
+            suggestionHTML += `
+                <div class="suggestion">
+
+                    ${suggestion.name}
+
+                    <small>
+                        ${suggestion.description}
+                    </small>
+
+                </div>
+            `;
+
+        });
+
+
+        // Show result
+        results.style.display = "block";
+
+
+        results.innerHTML = `
+
+            <h3>💡 What You Can Make</h3>
+
+            <p class="selected-text" style="margin-top:10px;">
 
                 You selected:
 
@@ -557,41 +620,24 @@
 
             </p>
 
+            <div style="margin-top:15px;">
 
-            <div style="margin-top:18px;">
-
-                ${suggestions.map(suggestion => `
-
-                    <div class="suggestion">
-
-                        ${suggestion}
-
-                    </div>
-
-                `).join("")}
+                ${suggestionHTML}
 
             </div>
 
         `;
 
 
-        result.style.display = "block";
-
-
-        /* Scroll result into view */
-
-        result.scrollIntoView({
-
+        // Scroll result into view
+        results.scrollIntoView({
             behavior: "smooth",
-
-            block: "nearest"
-
+            block: "center"
         });
 
     });
 
 </script>
-
 
 </body>
 </html>
