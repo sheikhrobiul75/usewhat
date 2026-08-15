@@ -308,14 +308,66 @@
             findBtn.parentElement.appendChild(result);
         }
 
-        result.innerHTML = `
-            <h3>💡 What you can make</h3>
-            <p style="margin-top:10px;">
-                You selected: <strong>${selectedItems.join(", ")}</strong>
-            </p>
-            <p style="margin-top:10px;">
-                UseWhat is finding useful ideas for you...
-            </p>
+        let suggestions = [];
+
+const has = (name) => selectedItems.some(item =>
+    item.toLowerCase().includes(name.toLowerCase())
+);
+
+if (has("Tomato") && has("Egg")) {
+    suggestions.push("🍳 Tomato Egg Scramble");
+}
+
+if (has("Tomato") && has("Rice")) {
+    suggestions.push("🍅 Tomato Rice");
+}
+
+if (has("Egg") && has("Bread")) {
+    suggestions.push("🥪 Egg Sandwich");
+}
+
+if (has("Potato") && has("Egg")) {
+    suggestions.push("🥔 Potato Egg Fry");
+}
+
+if (has("Rice") && has("Chicken")) {
+    suggestions.push("🍗 Chicken Fried Rice");
+}
+
+if (has("Potato") && has("Onion")) {
+    suggestions.push("🥔 Potato Onion Fry");
+}
+
+if (has("Carrot") && has("Chicken")) {
+    suggestions.push("🥕 Chicken Carrot Stir-Fry");
+}
+
+if (suggestions.length === 0) {
+    suggestions.push("💡 Try selecting two or more items to discover an idea.");
+}
+
+result.innerHTML = `
+    <h3>💡 What you can make</h3>
+
+    <p style="margin-top:10px;">
+        You selected:
+        <strong>${selectedItems.join(", ")}</strong>
+    </p>
+
+    <div style="margin-top:18px;">
+        ${suggestions.map(item => `
+            <div style="
+                background:white;
+                padding:14px;
+                margin-top:10px;
+                border-radius:10px;
+                font-weight:bold;
+            ">
+                ${item}
+            </div>
+        `).join("")}
+    </div>
+`;
         `;
     });
 </script>
