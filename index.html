@@ -6,7 +6,7 @@
 
 <title>UseWhat - Turn What You Have Into What You Need</title>
 
-<meta name="description" content="Tell UseWhat what you have and discover ideas to make, repair, reuse, save money or make money.">
+<meta name="description" content="UseWhat helps you discover what you can make, repair, reuse, save, or earn from the things you already have.">
 
 <style>
 
@@ -16,29 +16,31 @@
     padding:0;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f6f8fc;
-    color:#172033;
-    line-height:1.6;
+html{
+    scroll-behavior:smooth;
 }
 
-/* HEADER */
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f8fc;
+    color:#172033;
+    line-height:1.5;
+}
 
 header{
     background:#ffffff;
-    border-bottom:1px solid #e5e7eb;
-    padding:18px 6%;
+    padding:16px 5%;
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #e5e7eb;
     position:sticky;
     top:0;
     z-index:100;
 }
 
 .logo{
-    font-size:30px;
+    font-size:28px;
     font-weight:800;
     letter-spacing:-1px;
 }
@@ -48,15 +50,13 @@ header{
 }
 
 .language-box select{
-    border:1px solid #d7dce5;
-    border-radius:10px;
-    padding:9px 12px;
-    background:white;
+    padding:9px 34px 9px 12px;
+    border:1px solid #d8dee9;
+    border-radius:9px;
+    background:#fff;
     font-size:14px;
     cursor:pointer;
 }
-
-/* HERO */
 
 .hero{
     text-align:center;
@@ -65,10 +65,11 @@ header{
 }
 
 .hero h1{
+    max-width:850px;
+    margin:auto;
     font-size:48px;
     line-height:1.12;
-    max-width:850px;
-    margin:0 auto 20px;
+    font-weight:800;
 }
 
 .hero h1 span{
@@ -76,285 +77,273 @@ header{
 }
 
 .hero-description{
-    max-width:700px;
-    margin:0 auto;
-    color:#5d6878;
-    font-size:19px;
+    max-width:720px;
+    margin:22px auto 0;
+    color:#5b6472;
+    font-size:18px;
+    line-height:1.7;
 }
 
-/* SEARCH */
-
-.search-container{
-    max-width:780px;
+.search-box{
+    max-width:760px;
     margin:38px auto 0;
     background:#ffffff;
     padding:30px;
     border-radius:22px;
-    box-shadow:0 15px 45px rgba(0,0,0,.08);
-    text-align:left;
+    box-shadow:0 12px 40px rgba(0,0,0,.08);
 }
 
-.search-container h2{
-    text-align:center;
-    margin-bottom:18px;
+.search-box h2{
     font-size:24px;
+    margin-bottom:8px;
 }
 
 .search-help{
-    text-align:center;
-    color:#6b7280;
+    color:#7b8494;
     font-size:14px;
     margin-bottom:18px;
 }
 
 textarea{
     width:100%;
-    min-height:130px;
+    min-height:125px;
     resize:vertical;
-    border:2px solid #dbe1ea;
-    border-radius:15px;
     padding:17px;
-    font-family:Arial,sans-serif;
-    font-size:17px;
+    border:1px solid #d8dee9;
+    border-radius:14px;
     outline:none;
-    transition:.2s;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    color:#172033;
+    background:#fff;
 }
 
 textarea:focus{
     border-color:#2563eb;
-    box-shadow:0 0 0 4px rgba(37,99,235,.10);
+    box-shadow:0 0 0 3px rgba(37,99,235,.10);
 }
 
-.find-button{
+.find-btn{
     width:100%;
     margin-top:15px;
     padding:16px;
-    border:none;
+    border:0;
     border-radius:12px;
     background:#2563eb;
     color:white;
     font-size:17px;
-    font-weight:bold;
+    font-weight:700;
     cursor:pointer;
     transition:.2s;
 }
 
-.find-button:hover{
+.find-btn:hover{
     background:#1d4ed8;
     transform:translateY(-1px);
 }
 
-.example-text{
-    text-align:center;
-    margin-top:15px;
-    color:#7b8493;
-    font-size:13px;
-}
-
-/* RESULTS */
-
-.results{
-    display:none;
-    max-width:780px;
-    margin:25px auto 0;
-    background:#ffffff;
-    padding:28px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.06);
-}
-
-.results.show{
-    display:block;
-}
-
-.results-title{
-    font-size:25px;
-    margin-bottom:8px;
-}
-
-.results-subtitle{
-    color:#6b7280;
-    margin-bottom:20px;
-}
-
-.result-card{
-    background:#f8faff;
-    border:1px solid #e1e7f0;
-    padding:18px;
-    border-radius:14px;
-    margin-top:12px;
-}
-
-.result-card h3{
-    font-size:17px;
-    margin-bottom:6px;
-}
-
-.result-card p{
-    color:#667085;
+.quick-title{
+    margin-top:22px;
+    margin-bottom:12px;
     font-size:14px;
+    color:#687386;
 }
 
-.category{
+.quick-items{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+}
+
+.quick-item{
+    border:1px solid #d8dee9;
+    background:#fff;
+    padding:9px 13px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:14px;
+    transition:.2s;
+}
+
+.quick-item:hover{
+    border-color:#2563eb;
+    background:#eff6ff;
+}
+
+.result-box{
+    margin-top:25px;
+    padding:22px;
+    border-radius:16px;
+    background:#eef5ff;
+    text-align:left;
+    display:none;
+}
+
+.result-box.show{
+    display:block;
+    animation:fadeIn .3s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.result-title{
+    font-size:23px;
+    margin-bottom:10px;
+}
+
+.selected-text{
+    color:#5b6472;
+    margin-bottom:18px;
+}
+
+.idea{
+    background:white;
+    padding:17px;
+    border-radius:12px;
+    margin-top:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
+
+.idea-category{
     display:inline-block;
-    padding:4px 9px;
-    border-radius:20px;
-    background:#eaf1ff;
+    background:#eff6ff;
     color:#2563eb;
+    padding:5px 10px;
+    border-radius:20px;
     font-size:12px;
     font-weight:bold;
     margin-bottom:8px;
 }
 
-/* FEATURES */
-
-.features{
-    max-width:1100px;
-    margin:65px auto;
-    padding:0 20px;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:22px;
+.idea h4{
+    font-size:17px;
+    margin-bottom:6px;
 }
 
-.feature-card{
-    background:white;
-    border-radius:18px;
-    padding:32px 25px;
-    text-align:center;
-    box-shadow:0 7px 25px rgba(0,0,0,.05);
-}
-
-.feature-icon{
-    font-size:45px;
-    margin-bottom:15px;
-}
-
-.feature-card h3{
-    margin-bottom:10px;
-    font-size:20px;
-}
-
-.feature-card p{
-    color:#697386;
-    font-size:15px;
-}
-
-/* HOW IT WORKS */
-
-.how{
-    background:#ffffff;
-    padding:70px 20px;
-    text-align:center;
-}
-
-.how h2{
-    font-size:32px;
-    margin-bottom:35px;
-}
-
-.steps{
-    max-width:950px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
-}
-
-.step{
-    padding:25px;
-}
-
-.step-number{
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    background:#2563eb;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 15px;
-    font-weight:bold;
-    font-size:20px;
-}
-
-.step h3{
-    margin-bottom:8px;
-}
-
-.step p{
-    color:#697386;
+.idea p{
+    color:#687386;
     font-size:14px;
 }
 
-/* FOOTER */
+.features{
+    max-width:1100px;
+    margin:55px auto;
+    padding:0 20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#fff;
+    padding:35px 25px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.card .icon{
+    font-size:44px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#687386;
+    line-height:1.6;
+}
+
+.about{
+    max-width:900px;
+    margin:0 auto 60px;
+    padding:0 20px;
+    text-align:center;
+}
+
+.about h2{
+    margin-bottom:12px;
+}
+
+.about p{
+    color:#687386;
+}
 
 footer{
     background:#111827;
     color:#cbd5e1;
     text-align:center;
-    padding:35px 20px;
+    padding:30px 20px;
+    margin-top:40px;
 }
 
-footer strong{
-    color:white;
+[dir="rtl"]{
+    direction:rtl;
 }
 
-/* MOBILE */
+[dir="rtl"] .result-box{
+    text-align:right;
+}
 
 @media(max-width:700px){
 
     header{
-        padding:15px 20px;
+        padding:14px 18px;
     }
 
     .logo{
-        font-size:27px;
+        font-size:25px;
     }
 
     .hero{
-        padding:50px 18px;
+        padding:50px 15px 45px;
     }
 
     .hero h1{
-        font-size:36px;
+        font-size:35px;
     }
 
     .hero-description{
-        font-size:17px;
+        font-size:16px;
     }
 
-    .search-container{
-        padding:22px;
+    .search-box{
+        padding:22px 16px;
         border-radius:18px;
     }
 
-    .search-container h2{
+    .search-box h2{
         font-size:22px;
-    }
-
-    textarea{
-        font-size:16px;
     }
 
     .features{
         grid-template-columns:1fr;
-        margin:45px auto;
+        margin-top:35px;
     }
 
-    .steps{
-        grid-template-columns:1fr;
+    .language-box select{
+        max-width:135px;
     }
-
 }
 
 </style>
 </head>
 
 <body>
-
-<!-- HEADER -->
 
 <header>
 
@@ -367,11 +356,30 @@ footer strong{
         <select id="languageSelect">
 
             <option value="en">🇺🇸 English</option>
-            <option value="bn">🇧🇩 বাংলা</option>
-            <option value="hi">🇮🇳 हिन्दी</option>
+            <option value="bn" selected>🇧🇩 বাংলা</option>
             <option value="es">🇪🇸 Español</option>
             <option value="fr">🇫🇷 Français</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="pt">🇧🇷 Português</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="nl">🇳🇱 Nederlands</option>
+            <option value="sv">🇸🇪 Svenska</option>
+            <option value="da">🇩🇰 Dansk</option>
+            <option value="no">🇳🇴 Norsk</option>
+            <option value="fi">🇫🇮 Suomi</option>
+            <option value="pl">🇵🇱 Polski</option>
+            <option value="cs">🇨🇿 Čeština</option>
+            <option value="el">🇬🇷 Ελληνικά</option>
+            <option value="ro">🇷🇴 Română</option>
+            <option value="hu">🇭🇺 Magyar</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="uk">🇺🇦 Українська</option>
+            <option value="tr">🇹🇷 Türkçe</option>
             <option value="ar">🇸🇦 العربية</option>
+            <option value="he">🇮🇱 עברית</option>
+            <option value="hi">🇮🇳 हिन्दी</option>
+            <option value="zh">🇨🇳 简体中文</option>
+            <option value="ja">🇯🇵 日本語</option>
 
         </select>
 
@@ -380,25 +388,22 @@ footer strong{
 </header>
 
 
-<!-- HERO -->
-
 <section class="hero">
 
     <h1 id="heroTitle">
         Turn What You Have Into
+        <br>
         <span>What You Need.</span>
     </h1>
 
     <p class="hero-description" id="heroDescription">
         Tell UseWhat what you already have.
         We'll help you discover what you can make,
-        repair, reuse, save, or even turn into money.
+        repair, reuse, save, or turn into money.
     </p>
 
 
-    <!-- SEARCH BOX -->
-
-    <div class="search-container">
+    <div class="search-box">
 
         <h2 id="searchTitle">
             What do you have?
@@ -410,45 +415,59 @@ footer strong{
 
         <textarea
             id="userInput"
-            placeholder="Example: I have an old wooden chair, some plastic bottles and a broken fan..."
+            placeholder="Example: I have an old wooden chair..."
         ></textarea>
 
-        <button class="find-button" id="findButton">
-            🔍 Find What I Can Do
+        <button class="find-btn" id="findButton">
+            🔍 Find What I Can Make
         </button>
 
-        <p class="example-text" id="exampleText">
-            You can enter food, old items, broken things, tools,
-            clothes, furniture, electronics or anything else.
-        </p>
 
-    </div>
+        <div class="quick-title" id="quickTitle">
+            Or try an example:
+        </div>
+
+        <div class="quick-items">
+
+            <button class="quick-item" data-text="Tomato and egg">
+                🍅 Tomato + 🥚 Egg
+            </button>
+
+            <button class="quick-item" data-text="Old wooden chair">
+                🪑 Old Chair
+            </button>
+
+            <button class="quick-item" data-text="Broken phone">
+                📱 Broken Phone
+            </button>
+
+            <button class="quick-item" data-text="Old clothes">
+                👕 Old Clothes
+            </button>
+
+            <button class="quick-item" data-text="Plastic bottles">
+                🧴 Plastic Bottles
+            </button>
+
+            <button class="quick-item" data-text="Cardboard boxes">
+                📦 Cardboard
+            </button>
+
+        </div>
 
 
-    <!-- RESULTS -->
-
-    <div class="results" id="results">
-
-        <h2 class="results-title" id="resultsTitle">
-            💡 Ideas for You
-        </h2>
-
-        <p class="results-subtitle" id="resultsSubtitle"></p>
-
-        <div id="resultList"></div>
+        <div id="resultBox" class="result-box"></div>
 
     </div>
 
 </section>
 
 
-<!-- FEATURES -->
-
 <section class="features">
 
-    <div class="feature-card">
+    <div class="card">
 
-        <div class="feature-icon">🍳</div>
+        <div class="icon">🔎</div>
 
         <h3 id="feature1Title">
             Make Something
@@ -456,39 +475,39 @@ footer strong{
 
         <p id="feature1Text">
             Discover recipes, DIY projects and useful things
-            you can create with what you already have.
+            you can create from what you already have.
         </p>
 
     </div>
 
 
-    <div class="feature-card">
+    <div class="card">
 
-        <div class="feature-icon">🔧</div>
+        <div class="icon">💰</div>
 
         <h3 id="feature2Title">
-            Repair & Reuse
+            Save Money
         </h3>
 
         <p id="feature2Text">
-            Find practical ways to repair, reuse and
-            transform old or broken items.
+            Find ways to use what you already have instead
+            of buying something new.
         </p>
 
     </div>
 
 
-    <div class="feature-card">
+    <div class="card">
 
-        <div class="feature-icon">💰</div>
+        <div class="icon">♻️</div>
 
         <h3 id="feature3Title">
-            Save or Make Money
+            Reuse & Reduce Waste
         </h3>
 
         <p id="feature3Text">
-            Discover ways to avoid unnecessary purchases
-            or turn unused items into income.
+            Give old and unused things a second life
+            instead of throwing them away.
         </p>
 
     </div>
@@ -496,75 +515,24 @@ footer strong{
 </section>
 
 
-<!-- HOW IT WORKS -->
+<section class="about">
 
-<section class="how">
-
-    <h2 id="howTitle">
-        How UseWhat Works
+    <h2 id="aboutTitle">
+        One Simple Question. Endless Possibilities.
     </h2>
 
-    <div class="steps">
-
-        <div class="step">
-
-            <div class="step-number">1</div>
-
-            <h3 id="step1Title">
-                Tell Us What You Have
-            </h3>
-
-            <p id="step1Text">
-                Type anything you have, from food to
-                broken household items.
-            </p>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">2</div>
-
-            <h3 id="step2Title">
-                UseWhat Understands
-            </h3>
-
-            <p id="step2Text">
-                UseWhat analyzes your items and looks
-                for useful possibilities.
-            </p>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">3</div>
-
-            <h3 id="step3Title">
-                Discover Ideas
-            </h3>
-
-            <p id="step3Text">
-                Get ideas for making, repairing,
-                reusing, saving or earning.
-            </p>
-
-        </div>
-
-    </div>
+    <p id="aboutText">
+        Whatever you have, UseWhat helps you discover
+        what you can do with it.
+    </p>
 
 </section>
 
 
-<!-- FOOTER -->
-
 <footer>
 
-    <p>
-        © 2026 <strong>UseWhat</strong> —
-        Make More From What You Have.
+    <p id="footerText">
+        © 2026 UseWhat — Make More From What You Have.
     </p>
 
 </footer>
@@ -572,620 +540,1199 @@ footer strong{
 
 <script>
 
-/* =====================================================
-   USEWHAT
-   MULTILINGUAL + FREE TEXT IDEA ENGINE
-   ===================================================== */
-
-
-/* LANGUAGE DATA */
+/* =========================================================
+   USEWHAT MULTILINGUAL SYSTEM
+========================================================= */
 
 const translations = {
 
-    en: {
+en:{
+    title:"Turn What You Have Into",
+    title2:"What You Need.",
+    description:"Tell UseWhat what you already have. We'll help you discover what you can make, repair, reuse, save, or turn into money.",
+    searchTitle:"What do you have?",
+    searchHelp:"Type anything you have at home, work, garage or anywhere else.",
+    placeholder:"Example: I have an old wooden chair...",
+    button:"🔍 Find What I Can Make",
+    quick:"Or try an example:",
+    result:"💡 What you can do",
+    selected:"You entered:",
+    empty:"Please tell UseWhat what you have first.",
+    feature1:"Make Something",
+    feature1Text:"Discover recipes, DIY projects and useful things you can create from what you already have.",
+    feature2:"Save Money",
+    feature2Text:"Find ways to use what you already have instead of buying something new.",
+    feature3:"Reuse & Reduce Waste",
+    feature3Text:"Give old and unused things a second life instead of throwing them away.",
+    about:"One Simple Question. Endless Possibilities.",
+    aboutText:"Whatever you have, UseWhat helps you discover what you can do with it.",
+    footer:"© 2026 UseWhat — Make More From What You Have.",
+    recipe:"Recipe",
+    repair:"Repair / DIY",
+    reuse:"Reuse",
+    money:"Save Money",
+    makeMoney:"Make Money",
+    generic:"Useful Idea",
+    foodIdea:"Turn your ingredients into a simple homemade meal.",
+    repairIdea:"Clean, inspect, repair and restore the item before replacing it.",
+    reuseIdea:"Give this item a second life through a creative reuse or upcycling project.",
+    moneyIdea:"Use what you already have to avoid buying a replacement and save money.",
+    sellIdea:"If you no longer need it, repair or improve it and consider selling it.",
+    foodTitle:"Make a Homemade Meal",
+    repairTitle:"Repair or Restore It",
+    reuseTitle:"Create a Reuse Project",
+    saveTitle:"Save Money With What You Have",
+    sellTitle:"Turn It Into Extra Money",
+    fallbackTitle:"Find a Useful New Purpose",
+    fallbackText:"Think about how this item could be used, repaired, transformed, shared, sold or combined with something else.",
+    more:"Try adding more details for better ideas."
+},
 
-        title:"Turn What You Have Into|What You Need.",
-        description:"Tell UseWhat what you already have. We'll help you discover what you can make, repair, reuse, save, or even turn into money.",
-        searchTitle:"What do you have?",
-        searchHelp:"Type anything you have at home, work, garage or anywhere else.",
-        placeholder:"Example: I have an old wooden chair, some plastic bottles and a broken fan...",
-        button:"🔍 Find What I Can Do",
-        example:"You can enter food, old items, broken things, tools, clothes, furniture, electronics or anything else.",
-        results:"💡 Ideas for You",
-        selected:"You entered:",
-        feature1Title:"Make Something",
-        feature1Text:"Discover recipes, DIY projects and useful things you can create with what you already have.",
-        feature2Title:"Repair & Reuse",
-        feature2Text:"Find practical ways to repair, reuse and transform old or broken items.",
-        feature3Title:"Save or Make Money",
-        feature3Text:"Discover ways to avoid unnecessary purchases or turn unused items into income.",
-        howTitle:"How UseWhat Works",
-        step1Title:"Tell Us What You Have",
-        step1Text:"Type anything you have, from food to broken household items.",
-        step2Title:"UseWhat Understands",
-        step2Text:"UseWhat analyzes your items and looks for useful possibilities.",
-        step3Title:"Discover Ideas",
-        step3Text:"Get ideas for making, repairing, reusing, saving or earning.",
-        empty:"Please tell UseWhat what you have first.",
-        noMatch:"Try adding more details about the item. UseWhat can help with food, furniture, clothes, tools, electronics, broken items and many other things."
+bn:{
+    title:"আপনার কাছে যা আছে তা দিয়ে",
+    title2:"আপনার প্রয়োজনীয় কিছু তৈরি করুন।",
+    description:"আপনার কাছে কী আছে UseWhat-কে বলুন। আমরা দেখাবো সেটা দিয়ে কী বানানো, মেরামত, পুনর্ব্যবহার, টাকা বাঁচানো বা আয় করা যায়।",
+    searchTitle:"আপনার কাছে কী আছে?",
+    searchHelp:"বাড়ি, অফিস, গ্যারেজ বা যেকোনো জায়গায় থাকা যেকোনো জিনিস লিখুন।",
+    placeholder:"উদাহরণ: আমার কাছে একটি পুরোনো কাঠের চেয়ার আছে...",
+    button:"🔍 আমি কী করতে পারি?",
+    quick:"অথবা একটি উদাহরণ চেষ্টা করুন:",
+    result:"💡 আপনি কী করতে পারেন",
+    selected:"আপনি লিখেছেন:",
+    empty:"প্রথমে আপনার কাছে কী আছে সেটা লিখুন।",
+    feature1:"কিছু বানান",
+    feature1Text:"আপনার কাছে থাকা জিনিস দিয়ে খাবার, DIY project এবং প্রয়োজনীয় কিছু বানানোর আইডিয়া পান।",
+    feature2:"টাকা বাঁচান",
+    feature2Text:"নতুন কিছু কেনার পরিবর্তে আপনার কাছে থাকা জিনিস কীভাবে ব্যবহার করবেন তা জানুন।",
+    feature3:"পুনর্ব্যবহার ও বর্জ্য কমান",
+    feature3Text:"পুরোনো ও অব্যবহৃত জিনিস ফেলে না দিয়ে নতুন কাজে ব্যবহার করুন।",
+    about:"একটি সহজ প্রশ্ন। অসংখ্য সম্ভাবনা।",
+    aboutText:"আপনার কাছে যা-ই থাকুক, UseWhat দেখাবে সেটি দিয়ে কী করা সম্ভব।",
+    footer:"© 2026 UseWhat — আপনার কাছে থাকা জিনিস থেকে আরও বেশি করুন।",
+    recipe:"রান্না",
+    repair:"মেরামত / DIY",
+    reuse:"পুনর্ব্যবহার",
+    money:"টাকা বাঁচান",
+    makeMoney:"আয় করুন",
+    generic:"উপকারী আইডিয়া",
+    foodIdea:"আপনার উপকরণ দিয়ে সহজ একটি ঘরোয়া খাবার তৈরি করতে পারেন।",
+    repairIdea:"নতুন কিছু কেনার আগে জিনিসটি পরিষ্কার করে পরীক্ষা করুন এবং মেরামত করার চেষ্টা করুন।",
+    reuseIdea:"এই জিনিসটিকে নতুন কাজে ব্যবহার করে একটি Reuse বা Upcycling project তৈরি করতে পারেন।",
+    moneyIdea:"নতুন জিনিস কেনার পরিবর্তে আপনার কাছে থাকা জিনিস ব্যবহার করে টাকা বাঁচাতে পারেন।",
+    sellIdea:"আর প্রয়োজন না থাকলে জিনিসটি মেরামত বা উন্নত করে বিক্রি করে অতিরিক্ত আয় করতে পারেন।",
+    foodTitle:"ঘরোয়া খাবার তৈরি করুন",
+    repairTitle:"মেরামত বা পুনরুদ্ধার করুন",
+    reuseTitle:"নতুন কাজে ব্যবহার করুন",
+    saveTitle:"আপনার জিনিস দিয়ে টাকা বাঁচান",
+    sellTitle:"এটি দিয়ে অতিরিক্ত আয় করুন",
+    fallbackTitle:"নতুন একটি উপকারী ব্যবহার খুঁজুন",
+    fallbackText:"জিনিসটি কীভাবে ব্যবহার, মেরামত, পরিবর্তন, অন্যের সঙ্গে শেয়ার বা বিক্রি করা যায় তা ভাবুন।",
+    more:"আরও ভালো আইডিয়ার জন্য একটু বিস্তারিত লিখুন।"
+},
 
-    },
+es:{
+    title:"Convierte lo que tienes en",
+    title2:"lo que necesitas.",
+    description:"Dinos qué tienes y descubre qué puedes hacer, reparar, reutilizar, ahorrar o convertir en dinero.",
+    searchTitle:"¿Qué tienes?",
+    searchHelp:"Escribe cualquier cosa que tengas en casa, trabajo, garaje o cualquier lugar.",
+    placeholder:"Ejemplo: Tengo una silla de madera vieja...",
+    button:"🔍 Descubrir qué puedo hacer",
+    quick:"O prueba un ejemplo:",
+    result:"💡 Lo que puedes hacer",
+    selected:"Has escrito:",
+    empty:"Primero dinos qué tienes.",
+    feature1:"Crear algo",
+    feature1Text:"Descubre recetas, proyectos DIY y cosas útiles que puedes crear.",
+    feature2:"Ahorrar dinero",
+    feature2Text:"Usa lo que ya tienes en lugar de comprar algo nuevo.",
+    feature3:"Reutilizar y reducir residuos",
+    feature3Text:"Da una segunda vida a tus objetos viejos.",
+    about:"Una pregunta sencilla. Infinitas posibilidades.",
+    aboutText:"Tengas lo que tengas, UseWhat te ayuda a descubrir qué puedes hacer con ello.",
+    footer:"© 2026 UseWhat — Aprovecha lo que tienes.",
+    recipe:"Receta",
+    repair:"Reparación / DIY",
+    reuse:"Reutilización",
+    money:"Ahorrar dinero",
+    makeMoney:"Ganar dinero",
+    generic:"Idea útil",
+    foodIdea:"Convierte tus ingredientes en una comida casera sencilla.",
+    repairIdea:"Limpia, revisa y repara el objeto antes de reemplazarlo.",
+    reuseIdea:"Dale una segunda vida mediante reutilización o upcycling.",
+    moneyIdea:"Usa lo que ya tienes para evitar comprar un reemplazo.",
+    sellIdea:"Si ya no lo necesitas, mejóralo y considera venderlo.",
+    foodTitle:"Prepara una comida casera",
+    repairTitle:"Repáralo o restáuralo",
+    reuseTitle:"Crea un proyecto de reutilización",
+    saveTitle:"Ahorra dinero con lo que tienes",
+    sellTitle:"Conviértelo en dinero extra",
+    fallbackTitle:"Encuentra un nuevo uso útil",
+    fallbackText:"Piensa cómo puedes usar, reparar, transformar, compartir o vender este objeto.",
+    more:"Añade más detalles para obtener mejores ideas."
+},
 
-    bn: {
+fr:{
+    title:"Transformez ce que vous avez en",
+    title2:"ce dont vous avez besoin.",
+    description:"Dites-nous ce que vous avez et découvrez ce que vous pouvez fabriquer, réparer, réutiliser ou vendre.",
+    searchTitle:"Qu'avez-vous ?",
+    searchHelp:"Écrivez n'importe quel objet que vous avez chez vous ou ailleurs.",
+    placeholder:"Exemple : J'ai une vieille chaise en bois...",
+    button:"🔍 Que puis-je faire ?",
+    quick:"Ou essayez un exemple :",
+    result:"💡 Ce que vous pouvez faire",
+    selected:"Vous avez écrit :",
+    empty:"Dites d'abord ce que vous avez.",
+    feature1:"Fabriquer quelque chose",
+    feature1Text:"Découvrez des recettes et des projets DIY.",
+    feature2:"Économiser",
+    feature2Text:"Utilisez ce que vous avez déjà au lieu d'acheter.",
+    feature3:"Réutiliser",
+    feature3Text:"Donnez une seconde vie aux objets inutilisés.",
+    about:"Une question simple. Des possibilités infinies.",
+    aboutText:"Peu importe ce que vous avez, UseWhat vous aide à trouver une utilisation.",
+    footer:"© 2026 UseWhat — Faites plus avec ce que vous avez.",
+    recipe:"Recette",
+    repair:"Réparation / DIY",
+    reuse:"Réutilisation",
+    money:"Économiser",
+    makeMoney:"Gagner de l'argent",
+    generic:"Idée utile",
+    foodIdea:"Transformez vos ingrédients en un repas maison simple.",
+    repairIdea:"Nettoyez, inspectez et réparez l'objet avant de le remplacer.",
+    reuseIdea:"Donnez-lui une seconde vie avec un projet de réutilisation.",
+    moneyIdea:"Utilisez ce que vous avez déjà pour éviter un nouvel achat.",
+    sellIdea:"Si vous n'en avez plus besoin, améliorez-le et vendez-le.",
+    foodTitle:"Préparer un repas maison",
+    repairTitle:"Réparer ou restaurer",
+    reuseTitle:"Créer un projet de réutilisation",
+    saveTitle:"Économiser avec ce que vous avez",
+    sellTitle:"Gagner de l'argent avec cet objet",
+    fallbackTitle:"Trouver une nouvelle utilisation",
+    fallbackText:"Réfléchissez à la façon de l'utiliser, réparer, transformer, partager ou vendre.",
+    more:"Ajoutez plus de détails pour obtenir de meilleures idées."
+},
 
-        title:"আপনার কাছে যা আছে তা দিয়ে|আপনার যা প্রয়োজন তা তৈরি করুন।",
-        description:"আপনার কাছে কী আছে UseWhat-কে বলুন। আমরা আপনাকে দেখাব কীভাবে সেটা দিয়ে কিছু বানানো, মেরামত, পুনর্ব্যবহার, টাকা বাঁচানো বা আয় করা যায়।",
-        searchTitle:"আপনার কাছে কী আছে?",
-        searchHelp:"বাড়ি, অফিস, গ্যারেজ বা অন্য যেকোনো জায়গায় থাকা জিনিস নিজের ভাষায় লিখুন।",
-        placeholder:"উদাহরণ: আমার কাছে একটি পুরোনো কাঠের চেয়ার, কিছু প্লাস্টিকের বোতল এবং একটি ভাঙা ফ্যান আছে...",
-        button:"🔍 আমি কী করতে পারি?",
-        example:"খাবার, পুরোনো জিনিস, ভাঙা জিনিস, যন্ত্রপাতি, কাপড়, আসবাবপত্র, ইলেকট্রনিক্স—যেকোনো কিছু লিখতে পারেন।",
-        results:"💡 আপনার জন্য আইডিয়া",
-        selected:"আপনি লিখেছেন:",
-        feature1Title:"কিছু বানান",
-        feature1Text:"আপনার কাছে থাকা জিনিস দিয়ে খাবার, DIY project বা দরকারি কিছু বানানোর আইডিয়া পান।",
-        feature2Title:"মেরামত ও পুনর্ব্যবহার",
-        feature2Text:"পুরোনো বা ভাঙা জিনিস মেরামত, পুনর্ব্যবহার বা নতুনভাবে ব্যবহার করার উপায় খুঁজুন।",
-        feature3Title:"টাকা বাঁচান বা আয় করুন",
-        feature3Text:"নতুন কিছু কেনার প্রয়োজন কমান অথবা অব্যবহৃত জিনিস থেকে আয় করার সুযোগ খুঁজুন।",
-        howTitle:"UseWhat কীভাবে কাজ করে",
-        step1Title:"আপনার কাছে কী আছে বলুন",
-        step1Text:"খাবার থেকে শুরু করে ভাঙা household items—যেকোনো কিছু লিখুন।",
-        step2Title:"UseWhat বুঝবে",
-        step2Text:"UseWhat আপনার দেওয়া তথ্য বিশ্লেষণ করে সম্ভাব্য ব্যবহার খুঁজবে।",
-        step3Title:"আইডিয়া পান",
-        step3Text:"বানানো, মেরামত, পুনর্ব্যবহার, টাকা বাঁচানো বা আয় করার আইডিয়া পান।",
-        empty:"প্রথমে আপনার কাছে কী আছে সেটা লিখুন।",
-        noMatch:"জিনিসটি সম্পর্কে আরও কিছু তথ্য লিখুন। খাবার, আসবাবপত্র, কাপড়, যন্ত্রপাতি, ইলেকট্রনিক্স, ভাঙা জিনিসসহ অনেক কিছু নিয়ে UseWhat সাহায্য করতে পারে।"
+de:{
+    title:"Machen Sie aus dem, was Sie haben,",
+    title2:"was Sie brauchen.",
+    description:"Sagen Sie UseWhat, was Sie haben. Wir zeigen Ihnen, was Sie daraus machen, reparieren, wiederverwenden oder sparen können.",
+    searchTitle:"Was haben Sie?",
+    searchHelp:"Geben Sie einen beliebigen Gegenstand ein.",
+    placeholder:"Beispiel: Ich habe einen alten Holzstuhl...",
+    button:"🔍 Was kann ich damit machen?",
+    quick:"Oder versuchen Sie ein Beispiel:",
+    result:"💡 Das können Sie machen",
+    selected:"Sie haben eingegeben:",
+    empty:"Geben Sie zuerst ein, was Sie haben.",
+    feature1:"Etwas machen",
+    feature1Text:"Entdecken Sie Rezepte und DIY-Projekte.",
+    feature2:"Geld sparen",
+    feature2Text:"Nutzen Sie vorhandene Dinge statt etwas Neues zu kaufen.",
+    feature3:"Wiederverwenden",
+    feature3Text:"Geben Sie alten Dingen ein zweites Leben.",
+    about:"Eine einfache Frage. Unendliche Möglichkeiten.",
+    aboutText:"Egal, was Sie haben – UseWhat zeigt Ihnen Möglichkeiten.",
+    footer:"© 2026 UseWhat — Machen Sie mehr aus dem, was Sie haben.",
+    recipe:"Rezept",
+    repair:"Reparatur / DIY",
+    reuse:"Wiederverwendung",
+    money:"Geld sparen",
+    makeMoney:"Geld verdienen",
+    generic:"Nützliche Idee",
+    foodIdea:"Machen Sie aus Ihren Zutaten eine einfache Mahlzeit.",
+    repairIdea:"Reinigen, prüfen und reparieren Sie den Gegenstand vor einem Neukauf.",
+    reuseIdea:"Geben Sie dem Gegenstand durch Upcycling ein zweites Leben.",
+    moneyIdea:"Nutzen Sie vorhandene Dinge und vermeiden Sie einen Neukauf.",
+    sellIdea:"Wenn Sie es nicht mehr brauchen, verbessern und verkaufen Sie es.",
+    foodTitle:"Eine Mahlzeit zubereiten",
+    repairTitle:"Reparieren oder restaurieren",
+    reuseTitle:"Ein Wiederverwendungsprojekt erstellen",
+    saveTitle:"Geld mit vorhandenen Dingen sparen",
+    sellTitle:"Zusätzliches Geld verdienen",
+    fallbackTitle:"Eine neue Verwendung finden",
+    fallbackText:"Überlegen Sie, wie Sie den Gegenstand verwenden, reparieren, verändern, teilen oder verkaufen können.",
+    more:"Fügen Sie mehr Details hinzu."
+},
 
-    },
-
-    hi: {
-
-        title:"आपके पास जो है उससे|जो चाहिए वह बनाएं।",
-        description:"आपके पास क्या है UseWhat को बताएं। हम आपको बनाने, मरम्मत करने, दोबारा इस्तेमाल करने, पैसे बचाने या कमाने के तरीके बताएंगे।",
-        searchTitle:"आपके पास क्या है?",
-        searchHelp:"घर, ऑफिस, गैरेज या कहीं भी मौजूद चीज़ों के बारे में लिखें।",
-        placeholder:"उदाहरण: मेरे पास एक पुरानी लकड़ी की कुर्सी और कुछ प्लास्टिक की बोतलें हैं...",
-        button:"🔍 मैं क्या कर सकता हूँ?",
-        example:"खाना, पुराने सामान, टूटी चीज़ें, कपड़े, फर्नीचर, इलेक्ट्रॉनिक्स या कुछ भी लिखें।",
-        results:"💡 आपके लिए आइडिया",
-        selected:"आपने लिखा:",
-        feature1Title:"कुछ बनाएं",
-        feature1Text:"अपने पास मौजूद चीज़ों से recipes, DIY projects और उपयोगी चीज़ें बनाने के तरीके खोजें।",
-        feature2Title:"मरम्मत और पुनः उपयोग",
-        feature2Text:"पुरानी या टूटी चीज़ों को repair और reuse करने के तरीके खोजें।",
-        feature3Title:"पैसे बचाएं या कमाएं",
-        feature3Text:"अनावश्यक खरीदारी से बचें या बेकार सामान से कमाई के तरीके खोजें।",
-        howTitle:"UseWhat कैसे काम करता है",
-        step1Title:"बताएं आपके पास क्या है",
-        step1Text:"खाने से लेकर टूटी घरेलू चीज़ों तक कुछ भी लिखें।",
-        step2Title:"UseWhat समझेगा",
-        step2Text:"UseWhat आपके इनपुट को समझकर संभावित उपयोग खोजेगा।",
-        step3Title:"आइडिया पाएं",
-        step3Text:"बनाने, मरम्मत, reuse, बचत या कमाई के आइडिया पाएं।",
-        empty:"पहले बताएं कि आपके पास क्या है।",
-        noMatch:"वस्तु के बारे में थोड़ा और विवरण दें। UseWhat कई प्रकार की चीज़ों में मदद कर सकता है।"
-
-    },
-
-    es: {
-
-        title:"Convierte lo que tienes en|lo que necesitas.",
-        description:"Dile a UseWhat qué tienes. Descubre cómo crear, reparar, reutilizar, ahorrar dinero o incluso ganar dinero.",
-        searchTitle:"¿Qué tienes?",
-        searchHelp:"Escribe cualquier cosa que tengas en casa, trabajo, garaje o cualquier lugar.",
-        placeholder:"Ejemplo: Tengo una silla de madera vieja, botellas de plástico y un ventilador roto...",
-        button:"🔍 Ver qué puedo hacer",
-        example:"Puedes escribir comida, objetos viejos, cosas rotas, herramientas, ropa, muebles o electrónica.",
-        results:"💡 Ideas para ti",
-        selected:"Has escrito:",
-        feature1Title:"Crea algo",
-        feature1Text:"Descubre recetas, proyectos DIY y cosas útiles que puedes crear.",
-        feature2Title:"Repara y reutiliza",
-        feature2Text:"Encuentra formas prácticas de reparar y reutilizar objetos.",
-        feature3Title:"Ahorra o gana dinero",
-        feature3Text:"Evita compras innecesarias o convierte objetos sin usar en ingresos.",
-        howTitle:"Cómo funciona UseWhat",
-        step1Title:"Dinos qué tienes",
-        step1Text:"Escribe cualquier cosa que tengas.",
-        step2Title:"UseWhat lo entiende",
-        step2Text:"UseWhat analiza tu información.",
-        step3Title:"Descubre ideas",
-        step3Text:"Obtén ideas para crear, reparar, reutilizar, ahorrar o ganar.",
-        empty:"Primero escribe qué tienes.",
-        noMatch:"Añade más detalles sobre el objeto para obtener mejores ideas."
-
-    },
-
-    fr: {
-
-        title:"Transformez ce que vous avez en|ce dont vous avez besoin.",
-        description:"Dites à UseWhat ce que vous avez. Découvrez comment créer, réparer, réutiliser, économiser ou gagner de l'argent.",
-        searchTitle:"Qu'avez-vous ?",
-        searchHelp:"Écrivez tout ce que vous avez chez vous, au travail ou ailleurs.",
-        placeholder:"Exemple : J'ai une vieille chaise en bois, des bouteilles en plastique et un ventilateur cassé...",
-        button:"🔍 Trouver des idées",
-        example:"Vous pouvez écrire des aliments, objets anciens, objets cassés, vêtements, meubles, outils ou appareils électroniques.",
-        results:"💡 Idées pour vous",
-        selected:"Vous avez écrit :",
-        feature1Title:"Créer quelque chose",
-        feature1Text:"Découvrez des recettes, projets DIY et objets utiles à créer.",
-        feature2Title:"Réparer et réutiliser",
-        feature2Text:"Trouvez des façons de réparer et réutiliser les anciens objets.",
-        feature3Title:"Économiser ou gagner",
-        feature3Text:"Évitez les achats inutiles ou transformez vos objets en revenus.",
-        howTitle:"Comment fonctionne UseWhat",
-        step1Title:"Dites-nous ce que vous avez",
-        step1Text:"Écrivez tout ce que vous possédez.",
-        step2Title:"UseWhat comprend",
-        step2Text:"UseWhat analyse vos informations.",
-        step3Title:"Découvrez des idées",
-        step3Text:"Obtenez des idées pour créer, réparer, réutiliser, économiser ou gagner.",
-        empty:"Écrivez d'abord ce que vous avez.",
-        noMatch:"Ajoutez plus de détails sur l'objet pour obtenir de meilleures idées."
-
-    },
-
-    ar: {
-
-        title:"حوّل ما لديك إلى|ما تحتاج إليه.",
-        description:"أخبر UseWhat بما لديك. سنساعدك على اكتشاف طرق لصنع الأشياء أو إصلاحها أو إعادة استخدامها أو توفير المال أو كسبه.",
-        searchTitle:"ماذا لديك؟",
-        searchHelp:"اكتب أي شيء لديك في المنزل أو العمل أو المرآب أو أي مكان آخر.",
-        placeholder:"مثال: لدي كرسي خشبي قديم وبعض الزجاجات البلاستيكية ومروحة مكسورة...",
-        button:"🔍 اكتشف ما يمكنك فعله",
-        example:"يمكنك كتابة الطعام أو الأشياء القديمة أو المكسورة أو الملابس أو الأثاث أو الأدوات أو الإلكترونيات.",
-        results:"💡 أفكار لك",
-        selected:"لقد كتبت:",
-        feature1Title:"اصنع شيئاً",
-        feature1Text:"اكتشف وصفات ومشاريع وأشياء مفيدة يمكنك صنعها.",
-        feature2Title:"أصلح وأعد الاستخدام",
-        feature2Text:"اكتشف طرقاً عملية لإصلاح وإعادة استخدام الأشياء القديمة.",
-        feature3Title:"وفر أو اكسب المال",
-        feature3Text:"تجنب المشتريات غير الضرورية أو حوّل الأشياء غير المستخدمة إلى دخل.",
-        howTitle:"كيف يعمل UseWhat",
-        step1Title:"أخبرنا بما لديك",
-        step1Text:"اكتب أي شيء موجود لديك.",
-        step2Title:"UseWhat يفهم",
-        step2Text:"يقوم UseWhat بتحليل المعلومات.",
-        step3Title:"اكتشف الأفكار",
-        step3Text:"احصل على أفكار للصنع والإصلاح وإعادة الاستخدام والتوفير والكسب.",
-        empty:"اكتب أولاً ما لديك.",
-        noMatch:"أضف المزيد من التفاصيل عن الشيء للحصول على أفكار أفضل."
-
-    }
+pt:{
+    title:"Transforme o que você tem em",
+    title2:"o que você precisa.",
+    description:"Conte ao UseWhat o que você tem e descubra o que pode fazer, reparar, reutilizar ou transformar em dinheiro.",
+    searchTitle:"O que você tem?",
+    searchHelp:"Digite qualquer coisa que você tenha.",
+    placeholder:"Exemplo: Tenho uma cadeira de madeira velha...",
+    button:"🔍 O que posso fazer?",
+    quick:"Ou tente um exemplo:",
+    result:"💡 O que você pode fazer",
+    selected:"Você escreveu:",
+    empty:"Primeiro diga o que você tem.",
+    feature1:"Faça algo",
+    feature1Text:"Descubra receitas e projetos DIY.",
+    feature2:"Economize dinheiro",
+    feature2Text:"Use o que já possui em vez de comprar algo novo.",
+    feature3:"Reutilize",
+    feature3Text:"Dê uma segunda vida aos objetos antigos.",
+    about:"Uma pergunta simples. Infinitas possibilidades.",
+    aboutText:"Não importa o que você tenha, o UseWhat ajuda a encontrar uma utilidade.",
+    footer:"© 2026 UseWhat — Faça mais com o que você tem.",
+    recipe:"Receita",
+    repair:"Reparo / DIY",
+    reuse:"Reutilização",
+    money:"Economizar",
+    makeMoney:"Ganhar dinheiro",
+    generic:"Ideia útil",
+    foodIdea:"Transforme seus ingredientes em uma refeição caseira.",
+    repairIdea:"Limpe, verifique e repare o objeto antes de substituí-lo.",
+    reuseIdea:"Dê uma nova vida ao objeto através de reutilização.",
+    moneyIdea:"Use o que já possui para evitar uma nova compra.",
+    sellIdea:"Se não precisar mais dele, melhore e considere vender.",
+    foodTitle:"Preparar uma refeição",
+    repairTitle:"Reparar ou restaurar",
+    reuseTitle:"Criar um projeto de reutilização",
+    saveTitle:"Economizar com o que você tem",
+    sellTitle:"Transformar em dinheiro",
+    fallbackTitle:"Encontrar uma nova utilidade",
+    fallbackText:"Pense em como usar, reparar, transformar, compartilhar ou vender este objeto.",
+    more:"Adicione mais detalhes para obter melhores ideias."
+}
 
 };
 
 
-/* IDEA DATABASE */
+/* =========================================================
+   COPY FALLBACK FOR OTHER LANGUAGES
+========================================================= */
 
-const ideas = [
+const baseLanguageCopies = {
 
-    {
-        keys:["tomato","egg","টমেটো","ডিম"],
-        category:"🍳 Food",
-        title:"Tomato Egg Scramble",
-        description:"Cook the tomato with egg, onion and simple spices for a quick meal."
-    },
+it:["Cosa hai?","Scopri cosa puoi fare","Ricetta","Riparazione / Fai da te","Riutilizzo","Risparmiare","Guadagnare"],
+nl:["Wat heb je?","Ontdek wat je kunt doen","Recept","Reparatie / DIY","Hergebruik","Geld besparen","Geld verdienen"],
+sv:["Vad har du?","Upptäck vad du kan göra","Recept","Reparation / DIY","Återanvändning","Spara pengar","Tjäna pengar"],
+da:["Hvad har du?","Find ud af hvad du kan gøre","Opskrift","Reparation / DIY","Genbrug","Spar penge","Tjen penge"],
+no:["Hva har du?","Finn ut hva du kan gjøre","Oppskrift","Reparasjon / DIY","Gjenbruk","Spar penger","Tjen penger"],
+fi:["Mitä sinulla on?","Katso mitä voit tehdä","Resepti","Korjaus / DIY","Uudelleenkäyttö","Säästä rahaa","Ansaitse rahaa"],
+pl:["Co masz?","Sprawdź, co możesz zrobić","Przepis","Naprawa / DIY","Ponowne użycie","Oszczędzaj","Zarabiaj"],
+cs:["Co máte?","Zjistěte, co můžete udělat","Recept","Oprava / DIY","Opětovné použití","Ušetřit peníze","Vydělat peníze"],
+el:["Τι έχετε;","Δείτε τι μπορείτε να κάνετε","Συνταγή","Επισκευή / DIY","Επαναχρησιμοποίηση","Εξοικονόμηση","Κερδίστε χρήματα"],
+ro:["Ce aveți?","Descoperiți ce puteți face","Rețetă","Reparare / DIY","Reutilizare","Economisiți bani","Câștigați bani"],
+hu:["Mije van?","Nézze meg, mit készíthet","Recept","Javítás / DIY","Újrahasználat","Pénzmegtakarítás","Pénzkeresés"],
+ru:["Что у вас есть?","Узнайте, что можно сделать","Рецепт","Ремонт / DIY","Повторное использование","Экономия денег","Заработок"],
+uk:["Що у вас є?","Дізнайтеся, що можна зробити","Рецепт","Ремонт / DIY","Повторне використання","Економія грошей","Заробіток"],
+tr:["Neyiniz var?","Ne yapabileceğinizi keşfedin","Tarif","Onarım / DIY","Yeniden kullanım","Para tasarrufu","Para kazanma"],
+ar:["ماذا لديك؟","اكتشف ما يمكنك فعله","وصفة","إصلاح / DIY","إعادة الاستخدام","توفير المال","كسب المال"],
+he:["מה יש לך?","גלה מה אפשר לעשות","מתכון","תיקון / DIY","שימוש חוזר","חיסכון בכסף","להרוויח כסף"],
+hi:["आपके पास क्या है?","जानें कि आप क्या कर सकते हैं","रेसिपी","मरम्मत / DIY","पुन: उपयोग","पैसे बचाएं","पैसे कमाएं"],
+zh:["你有什么？","看看你可以做什么","食谱","维修 / DIY","再利用","省钱","赚钱"],
+ja:["何を持っていますか？","何ができるか見つけましょう","レシピ","修理 / DIY","再利用","節約","お金を稼ぐ"]
+};
 
-    {
-        keys:["rice","egg","ভাত","চাল","ডিম"],
-        category:"🍳 Food",
-        title:"Egg Fried Rice",
-        description:"Turn leftover rice and eggs into a quick fried-rice meal."
-    },
 
-    {
-        keys:["bread","egg","পাউরুটি","রুটি","ডিম"],
-        category:"🍳 Food",
-        title:"Egg Toast",
-        description:"Use bread and eggs to make a quick breakfast."
-    },
+/* =========================================================
+   LANGUAGE SPECIFIC UI
+========================================================= */
 
-    {
-        keys:["potato","egg","আলু","ডিম"],
-        category:"🍳 Food",
-        title:"Potato Egg Fry",
-        description:"Make a simple potato and egg dish with onion and spices."
-    },
+const simpleUI = {
 
-    {
-        keys:["chicken","rice","মুরগি","চিকেন","ভাত","চাল"],
-        category:"🍳 Food",
-        title:"Chicken Fried Rice",
-        description:"Use chicken and rice to create a filling homemade meal."
-    },
+it:{
+title:"Trasforma ciò che hai in ciò che ti serve.",
+desc:"Dicci cosa hai e scopri cosa puoi creare, riparare, riutilizzare o vendere.",
+help:"Scrivi qualsiasi cosa tu abbia.",
+button:"🔍 Cosa posso fare?",
+empty:"Prima scrivi cosa hai.",
+result:"💡 Cosa puoi fare",
+selected:"Hai scritto:"
+},
 
-    {
-        keys:["old chair","পুরোনো চেয়ার","পুরাতন চেয়ার","chair","চেয়ার"],
-        category:"🔧 Repair / DIY",
-        title:"Restore the Old Chair",
-        description:"Clean, repair, sand and repaint the chair. It can become useful furniture again."
-    },
+nl:{
+title:"Maak van wat je hebt wat je nodig hebt.",
+desc:"Vertel wat je hebt en ontdek wat je kunt maken, repareren of hergebruiken.",
+help:"Typ alles wat je hebt.",
+button:"🔍 Wat kan ik ermee doen?",
+empty:"Vertel eerst wat je hebt.",
+result:"💡 Wat je kunt doen",
+selected:"Je schreef:"
+},
 
-    {
-        keys:["wood","কাঠ","wooden","কাঠের"],
-        category:"🛠️ DIY",
-        title:"Create a Small Home Project",
-        description:"Old wood can be turned into shelves, plant stands, organizers or decorative items."
-    },
+sv:{
+title:"Gör det du har till det du behöver.",
+desc:"Berätta vad du har och upptäck vad du kan skapa, reparera eller återanvända.",
+help:"Skriv vad du har.",
+button:"🔍 Vad kan jag göra?",
+empty:"Skriv först vad du har.",
+result:"💡 Vad du kan göra",
+selected:"Du skrev:"
+},
 
-    {
-        keys:["plastic bottle","plastic bottles","প্লাস্টিক বোতল","বোতল"],
-        category:"♻️ Reuse",
-        title:"Turn Plastic Bottles Into Useful Items",
-        description:"Reuse bottles as plant pots, organizers, storage containers or simple DIY projects."
-    },
+da:{
+title:"Gør det, du har, til det, du har brug for.",
+desc:"Fortæl os hvad du har og opdag hvad du kan lave, reparere eller genbruge.",
+help:"Skriv hvad du har.",
+button:"🔍 Hvad kan jeg gøre?",
+empty:"Skriv først hvad du har.",
+result:"💡 Det kan du gøre",
+selected:"Du skrev:"
+},
 
-    {
-        keys:["jeans","old jeans","জিন্স","পুরোনো জিন্স"],
-        category:"♻️ Upcycling",
-        title:"Upcycle Old Jeans",
-        description:"Old jeans can become bags, organizers, small storage pockets or decorative items."
-    },
+no:{
+title:"Gjør det du har til det du trenger.",
+desc:"Fortell hva du har og finn ut hva du kan lage, reparere eller gjenbruke.",
+help:"Skriv hva du har.",
+button:"🔍 Hva kan jeg gjøre?",
+empty:"Skriv først hva du har.",
+result:"💡 Dette kan du gjøre",
+selected:"Du skrev:"
+},
 
-    {
-        keys:["broken fan","ভাঙা ফ্যান","fan","ফ্যান"],
-        category:"🔧 Repair / Reuse",
-        title:"Repair or Reuse the Fan",
-        description:"Check the motor, capacitor, wiring and switch. Parts that cannot be repaired may still be reusable."
-    },
+fi:{
+title:"Tee siitä mitä sinulla on sitä mitä tarvitset.",
+desc:"Kerro mitä sinulla on ja löydä tapoja valmistaa, korjata tai käyttää sitä uudelleen.",
+help:"Kirjoita mitä sinulla on.",
+button:"🔍 Mitä voin tehdä?",
+empty:"Kirjoita ensin mitä sinulla on.",
+result:"💡 Mitä voit tehdä",
+selected:"Kirjoitit:"
+},
 
-    {
-        keys:["bottle","বোতল"],
-        category:"♻️ Reuse",
-        title:"Create a Bottle Organizer",
-        description:"Clean unused bottles and turn them into organizers or storage containers."
-    },
+pl:{
+title:"Zamień to, co masz, w to, czego potrzebujesz.",
+desc:"Powiedz nam, co masz i odkryj, co możesz zrobić, naprawić lub ponownie wykorzystać.",
+help:"Wpisz dowolną rzecz.",
+button:"🔍 Co mogę zrobić?",
+empty:"Najpierw napisz, co masz.",
+result:"💡 Co możesz zrobić",
+selected:"Napisałeś:"
+},
 
-    {
-        keys:["cardboard","কার্ডবোর্ড","carton","কার্টন"],
-        category:"♻️ DIY",
-        title:"Make a Cardboard Organizer",
-        description:"Old cardboard boxes can become desk organizers, storage boxes or simple craft projects."
-    },
+cs:{
+title:"Proměňte to, co máte, v to, co potřebujete.",
+desc:"Řekněte nám, co máte, a zjistěte, co můžete vytvořit, opravit nebo znovu použít.",
+help:"Napište, co máte.",
+button:"🔍 Co mohu udělat?",
+empty:"Nejprve napište, co máte.",
+result:"💡 Co můžete udělat",
+selected:"Napsali jste:"
+},
 
-    {
-        keys:["old tire","tire","টায়ার","পুরোনো টায়ার"],
-        category:"♻️ Upcycling",
-        title:"Reuse an Old Tire",
-        description:"Old tires can become garden planters, seats, tables or decorative outdoor items."
-    },
+el:{
+title:"Μετατρέψτε ό,τι έχετε σε ό,τι χρειάζεστε.",
+desc:"Πείτε μας τι έχετε και ανακαλύψτε τι μπορείτε να φτιάξετε, να επισκευάσετε ή να επαναχρησιμοποιήσετε.",
+help:"Γράψτε οτιδήποτε έχετε.",
+button:"🔍 Τι μπορώ να κάνω;",
+empty:"Γράψτε πρώτα τι έχετε.",
+result:"💡 Τι μπορείτε να κάνετε",
+selected:"Γράψατε:"
+},
 
-    {
-        keys:["clothes","কাপড়","পুরোনো কাপড়"],
-        category:"♻️ Upcycling",
-        title:"Turn Old Clothes Into Something Useful",
-        description:"Old clothes can become cleaning cloths, bags, pillow covers or simple DIY projects."
-    },
+ro:{
+title:"Transformă ceea ce ai în ceea ce ai nevoie.",
+desc:"Spune-ne ce ai și descoperă ce poți crea, repara sau reutiliza.",
+help:"Scrie orice obiect ai.",
+button:"🔍 Ce pot face?",
+empty:"Scrie mai întâi ce ai.",
+result:"💡 Ce poți face",
+selected:"Ai scris:"
+},
 
-    {
-        keys:["phone","পুরোনো ফোন","মোবাইল","mobile"],
-        category:"💰 Save Money",
-        title:"Reuse an Old Phone",
-        description:"An old phone can become a security camera, media player, remote control or dedicated device."
-    },
+hu:{
+title:"Alakítsd át, amid van, arra, amire szükséged van.",
+desc:"Mondd el, mid van, és fedezd fel, mit készíthetsz, javíthatsz vagy használhatsz újra.",
+help:"Írd le, mid van.",
+button:"🔍 Mit készíthetek?",
+empty:"Először írd le, mid van.",
+result:"💡 Mit tehetsz",
+selected:"Ezt írtad:"
+},
 
-    {
-        keys:["computer","laptop","কম্পিউটার","ল্যাপটপ"],
-        category:"🔧 Repair / Reuse",
-        title:"Repurpose the Old Computer",
-        description:"An old computer may work as a media center, home server, learning machine or backup device."
-    },
+ru:{
+title:"Превратите то, что у вас есть, в то, что вам нужно.",
+desc:"Расскажите, что у вас есть, и узнайте, что можно сделать, отремонтировать или использовать повторно.",
+help:"Напишите любой предмет.",
+button:"🔍 Что я могу сделать?",
+empty:"Сначала напишите, что у вас есть.",
+result:"💡 Что можно сделать",
+selected:"Вы написали:"
+},
 
-    {
-        keys:["glass jar","jar","কাঁচের বোতল","জার"],
-        category:"♻️ Reuse",
-        title:"Reuse Glass Jars",
-        description:"Clean glass jars can be used for spices, storage, plants, crafts or organization."
-    },
+uk:{
+title:"Перетворіть те, що маєте, на те, що вам потрібно.",
+desc:"Розкажіть, що у вас є, і дізнайтеся, що можна зробити, відремонтувати або використати повторно.",
+help:"Напишіть будь-який предмет.",
+button:"🔍 Що я можу зробити?",
+empty:"Спочатку напишіть, що у вас є.",
+result:"💡 Що можна зробити",
+selected:"Ви написали:"
+},
 
-    {
-        keys:["broken table","ভাঙা টেবিল","table","টেবিল"],
-        category:"🔧 Repair / DIY",
-        title:"Repair or Transform the Table",
-        description:"Repair the damaged parts or reuse the tabletop for a shelf, workbench or small project."
-    },
+tr:{
+title:"Sahip olduklarınızı ihtiyacınız olan şeye dönüştürün.",
+desc:"Neye sahip olduğunuzu söyleyin ve ne yapabileceğinizi, onarabileceğinizi veya yeniden kullanabileceğinizi keşfedin.",
+help:"Sahip olduğunuz herhangi bir şeyi yazın.",
+button:"🔍 Ne yapabilirim?",
+empty:"Önce neye sahip olduğunuzu yazın.",
+result:"💡 Ne yapabilirsiniz",
+selected:"Yazdınız:"
+},
 
-    {
-        keys:["metal","লোহা","ধাতু"],
-        category:"🛠️ DIY / Reuse",
-        title:"Turn Scrap Metal Into Something Useful",
-        description:"Clean and usable metal pieces can be used for brackets, shelves, frames or workshop projects."
-    },
+ar:{
+title:"حوّل ما لديك إلى ما تحتاجه.",
+desc:"أخبر UseWhat بما لديك واكتشف ما يمكنك صنعه أو إصلاحه أو إعادة استخدامه.",
+help:"اكتب أي شيء لديك.",
+button:"🔍 ماذا يمكنني أن أفعل؟",
+empty:"اكتب أولاً ما لديك.",
+result:"💡 ماذا يمكنك أن تفعل",
+selected:"لقد كتبت:"
+},
 
-    {
-        keys:["paper","কাগজ"],
-        category:"♻️ Reuse",
-        title:"Reuse Old Paper",
-        description:"Old paper can be used for notes, crafts, packaging, organizers or recycling."
+he:{
+title:"הפוך את מה שיש לך למה שאתה צריך.",
+desc:"ספר ל-UseWhat מה יש לך וגלה מה אפשר להכין, לתקן או לעשות בו שימוש חוזר.",
+help:"כתוב כל דבר שיש לך.",
+button:"🔍 מה אפשר לעשות?",
+empty:"כתוב קודם מה יש לך.",
+result:"💡 מה אפשר לעשות",
+selected:"כתבת:"
+},
+
+hi:{
+title:"आपके पास जो है उसे अपनी जरूरत की चीज़ में बदलें।",
+desc:"UseWhat को बताएं कि आपके पास क्या है और जानें कि आप उससे क्या बना, ठीक या दोबारा इस्तेमाल कर सकते हैं।",
+help:"आपके पास जो भी है उसे लिखें।",
+button:"🔍 मैं क्या कर सकता हूँ?",
+empty:"पहले लिखें कि आपके पास क्या है।",
+result:"💡 आप क्या कर सकते हैं",
+selected:"आपने लिखा:"
+},
+
+zh:{
+title:"把你拥有的东西变成你需要的东西。",
+desc:"告诉 UseWhat 你有什么，发现可以制作、维修、重复利用或省钱的方法。",
+help:"输入你拥有的任何东西。",
+button:"🔍 我可以做什么？",
+empty:"请先告诉我们你有什么。",
+result:"💡 你可以做什么",
+selected:"你输入了："
+},
+
+ja:{
+title:"持っているものを必要なものに変えよう。",
+desc:"持っているものをUseWhatに教えてください。作る、修理する、再利用する方法を見つけます。",
+help:"持っているものを入力してください。",
+button:"🔍 何ができますか？",
+empty:"まず持っているものを入力してください。",
+result:"💡 できること",
+selected:"入力内容："
+}
+
+};
+
+
+/* =========================================================
+   LANGUAGE DATA FOR IDEAS
+========================================================= */
+
+const ideaText = {
+
+en:{
+food:["🍳 Recipe","Make a Homemade Meal","Turn your ingredients into a simple homemade meal."],
+repair:["🔧 Repair / DIY","Repair or Restore It","Clean, inspect, repair and restore the item before replacing it."],
+reuse:["♻️ Reuse","Create a Reuse Project","Give this item a second life through reuse or upcycling."],
+money:["💰 Save Money","Save Money With What You Have","Use what you already have instead of buying a replacement."],
+sell:["💵 Make Money","Turn It Into Extra Money","Repair or improve it and consider selling it if you no longer need it."],
+generic:["💡 Useful Idea","Find a New Useful Purpose","Try to use, repair, transform, share or sell this item."]
+},
+
+bn:{
+food:["🍳 রান্না","ঘরোয়া খাবার তৈরি করুন","আপনার কাছে থাকা উপকরণ দিয়ে সহজ একটি ঘরোয়া খাবার তৈরি করতে পারেন।"],
+repair:["🔧 মেরামত / DIY","মেরামত বা পুনরুদ্ধার করুন","নতুন কিছু কেনার আগে জিনিসটি পরিষ্কার করে পরীক্ষা করুন এবং মেরামতের চেষ্টা করুন।"],
+reuse:["♻️ পুনর্ব্যবহার","নতুন কাজে ব্যবহার করুন","পুরোনো জিনিসটিকে নতুন কাজে ব্যবহার করে একটি Reuse বা Upcycling project তৈরি করতে পারেন।"],
+money:["💰 টাকা বাঁচান","আপনার জিনিস দিয়ে টাকা বাঁচান","নতুন কিছু কেনার পরিবর্তে আপনার কাছে থাকা জিনিস ব্যবহার করুন।"],
+sell:["💵 আয় করুন","এটি দিয়ে অতিরিক্ত আয় করুন","আর প্রয়োজন না থাকলে জিনিসটি মেরামত বা উন্নত করে বিক্রি করতে পারেন।"],
+generic:["💡 উপকারী আইডিয়া","নতুন একটি ব্যবহার খুঁজুন","জিনিসটি কীভাবে ব্যবহার, মেরামত, পরিবর্তন, শেয়ার বা বিক্রি করা যায় তা ভাবুন।"]
+},
+
+es:{
+food:["🍳 Receta","Prepara una comida casera","Convierte tus ingredientes en una comida casera sencilla."],
+repair:["🔧 Reparación / DIY","Repáralo o restáuralo","Limpia, revisa y repara el objeto antes de reemplazarlo."],
+reuse:["♻️ Reutilización","Crea un proyecto de reutilización","Dale una segunda vida mediante reutilización o upcycling."],
+money:["💰 Ahorrar","Ahorra con lo que tienes","Usa lo que ya tienes en lugar de comprar un reemplazo."],
+sell:["💵 Ganar dinero","Conviértelo en dinero extra","Mejóralo y considera venderlo si ya no lo necesitas."],
+generic:["💡 Idea útil","Encuentra un nuevo uso","Puedes usar, reparar, transformar, compartir o vender este objeto."]
+},
+
+fr:{
+food:["🍳 Recette","Préparer un repas maison","Transformez vos ingrédients en un repas maison simple."],
+repair:["🔧 Réparation / DIY","Réparer ou restaurer","Nettoyez, vérifiez et réparez l'objet avant de le remplacer."],
+reuse:["♻️ Réutilisation","Créer un projet de réutilisation","Donnez une seconde vie à cet objet."],
+money:["💰 Économiser","Économiser avec ce que vous avez","Utilisez ce que vous possédez déjà au lieu d'acheter."],
+sell:["💵 Gagner de l'argent","Gagner de l'argent avec cet objet","Améliorez-le et envisagez de le vendre."],
+generic:["💡 Idée utile","Trouver une nouvelle utilisation","Utilisez, réparez, transformez, partagez ou vendez cet objet."]
+},
+
+de:{
+food:["🍳 Rezept","Eine Mahlzeit zubereiten","Machen Sie aus Ihren Zutaten eine einfache Mahlzeit."],
+repair:["🔧 Reparatur / DIY","Reparieren oder restaurieren","Reinigen, prüfen und reparieren Sie den Gegenstand."],
+reuse:["♻️ Wiederverwendung","Ein Wiederverwendungsprojekt erstellen","Geben Sie dem Gegenstand ein zweites Leben."],
+money:["💰 Geld sparen","Mit vorhandenen Dingen sparen","Nutzen Sie vorhandene Dinge statt etwas Neues zu kaufen."],
+sell:["💵 Geld verdienen","Zusätzliches Geld verdienen","Verbessern Sie den Gegenstand und verkaufen Sie ihn bei Bedarf."],
+generic:["💡 Nützliche Idee","Eine neue Verwendung finden","Verwenden, reparieren, verändern, teilen oder verkaufen Sie den Gegenstand."]
+}
+
+};
+
+
+/* =========================================================
+   OTHER LANGUAGE IDEA TEMPLATES
+========================================================= */
+
+const genericIdeas = {
+
+it:{
+food:["🍳 Ricetta","Preparare un pasto","Trasforma i tuoi ingredienti in un semplice pasto fatto in casa."],
+repair:["🔧 Riparazione / Fai da te","Riparare o restaurare","Pulisci, controlla e ripara l'oggetto prima di sostituirlo."],
+reuse:["♻️ Riutilizzo","Creare un progetto di riutilizzo","Dai una seconda vita all'oggetto."],
+money:["💰 Risparmiare","Risparmia con ciò che hai","Usa ciò che possiedi già invece di comprare."],
+sell:["💵 Guadagnare","Trasformalo in denaro","Miglioralo e valuta di venderlo."],
+generic:["💡 Idea utile","Trova un nuovo utilizzo","Usa, ripara, trasforma, condividi o vendi l'oggetto."]
+},
+
+nl:{
+food:["🍳 Recept","Een maaltijd maken","Maak met je ingrediënten een eenvoudige maaltijd."],
+repair:["🔧 Reparatie / DIY","Repareer of herstel het","Maak het schoon, controleer het en repareer het."],
+reuse:["♻️ Hergebruik","Maak een hergebruikproject","Geef het voorwerp een tweede leven."],
+money:["💰 Geld besparen","Bespaar met wat je hebt","Gebruik wat je al hebt in plaats van iets nieuws te kopen."],
+sell:["💵 Geld verdienen","Maak er extra geld van","Verbeter het en overweeg het te verkopen."],
+generic:["💡 Nuttig idee","Vind een nieuw gebruik","Gebruik, repareer, verander, deel of verkoop het."]
+},
+
+sv:{
+food:["🍳 Recept","Laga en måltid","Använd dina ingredienser för att laga en enkel måltid."],
+repair:["🔧 Reparation / DIY","Reparera eller återställ","Rengör, kontrollera och reparera föremålet."],
+reuse:["♻️ Återanvändning","Skapa ett återbruksprojekt","Ge föremålet ett nytt liv."],
+money:["💰 Spara pengar","Spara med det du har","Använd det du redan har istället för att köpa nytt."],
+sell:["💵 Tjäna pengar","Gör extra pengar","Förbättra det och överväg att sälja det."],
+generic:["💡 Användbar idé","Hitta ett nytt användningsområde","Använd, reparera, förändra, dela eller sälj föremålet."]
+},
+
+da:{
+food:["🍳 Opskrift","Lav et måltid","Brug dine ingredienser til et enkelt hjemmelavet måltid."],
+repair:["🔧 Reparation / DIY","Reparer eller restaurer","Rengør, kontroller og reparer genstanden."],
+reuse:["♻️ Genbrug","Lav et genbrugsprojekt","Giv genstanden et nyt liv."],
+money:["💰 Spar penge","Spar med det du har","Brug det du allerede har i stedet for at købe nyt."],
+sell:["💵 Tjen penge","Tjen ekstra penge","Forbedr den og overvej at sælge den."],
+generic:["💡 Nyttig idé","Find en ny anvendelse","Brug, reparer, ændr, del eller sælg genstanden."]
+},
+
+no:{
+food:["🍳 Oppskrift","Lag et måltid","Bruk ingrediensene dine til et enkelt hjemmelaget måltid."],
+repair:["🔧 Reparasjon / DIY","Reparer eller restaurer","Rengjør, kontroller og reparer gjenstanden."],
+reuse:["♻️ Gjenbruk","Lag et gjenbruksprosjekt","Gi gjenstanden et nytt liv."],
+money:["💰 Spar penger","Spar med det du har","Bruk det du allerede har i stedet for å kjøpe nytt."],
+sell:["💵 Tjen penger","Tjen ekstra penger","Forbedre den og vurder å selge den."],
+generic:["💡 Nyttig idé","Finn en ny bruk","Bruk, reparer, endre, del eller selg gjenstanden."]
+},
+
+fi:{
+food:["🍳 Resepti","Valmista ateria","Tee aineksistasi yksinkertainen kotitekoinen ateria."],
+repair:["🔧 Korjaus / DIY","Korjaa tai kunnosta","Puhdista, tarkista ja korjaa esine."],
+reuse:["♻️ Uudelleenkäyttö","Luo uusiokäyttöprojekti","Anna esineelle uusi elämä."],
+money:["💰 Säästä rahaa","Säästä käyttämällä olemassa olevaa","Käytä jo omistamaasi uuden ostamisen sijaan."],
+sell:["💵 Ansaitse rahaa","Tee siitä lisätuloa","Paranna esinettä ja harkitse sen myymistä."],
+generic:["💡 Hyödyllinen idea","Löydä uusi käyttötarkoitus","Käytä, korjaa, muuta, jaa tai myy esine."]
+},
+
+pl:{
+food:["🍳 Przepis","Przygotuj posiłek","Wykorzystaj składniki do przygotowania prostego posiłku."],
+repair:["🔧 Naprawa / DIY","Napraw lub odrestauruj","Wyczyść, sprawdź i napraw przedmiot."],
+reuse:["♻️ Ponowne użycie","Stwórz projekt ponownego użycia","Nadaj przedmiotowi drugie życie."],
+money:["💰 Oszczędzanie","Oszczędzaj dzięki temu, co masz","Użyj tego, co już posiadasz."],
+sell:["💵 Zarabianie","Zamień to na dodatkowe pieniądze","Popraw przedmiot i rozważ jego sprzedaż."],
+generic:["💡 Przydatny pomysł","Znajdź nowe zastosowanie","Użyj, napraw, zmień, udostępnij lub sprzedaj przedmiot."]
+},
+
+cs:{
+food:["🍳 Recept","Připravte jídlo","Použijte své suroviny k přípravě jednoduchého jídla."],
+repair:["🔧 Oprava / DIY","Opravte nebo obnovte","Předmět vyčistěte, zkontrolujte a opravte."],
+reuse:["♻️ Opětovné použití","Vytvořte projekt opětovného použití","Dejte předmětu nový život."],
+money:["💰 Úspora","Ušetřete s tím, co máte","Použijte to, co už máte, místo nákupu nového."],
+sell:["💵 Výdělek","Proměňte to v peníze","Vylepšete předmět a zvažte jeho prodej."],
+generic:["💡 Užitečný nápad","Najděte nové využití","Použijte, opravte, změňte, sdílejte nebo prodejte předmět."]
+},
+
+el:{
+food:["🍳 Συνταγή","Φτιάξτε ένα γεύμα","Χρησιμοποιήστε τα υλικά σας για ένα απλό σπιτικό γεύμα."],
+repair:["🔧 Επισκευή / DIY","Επισκευάστε ή αποκαταστήστε","Καθαρίστε, ελέγξτε και επισκευάστε το αντικείμενο."],
+reuse:["♻️ Επαναχρησιμοποίηση","Δημιουργήστε ένα έργο επαναχρησιμοποίησης","Δώστε στο αντικείμενο μια δεύτερη ζωή."],
+money:["💰 Εξοικονόμηση","Εξοικονομήστε χρήματα","Χρησιμοποιήστε αυτό που ήδη έχετε."],
+sell:["💵 Κέρδος","Μετατρέψτε το σε επιπλέον χρήματα","Βελτιώστε το και εξετάστε την πώλησή του."],
+generic:["💡 Χρήσιμη ιδέα","Βρείτε νέα χρήση","Χρησιμοποιήστε, επισκευάστε, μετατρέψτε, μοιραστείτε ή πουλήστε το."]
+},
+
+ro:{
+food:["🍳 Rețetă","Pregătește o masă","Folosește ingredientele pentru o masă simplă."],
+repair:["🔧 Reparare / DIY","Repară sau restaurează","Curăță, verifică și repară obiectul."],
+reuse:["♻️ Reutilizare","Creează un proiect de reutilizare","Oferă obiectului o a doua viață."],
+money:["💰 Economisire","Economisește cu ceea ce ai","Folosește ceea ce ai deja."],
+sell:["💵 Câștig","Transformă-l în bani","Îmbunătățește obiectul și ia în considerare vânzarea."],
+generic:["💡 Idee utilă","Găsește o nouă utilizare","Folosește, repară, transformă, împarte sau vinde obiectul."]
+},
+
+hu:{
+food:["🍳 Recept","Készíts ételt","Használd az alapanyagokat egy egyszerű házi ételhez."],
+repair:["🔧 Javítás / DIY","Javítsd vagy újítsd fel","Tisztítsd meg, ellenőrizd és javítsd meg."],
+reuse:["♻️ Újrahasználat","Készíts újrahasznosítási projektet","Adj új életet a tárgynak."],
+money:["💰 Spórolás","Spórolj azzal, amid van","Használd azt, amid már van."],
+sell:["💵 Pénzkeresés","Keress vele pénzt","Javítsd fel és fontold meg az eladását."],
+generic:["💡 Hasznos ötlet","Találj új felhasználást","Használd, javítsd, alakítsd át, oszd meg vagy add el."]
+},
+
+ru:{
+food:["🍳 Рецепт","Приготовьте блюдо","Используйте продукты для простого домашнего блюда."],
+repair:["🔧 Ремонт / DIY","Отремонтируйте или восстановите","Очистите, проверьте и отремонтируйте предмет."],
+reuse:["♻️ Повторное использование","Создайте проект повторного использования","Дайте предмету вторую жизнь."],
+money:["💰 Экономия","Экономьте с тем, что уже есть","Используйте то, что у вас уже есть."],
+sell:["💵 Заработок","Превратите это в деньги","Улучшите предмет и рассмотрите возможность продажи."],
+generic:["💡 Полезная идея","Найдите новое применение","Используйте, отремонтируйте, измените, поделитесь или продайте предмет."]
+},
+
+uk:{
+food:["🍳 Рецепт","Приготуйте страву","Використайте продукти для простої домашньої страви."],
+repair:["🔧 Ремонт / DIY","Відремонтуйте або відновіть","Очистіть, перевірте та відремонтуйте предмет."],
+reuse:["♻️ Повторне використання","Створіть проєкт повторного використання","Дайте предмету друге життя."],
+money:["💰 Економія","Заощаджуйте з тим, що маєте","Використовуйте те, що вже є."],
+sell:["💵 Заробіток","Перетворіть це на гроші","Покращіть предмет і розгляньте можливість продажу."],
+generic:["💡 Корисна ідея","Знайдіть нове застосування","Використовуйте, ремонтуйте, змінюйте, діліться або продавайте."]
+},
+
+tr:{
+food:["🍳 Tarif","Ev yapımı yemek hazırlayın","Malzemelerinizle basit bir ev yemeği hazırlayın."],
+repair:["🔧 Onarım / DIY","Onarın veya yenileyin","Ürünü temizleyin, kontrol edin ve onarın."],
+reuse:["♻️ Yeniden kullanım","Yeniden kullanım projesi oluşturun","Eşyaya ikinci bir hayat verin."],
+money:["💰 Para tasarrufu","Elinizdekilerle tasarruf edin","Yeni bir şey almak yerine elinizdekini kullanın."],
+sell:["💵 Para kazanma","Ek gelire dönüştürün","Eşyayı geliştirin ve satmayı düşünün."],
+generic:["💡 Faydalı fikir","Yeni bir kullanım bulun","Kullanın, onarın, dönüştürün, paylaşın veya satın."]
+},
+
+ar:{
+food:["🍳 وصفة","حضّر وجبة منزلية","حوّل مكوناتك إلى وجبة منزلية بسيطة."],
+repair:["🔧 إصلاح / DIY","أصلحه أو جدده","نظف وافحص وأصلح الشيء قبل استبداله."],
+reuse:["♻️ إعادة الاستخدام","أنشئ مشروع إعادة استخدام","امنح الشيء حياة ثانية."],
+money:["💰 توفير المال","وفر المال بما لديك","استخدم ما لديك بالفعل بدلاً من شراء شيء جديد."],
+sell:["💵 كسب المال","حوّله إلى دخل إضافي","حسّن الشيء وفكر في بيعه."],
+generic:["💡 فكرة مفيدة","اكتشف استخداماً جديداً","استخدم الشيء أو أصلحه أو غيّره أو شاركه أو بعه."]
+},
+
+he:{
+food:["🍳 מתכון","הכנת ארוחה","השתמש במרכיבים שלך להכנת ארוחה ביתית פשוטה."],
+repair:["🔧 תיקון / DIY","תקן או שדרג","נקה, בדוק ותקן את הפריט לפני החלפתו."],
+reuse:["♻️ שימוש חוזר","צור פרויקט שימוש חוזר","תן לפריט חיים חדשים."],
+money:["💰 חיסכון","חסוך עם מה שיש לך","השתמש במה שכבר יש לך במקום לקנות חדש."],
+sell:["💵 להרוויח כסף","הפוך אותו להכנסה נוספת","שפר את הפריט ושקול למכור אותו."],
+generic:["💡 רעיון שימושי","מצא שימוש חדש","השתמש, תקן, שנה, שתף או מכור את הפריט."]
+},
+
+hi:{
+food:["🍳 रेसिपी","घर का खाना बनाएं","अपने सामान से एक आसान घरेलू भोजन बनाएं।"],
+repair:["🔧 मरम्मत / DIY","इसे ठीक या पुनर्स्थापित करें","इसे साफ करें, जांचें और मरम्मत करें।"],
+reuse:["♻️ पुन: उपयोग","पुन: उपयोग प्रोजेक्ट बनाएं","इस वस्तु को दूसरा जीवन दें।"],
+money:["💰 पैसे बचाएं","जो है उससे बचत करें","नई चीज़ खरीदने के बजाय जो आपके पास है उसका उपयोग करें।"],
+sell:["💵 पैसे कमाएं","इसे अतिरिक्त आय में बदलें","इसे बेहतर बनाएं और बेचने पर विचार करें।"],
+generic:["💡 उपयोगी विचार","नया उपयोग खोजें","इसे उपयोग, मरम्मत, बदलने, साझा या बेचने का तरीका खोजें।"]
+},
+
+zh:{
+food:["🍳 食谱","制作家常饭菜","用你现有的食材制作简单的家常饭菜。"],
+repair:["🔧 维修 / DIY","维修或修复它","清洁、检查并维修物品。"],
+reuse:["♻️ 再利用","制作再利用项目","给这个物品一个新的用途。"],
+money:["💰 省钱","用现有物品省钱","使用你已经拥有的东西，而不是购买新的。"],
+sell:["💵 赚钱","把它变成额外收入","改进物品后可以考虑出售。"],
+generic:["💡 实用想法","寻找新的用途","尝试使用、维修、改造、分享或出售它。"]
+},
+
+ja:{
+food:["🍳 レシピ","家庭料理を作る","持っている食材で簡単な家庭料理を作りましょう。"],
+repair:["🔧 修理 / DIY","修理・復元する","交換する前に、掃除して確認し、修理してみましょう。"],
+reuse:["♻️ 再利用","再利用プロジェクトを作る","その物に新しい使い道を与えましょう。"],
+money:["💰 節約","持っている物で節約","新しく購入する代わりに、すでに持っている物を使いましょう。"],
+sell:["💵 お金を稼ぐ","副収入に変える","修理・改善して販売することもできます。"],
+generic:["💡 便利なアイデア","新しい使い道を見つける","使う、修理する、変える、共有する、売る方法を考えましょう。"]
+}
+
+};
+
+
+/* =========================================================
+   GET CURRENT LANGUAGE
+========================================================= */
+
+const languageSelect = document.getElementById("languageSelect");
+
+let currentLanguage = localStorage.getItem("usewhatLanguage") || "bn";
+
+languageSelect.value = currentLanguage;
+
+
+/* =========================================================
+   LANGUAGE FUNCTIONS
+========================================================= */
+
+function getUI(lang){
+
+    if(lang === "en"){
+        return translations.en;
     }
 
-];
-
-
-/* DOM */
-
-const languageSelect =
-    document.getElementById("languageSelect");
-
-const userInput =
-    document.getElementById("userInput");
-
-const findButton =
-    document.getElementById("findButton");
-
-const results =
-    document.getElementById("results");
-
-const resultList =
-    document.getElementById("resultList");
-
-const resultsSubtitle =
-    document.getElementById("resultsSubtitle");
-
-
-/* CURRENT LANGUAGE */
-
-let currentLanguage = "en";
-
-
-/* CHANGE LANGUAGE */
-
-languageSelect.addEventListener("change", function(){
-
-    currentLanguage = this.value;
-
-    applyLanguage(currentLanguage);
-
-});
-
-
-/* APPLY LANGUAGE */
-
-function applyLanguage(lang){
-
-    const t = translations[lang];
-
-    document.documentElement.lang = lang;
-
-    document.getElementById("heroTitle").innerHTML =
-        t.title.replace("|","<br>");
-
-    document.getElementById("heroDescription").textContent =
-        t.description;
-
-    document.getElementById("searchTitle").textContent =
-        t.searchTitle;
-
-    document.getElementById("searchHelp").textContent =
-        t.searchHelp;
-
-    userInput.placeholder =
-        t.placeholder;
-
-    findButton.textContent =
-        t.button;
-
-    document.getElementById("exampleText").textContent =
-        t.example;
-
-    document.getElementById("resultsTitle").textContent =
-        t.results;
-
-    document.getElementById("feature1Title").textContent =
-        t.feature1Title;
-
-    document.getElementById("feature1Text").textContent =
-        t.feature1Text;
-
-    document.getElementById("feature2Title").textContent =
-        t.feature2Title;
-
-    document.getElementById("feature2Text").textContent =
-        t.feature2Text;
-
-    document.getElementById("feature3Title").textContent =
-        t.feature3Title;
-
-    document.getElementById("feature3Text").textContent =
-        t.feature3Text;
-
-    document.getElementById("howTitle").textContent =
-        t.howTitle;
-
-    document.getElementById("step1Title").textContent =
-        t.step1Title;
-
-    document.getElementById("step1Text").textContent =
-        t.step1Text;
-
-    document.getElementById("step2Title").textContent =
-        t.step2Title;
-
-    document.getElementById("step2Text").textContent =
-        t.step2Text;
-
-    document.getElementById("step3Title").textContent =
-        t.step3Title;
-
-    document.getElementById("step3Text").textContent =
-        t.step3Text;
-
-    if(lang === "ar"){
-        document.body.style.direction = "rtl";
-    }else{
-        document.body.style.direction = "ltr";
+    if(lang === "bn"){
+        return translations.bn;
     }
 
+    if(lang === "es"){
+        return translations.es;
+    }
+
+    if(lang === "fr"){
+        return translations.fr;
+    }
+
+    if(lang === "de"){
+        return translations.de;
+    }
+
+    if(lang === "pt"){
+        return translations.pt;
+    }
+
+    return simpleUI[lang] || translations.en;
 }
 
 
-/* FIND IDEAS */
+function getIdeas(lang){
 
-findButton.addEventListener("click", findIdeas);
-
-
-/* ENTER KEY */
-
-userInput.addEventListener("keydown", function(event){
-
-    if(event.key === "Enter" && !event.shiftKey){
-
-        event.preventDefault();
-
-        findIdeas();
-
+    if(ideaText[lang]){
+        return ideaText[lang];
     }
+
+    if(genericIdeas[lang]){
+        return genericIdeas[lang];
+    }
+
+    return ideaText.en;
+}
+
+
+/* =========================================================
+   TRANSLATE INTERFACE
+========================================================= */
+
+function updateInterface(){
+
+    const lang = currentLanguage;
+
+    document.documentElement.lang = lang;
+
+    if(lang === "ar" || lang === "he"){
+        document.documentElement.dir = "rtl";
+    }else{
+        document.documentElement.dir = "ltr";
+    }
+
+    const ui = getUI(lang);
+
+    if(ui.title){
+        document.getElementById("heroTitle").innerHTML =
+            ui.title + "<br><span>" + (ui.title2 || "") + "</span>";
+    }
+
+    if(ui.description){
+        document.getElementById("heroDescription").textContent =
+            ui.description;
+    }
+
+    if(ui.searchTitle){
+        document.getElementById("searchTitle").textContent =
+            ui.searchTitle;
+    }
+
+    if(ui.searchHelp){
+        document.getElementById("searchHelp").textContent =
+            ui.searchHelp;
+    }
+
+    if(ui.help){
+        document.getElementById("searchHelp").textContent =
+            ui.help;
+    }
+
+    if(ui.placeholder){
+        document.getElementById("userInput").placeholder =
+            ui.placeholder;
+    }
+
+    if(ui.button){
+        document.getElementById("findButton").textContent =
+            ui.button;
+    }
+
+    if(ui.quick){
+        document.getElementById("quickTitle").textContent =
+            ui.quick;
+    }
+
+    if(ui.feature1){
+        document.getElementById("feature1Title").textContent =
+            ui.feature1;
+    }
+
+    if(ui.feature1Text){
+        document.getElementById("feature1Text").textContent =
+            ui.feature1Text;
+    }
+
+    if(ui.feature2){
+        document.getElementById("feature2Title").textContent =
+            ui.feature2;
+    }
+
+    if(ui.feature2Text){
+        document.getElementById("feature2Text").textContent =
+            ui.feature2Text;
+    }
+
+    if(ui.feature3){
+        document.getElementById("feature3Title").textContent =
+            ui.feature3;
+    }
+
+    if(ui.feature3Text){
+        document.getElementById("feature3Text").textContent =
+            ui.feature3Text;
+    }
+
+    if(ui.about){
+        document.getElementById("aboutTitle").textContent =
+            ui.about;
+    }
+
+    if(ui.aboutText){
+        document.getElementById("aboutText").textContent =
+            ui.aboutText;
+    }
+
+    if(ui.footer){
+        document.getElementById("footerText").textContent =
+            ui.footer;
+    }
+}
+
+
+/* =========================================================
+   LANGUAGE CHANGE
+========================================================= */
+
+languageSelect.addEventListener("change",function(){
+
+    currentLanguage = this.value;
+
+    localStorage.setItem(
+        "usewhatLanguage",
+        currentLanguage
+    );
+
+    updateInterface();
+
+    const resultBox =
+        document.getElementById("resultBox");
+
+    resultBox.classList.remove("show");
 
 });
 
 
-/* MAIN FUNCTION */
+/* =========================================================
+   QUICK EXAMPLES
+========================================================= */
 
-function findIdeas(){
+document.querySelectorAll(".quick-item").forEach(button => {
 
-    const text =
-        userInput.value.trim();
+    button.addEventListener("click",function(){
 
-    const t =
-        translations[currentLanguage];
+        document.getElementById("userInput").value =
+            this.getAttribute("data-text");
 
-
-    /* EMPTY */
-
-    if(!text){
-
-        results.classList.add("show");
-
-        resultsSubtitle.textContent =
-            t.empty;
-
-        resultList.innerHTML = "";
-
-        return;
-
-    }
-
-
-    /* SEARCH TEXT */
-
-    const searchText =
-        text.toLowerCase();
-
-
-    let matchedIdeas = [];
-
-
-    /* CHECK DATABASE */
-
-    ideas.forEach(idea => {
-
-        const found =
-            idea.keys.some(key =>
-                searchText.includes(key.toLowerCase())
-            );
-
-        if(found){
-
-            matchedIdeas.push(idea);
-
-        }
+        document.getElementById("userInput").focus();
 
     });
 
+});
 
-    /* REMOVE DUPLICATES */
 
-    matchedIdeas =
-        matchedIdeas.filter(
-            (idea,index,self) =>
-            index === self.findIndex(
-                x => x.title === idea.title
-            )
+/* =========================================================
+   DETECT TYPE OF ITEM
+========================================================= */
+
+function detectType(text){
+
+    const t = text.toLowerCase();
+
+    const foodWords = [
+        "tomato","egg","rice","potato","onion","bread","chicken",
+        "fish","meat","beef","milk","cheese","banana","apple",
+        "carrot","vegetable","fruit","flour","food","ingredient",
+        "রসুন","টমেটো","ডিম","চাল","ভাত","আলু","পেঁয়াজ","পাউরুটি",
+        "মুরগি","মাছ","মাংস","দুধ","চিজ","কলা","আপেল","গাজর",
+        "সবজি","ফল","ময়দা","খাবার","উপকরণ",
+        "comida","alimento","tomate","huevo","arroz","patata",
+        "pomodoro","uovo","riso","kartoffel","ei","brot",
+        "nourriture","riz","œuf","pain"
+    ];
+
+    const repairWords = [
+        "broken","old chair","chair","table","phone","mobile",
+        "laptop","computer","fan","machine","tool","bike","bicycle",
+        "tv","television","furniture","wood","metal","device",
+        "ভাঙা","পুরোনো চেয়ার","চেয়ার","টেবিল","ফোন","মোবাইল",
+        "ল্যাপটপ","কম্পিউটার","ফ্যান","মেশিন","যন্ত্র","সাইকেল",
+        "টিভি","আসবাবপত্র","কাঠ","লোহা","ডিভাইস",
+        "reparar","roto","silla","mesa","teléfono","móvil",
+        "réparer","cassé","chaise","téléphone",
+        "reparatur","kaputt","stuhl","telefon"
+    ];
+
+    const clothesWords = [
+        "clothes","cloth","shirt","jeans","t-shirt","dress","fabric",
+        "জামা","কাপড়","শার্ট","প্যান্ট","জিন্স","ড্রেস","কাপড়",
+        "ropa","camisa","pantalón","vêtements","chemise",
+        "kleidung","hemd"
+    ];
+
+    const plasticWords = [
+        "plastic","bottle","container","jar","প্লাস্টিক","বোতল",
+        "কনটেইনার","জার","plástico","botella","plastique",
+        "bouteille","plastik","flasche"
+    ];
+
+    const paperWords = [
+        "paper","cardboard","box","newspaper","কাগজ","কার্টন",
+        "বাক্স","সংবাদপত্র","papel","cartón","caja","papier",
+        "carton","boîte","papier","karton","kartonbox"
+    ];
+
+    const woodWords = [
+        "wood","wooden","timber","কাঠ","কাঠের","madera",
+        "bois","holz","legno","madeira"
+    ];
+
+    const electronicsWords = [
+        "phone","mobile","smartphone","laptop","computer","charger",
+        "cable","keyboard","mouse","headphone","tv","electronics",
+        "ফোন","মোবাইল","স্মার্টফোন","ল্যাপটপ","কম্পিউটার","চার্জার",
+        "কেবল","কিবোর্ড","মাউস","হেডফোন","টিভি","ইলেকট্রনিক",
+        "teléfono","móvil","ordenador","ordinateur","téléphone",
+        "telefon","laptop","computer"
+    ];
+
+
+    if(foodWords.some(w => t.includes(w))){
+        return "food";
+    }
+
+    if(electronicsWords.some(w => t.includes(w))){
+        return "repair";
+    }
+
+    if(clothesWords.some(w => t.includes(w))){
+        return "reuse";
+    }
+
+    if(plasticWords.some(w => t.includes(w))){
+        return "reuse";
+    }
+
+    if(paperWords.some(w => t.includes(w))){
+        return "reuse";
+    }
+
+    if(repairWords.some(w => t.includes(w))){
+        return "repair";
+    }
+
+    if(woodWords.some(w => t.includes(w))){
+        return "repair";
+    }
+
+    return "generic";
+}
+
+
+/* =========================================================
+   CREATE IDEAS
+========================================================= */
+
+function createIdeas(type,lang){
+
+    const ideas = getIdeas(lang);
+
+    let selected = ideas[type] || ideas.generic;
+
+    let extra = [];
+
+    if(type === "food"){
+
+        extra.push(
+            ideas.money
         );
 
+        extra.push(
+            ideas.reuse
+        );
 
-    /* RESULTS */
+    }
 
-    results.classList.add("show");
+    else if(type === "repair"){
 
+        extra.push(
+            ideas.money
+        );
 
-    resultsSubtitle.innerHTML =
-        `${t.selected} <strong>${escapeHTML(text)}</strong>`;
+        extra.push(
+            ideas.sell
+        );
 
+    }
 
-    resultList.innerHTML = "";
+    else if(type === "reuse"){
 
+        extra.push(
+            ideas.money
+        );
 
-    /* IF MATCH FOUND */
-
-    if(matchedIdeas.length > 0){
-
-        matchedIdeas.forEach(idea => {
-
-            const card =
-                document.createElement("div");
-
-            card.className =
-                "result-card";
-
-            card.innerHTML = `
-
-                <div class="category">
-                    ${idea.category}
-                </div>
-
-                <h3>
-                    ${idea.title}
-                </h3>
-
-                <p>
-                    ${idea.description}
-                </p>
-
-            `;
-
-            resultList.appendChild(card);
-
-        });
+        extra.push(
+            ideas.sell
+        );
 
     }
 
     else{
 
-        const card =
-            document.createElement("div");
+        extra.push(
+            ideas.repair
+        );
 
-        card.className =
-            "result-card";
+        extra.push(
+            ideas.reuse
+        );
 
-        card.innerHTML = `
-
-            <h3>
-                💡 ${t.results}
-            </h3>
-
-            <p>
-                ${t.noMatch}
-            </p>
-
-        `;
-
-        resultList.appendChild(card);
+        extra.push(
+            ideas.money
+        );
 
     }
 
+    return [
+        selected,
+        extra[0],
+        extra[1]
+    ];
 
-    /* SCROLL TO RESULTS */
+}
 
-    setTimeout(function(){
 
-        results.scrollIntoView({
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function performSearch(){
+
+    const input =
+        document.getElementById("userInput").value.trim();
+
+    const resultBox =
+        document.getElementById("resultBox");
+
+    const lang = currentLanguage;
+
+    const ui = getUI(lang);
+
+    if(!input){
+
+        resultBox.innerHTML = `
+            <div class="idea">
+                <h4>⚠️ ${ui.empty || translations.en.empty}</h4>
+            </div>
+        `;
+
+        resultBox.classList.add("show");
+
+        return;
+    }
+
+
+    const type = detectType(input);
+
+    const ideas = createIdeas(type,lang);
+
+    const resultTitle =
+        ui.result ||
+        translations.en.result;
+
+    const selectedText =
+        ui.selected ||
+        translations.en.selected;
+
+
+    let html = `
+
+        <div class="result-title">
+            ${resultTitle}
+        </div>
+
+        <div class="selected-text">
+            ${selectedText}
+            <strong>${escapeHTML(input)}</strong>
+        </div>
+
+    `;
+
+
+    ideas.forEach(idea => {
+
+        if(!idea){
+            return;
+        }
+
+        html += `
+
+            <div class="idea">
+
+                <div class="idea-category">
+                    ${idea[0]}
+                </div>
+
+                <h4>
+                    ${idea[1]}
+                </h4>
+
+                <p>
+                    ${idea[2]}
+                </p>
+
+            </div>
+
+        `;
+
+    });
+
+
+    resultBox.innerHTML = html;
+
+    resultBox.classList.add("show");
+
+    setTimeout(() => {
+
+        resultBox.scrollIntoView({
             behavior:"smooth",
-            block:"start"
+            block:"nearest"
         });
 
     },100);
@@ -1193,24 +1740,55 @@ function findIdeas(){
 }
 
 
-/* SECURITY */
+/* =========================================================
+   PREVENT HTML IN USER INPUT
+========================================================= */
 
 function escapeHTML(text){
 
     const div =
         document.createElement("div");
 
-    div.textContent =
-        text;
+    div.textContent = text;
 
     return div.innerHTML;
 
 }
 
 
-/* INITIAL LANGUAGE */
+/* =========================================================
+   BUTTON
+========================================================= */
 
-applyLanguage("en");
+document
+.getElementById("findButton")
+.addEventListener("click",performSearch);
+
+
+/* =========================================================
+   ENTER KEY
+========================================================= */
+
+document
+.getElementById("userInput")
+.addEventListener("keydown",function(event){
+
+    if(event.key === "Enter" && !event.shiftKey){
+
+        event.preventDefault();
+
+        performSearch();
+
+    }
+
+});
+
+
+/* =========================================================
+   START
+========================================================= */
+
+updateInterface();
 
 </script>
 
