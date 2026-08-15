@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>UseWhat - Make More From What You Have</title>
+<title>UseWhat — Make More From What You Have</title>
 
-<meta name="description" content="UseWhat helps you discover what you can make, repair, reuse, save, or earn from the things you already have.">
+<meta name="description" content="UseWhat helps you discover what you can make, repair, reuse, save, or create from the things you already have.">
 
 <style>
 *{
@@ -15,266 +15,349 @@
     padding:0;
 }
 
+:root{
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+    --text:#172033;
+    --muted:#64748b;
+    --bg:#f8fafc;
+    --border:#e2e8f0;
+}
+
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#f7f9fc;
-    color:#172033;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.5;
 }
 
 header{
+    height:70px;
     background:#fff;
-    padding:18px 7%;
+    border-bottom:1px solid var(--border);
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    border-bottom:1px solid #e5e7eb;
+    justify-content:space-between;
+    padding:0 6%;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
 .logo{
-    font-size:28px;
+    font-size:25px;
     font-weight:800;
+    letter-spacing:-1px;
 }
 
 .logo span{
-    color:#2563eb;
+    color:var(--primary);
 }
 
-.language select{
-    padding:10px 14px;
-    border:1px solid #d1d5db;
-    border-radius:9px;
-    background:#fff;
+nav{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#475569;
     font-size:14px;
+    font-weight:600;
+}
+
+nav a:hover{
+    color:var(--primary);
+}
+
+.language{
+    border:1px solid var(--border);
+    border-radius:9px;
+    padding:8px 10px;
+    background:#fff;
+    color:#334155;
+    font-size:13px;
     cursor:pointer;
 }
 
 .hero{
     text-align:center;
-    padding:65px 20px 60px;
-    background:linear-gradient(135deg,#eef5ff,#ffffff);
+    padding:75px 20px 65px;
+    background:
+        radial-gradient(circle at top left,#dbeafe 0,transparent 35%),
+        radial-gradient(circle at top right,#e0e7ff 0,transparent 35%),
+        #fff;
+}
+
+.badge{
+    display:inline-flex;
+    background:#eff6ff;
+    color:#2563eb;
+    padding:7px 13px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:48px;
-    line-height:1.12;
-    margin-bottom:20px;
+    font-size:clamp(38px,6vw,64px);
+    line-height:1.04;
+    letter-spacing:-2.5px;
+    max-width:850px;
+    margin:auto;
 }
 
 .hero h1 span{
-    color:#2563eb;
+    color:var(--primary);
 }
 
 .hero p{
-    max-width:700px;
-    margin:auto;
-    font-size:19px;
-    line-height:1.6;
-    color:#5b6472;
+    max-width:650px;
+    margin:20px auto 0;
+    color:var(--muted);
+    font-size:17px;
+}
+
+/* SEARCH */
+
+.search-area{
+    width:min(720px,100%);
+    margin:32px auto 0;
 }
 
 .search-box{
-    max-width:760px;
-    margin:35px auto 0;
-    background:#fff;
-    padding:28px;
-    border-radius:18px;
-    box-shadow:0 10px 35px rgba(0,0,0,.08);
-}
-
-.search-box h2{
-    margin-bottom:18px;
-    font-size:22px;
-}
-
-.input-area{
     display:flex;
-    gap:10px;
+    align-items:center;
+    background:#fff;
+    border:1px solid #cbd5e1;
+    border-radius:14px;
+    padding:6px;
+    box-shadow:0 8px 30px rgba(15,23,42,.08);
 }
 
-#userInput{
+.search-icon{
+    padding:0 10px;
+    font-size:18px;
+}
+
+#searchInput{
     flex:1;
-    padding:15px;
-    border:1px solid #d1d5db;
-    border-radius:10px;
-    font-size:16px;
-    outline:none;
-}
-
-#userInput:focus{
-    border-color:#2563eb;
-}
-
-.find-btn{
-    width:100%;
-    margin-top:15px;
     border:none;
-    padding:16px;
+    outline:none;
+    font-size:15px;
+    padding:11px 5px;
+    color:var(--text);
+    background:transparent;
+}
+
+#searchInput::placeholder{
+    color:#94a3b8;
+}
+
+.search-btn{
+    border:none;
+    background:var(--primary);
+    color:#fff;
+    padding:11px 19px;
     border-radius:10px;
-    background:#2563eb;
-    color:white;
-    font-size:17px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.find-btn:hover{
-    background:#1d4ed8;
-}
-
-.quick-title{
-    margin-top:25px;
-    margin-bottom:12px;
     font-size:14px;
-    color:#667085;
+    font-weight:700;
+    cursor:pointer;
+    white-space:nowrap;
 }
 
-.quick-items{
+.search-btn:hover{
+    background:var(--primary-dark);
+}
+
+.quick{
+    margin-top:13px;
+    color:#94a3b8;
+    font-size:12px;
+}
+
+.examples{
+    margin-top:9px;
     display:flex;
-    flex-wrap:wrap;
     justify-content:center;
-    gap:9px;
+    flex-wrap:wrap;
+    gap:7px;
 }
 
-.quick-item{
-    border:1px solid #d8dee9;
+.example{
+    border:1px solid var(--border);
     background:#fff;
-    padding:9px 14px;
-    border-radius:25px;
-    cursor:pointer;
-    font-size:14px;
-}
-
-.quick-item:hover{
-    border-color:#2563eb;
-    background:#eff6ff;
-}
-
-#results{
-    max-width:760px;
-    margin:25px auto 0;
-    text-align:left;
-}
-
-.result-box{
-    background:#fff;
-    padding:25px;
-    border-radius:16px;
-    box-shadow:0 5px 20px rgba(0,0,0,.06);
-}
-
-.result-box h2{
-    margin-bottom:8px;
-}
-
-.result-input{
-    color:#667085;
-    margin-bottom:20px;
-}
-
-.idea{
-    border:1px solid #e5e7eb;
-    border-radius:12px;
-    padding:18px;
-    margin-top:12px;
-    background:#fafafa;
-}
-
-.idea h3{
-    margin-bottom:8px;
-}
-
-.idea p{
-    color:#5f6b7a;
-    line-height:1.55;
-}
-
-.category{
-    display:inline-block;
-    margin-top:10px;
-    padding:5px 9px;
+    color:#475569;
     border-radius:20px;
+    padding:6px 11px;
+    font-size:12px;
+    cursor:pointer;
+}
+
+/* RESULTS */
+
+.results-section{
+    width:min(1000px,92%);
+    margin:35px auto;
+}
+
+.results-title{
+    font-size:21px;
+    margin-bottom:15px;
+}
+
+.result-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.result-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:20px;
+    transition:.2s;
+}
+
+.result-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(15,23,42,.07);
+}
+
+.result-category{
+    display:inline-block;
     background:#eff6ff;
     color:#2563eb;
-    font-size:12px;
-    font-weight:bold;
+    padding:5px 9px;
+    border-radius:7px;
+    font-size:11px;
+    font-weight:700;
+    margin-bottom:10px;
 }
 
+.result-card h3{
+    font-size:17px;
+    margin-bottom:7px;
+}
+
+.result-card p{
+    color:#64748b;
+    font-size:14px;
+}
+
+.difficulty{
+    margin-top:12px;
+    color:#475569;
+    font-size:12px;
+    font-weight:600;
+}
+
+.loading{
+    text-align:center;
+    padding:30px;
+    color:#64748b;
+}
+
+/* FEATURES */
+
 .features{
-    max-width:1100px;
-    margin:55px auto;
-    padding:0 20px;
+    width:min(1050px,92%);
+    margin:70px auto;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:28px;
+}
+
+.section-heading h2{
+    font-size:30px;
+    letter-spacing:-1px;
+}
+
+.section-heading p{
+    color:var(--muted);
+    margin-top:7px;
+}
+
+.feature-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:18px;
 }
 
-.card{
+.feature-card{
     background:#fff;
-    padding:28px 20px;
-    border-radius:16px;
-    text-align:center;
-    box-shadow:0 5px 20px rgba(0,0,0,.05);
+    border:1px solid var(--border);
+    padding:27px 23px;
+    border-radius:17px;
 }
 
-.card .icon{
-    font-size:38px;
-    margin-bottom:14px;
+.icon{
+    width:45px;
+    height:45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#eff6ff;
+    border-radius:12px;
+    font-size:22px;
+    margin-bottom:16px;
 }
 
-.card h3{
-    margin-bottom:9px;
+.feature-card h3{
+    font-size:17px;
+    margin-bottom:7px;
 }
 
-.card p{
-    color:#687386;
-    line-height:1.5;
+.feature-card p{
+    color:var(--muted);
     font-size:14px;
 }
 
 footer{
+    margin-top:70px;
+    background:#0f172a;
+    color:#94a3b8;
     text-align:center;
     padding:30px 20px;
-    background:#111827;
-    color:#cbd5e1;
-    margin-top:50px;
+    font-size:13px;
 }
 
-@media(max-width:800px){
-    .features{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
+@media(max-width:700px){
 
-@media(max-width:600px){
     header{
-        padding:15px 5%;
+        padding:0 18px;
+    }
+
+    nav a{
+        display:none;
     }
 
     .hero{
-        padding:45px 15px;
+        padding:55px 18px 45px;
     }
 
     .hero h1{
-        font-size:34px;
+        letter-spacing:-1.5px;
     }
 
     .hero p{
-        font-size:16px;
+        font-size:15px;
     }
 
-    .search-box{
-        padding:20px;
+    .search-btn{
+        padding:10px 13px;
     }
 
-    .input-area{
-        display:block;
+    .result-grid{
+        grid-template-columns:1fr;
     }
 
-    #userInput{
-        width:100%;
-    }
-
-    .features{
+    .feature-grid{
         grid-template-columns:1fr;
     }
 }
@@ -285,841 +368,966 @@ footer{
 
 <header>
 
-    <div class="logo">
-        Use<span>What</span>
-    </div>
+<div class="logo">
+Use<span>What</span>
+</div>
 
-    <div class="language">
-        <select id="languageSelect">
-            <option value="en">🇺🇸 English</option>
-            <option value="bn">🇧🇩 বাংলা</option>
-            <option value="hi">🇮🇳 हिन्दी</option>
-            <option value="es">🇪🇸 Español</option>
-            <option value="fr">🇫🇷 Français</option>
-            <option value="de">🇩🇪 Deutsch</option>
-            <option value="pt">🇧🇷 Português</option>
-            <option value="it">🇮🇹 Italiano</option>
-            <option value="nl">🇳🇱 Nederlands</option>
-            <option value="ja">🇯🇵 日本語</option>
-        </select>
-    </div>
+<nav>
 
+<a href="#home" id="navHome">Home</a>
+<a href="#features" id="navHow">How It Works</a>
+<a href="#about" id="navAbout">About</a>
+
+<select id="languageSelect" class="language">
+
+<option value="en">English</option>
+<option value="bn">বাংলা</option>
+<option value="hi">हिन्दी</option>
+<option value="es">Español</option>
+<option value="fr">Français</option>
+<option value="de">Deutsch</option>
+<option value="pt">Português</option>
+<option value="ar">العربية</option>
+<option value="zh">中文</option>
+<option value="ja">日本語</option>
+
+</select>
+
+</nav>
 </header>
 
 
-<section class="hero">
+<section class="hero" id="home">
 
-    <h1 id="mainTitle">
-        Turn What You Have Into<br>
-        <span>What You Need.</span>
-    </h1>
+<div class="badge" id="badge">
+✨ Discover more from what you already have
+</div>
 
-    <p id="mainDescription">
-        Tell UseWhat what you already have.
-        Discover what you can make, repair, reuse,
-        save, or even turn into money.
-    </p>
+<h1>
+<span id="heroLine1">Turn What You Have Into</span>
+<br>
+<span id="heroLine2">What You Need.</span>
+</h1>
 
-
-    <div class="search-box">
-
-        <h2 id="searchTitle">
-            What do you have?
-        </h2>
-
-        <div class="input-area">
-
-            <input
-                type="text"
-                id="userInput"
-                placeholder="Example: broken chair, rice and eggs, old clothes..."
-            >
-
-        </div>
-
-        <button class="find-btn" id="findBtn">
-            🔍 Find Ideas
-        </button>
+<p id="heroText">
+Tell UseWhat what you have. Get ideas for making,
+repairing, reusing, saving money, or creating something useful.
+</p>
 
 
-        <div class="quick-title" id="quickTitle">
-            Try an example
-        </div>
+<div class="search-area">
 
-        <div class="quick-items">
+<div class="search-box">
 
-            <button class="quick-item"
-                onclick="setExample('broken chair')">
-                🪑 Broken Chair
-            </button>
+<div class="search-icon">🔍</div>
 
-            <button class="quick-item"
-                onclick="setExample('rice and eggs')">
-                🍚 Rice + Eggs
-            </button>
+<input
+type="text"
+id="searchInput"
+placeholder="What do you have?"
+autocomplete="off"
+>
 
-            <button class="quick-item"
-                onclick="setExample('old clothes')">
-                👕 Old Clothes
-            </button>
+<button class="search-btn" id="searchBtn">
+Find Ideas
+</button>
 
-            <button class="quick-item"
-                onclick="setExample('old phone')">
-                📱 Old Phone
-            </button>
+</div>
 
-            <button class="quick-item"
-                onclick="setExample('plastic bottles')">
-                ♻️ Plastic Bottles
-            </button>
+<div class="quick" id="quickText">
+Try something like:
+</div>
 
-        </div>
+<div class="examples">
 
-    </div>
+<button class="example">Plastic bottles</button>
+<button class="example">Old clothes</button>
+<button class="example">Broken chair</button>
+<button class="example">Rice & eggs</button>
+
+</div>
+
+</div>
 
 </section>
 
 
-<div id="results"></div>
+<section class="results-section" id="resultsSection" style="display:none;">
 
+<h2 class="results-title" id="resultsTitle">
+Ideas for you
+</h2>
 
-<section class="features">
-
-    <div class="card">
-        <div class="icon">🍳</div>
-        <h3 id="feature1Title">Make Something</h3>
-        <p id="feature1Text">
-            Discover useful things you can create.
-        </p>
-    </div>
-
-    <div class="card">
-        <div class="icon">🔧</div>
-        <h3 id="feature2Title">Repair</h3>
-        <p id="feature2Text">
-            Find ideas for fixing broken things.
-        </p>
-    </div>
-
-    <div class="card">
-        <div class="icon">♻️</div>
-        <h3 id="feature3Title">Reuse</h3>
-        <p id="feature3Text">
-            Give unused things a second life.
-        </p>
-    </div>
-
-    <div class="card">
-        <div class="icon">💰</div>
-        <h3 id="feature4Title">Save & Earn</h3>
-        <p id="feature4Text">
-            Save money or discover ways to earn.
-        </p>
-    </div>
+<div class="result-grid" id="results"></div>
 
 </section>
 
 
-<footer>
-    <p id="footerText">
-        © 2026 UseWhat — Make More From What You Have.
-    </p>
+<section class="features" id="features">
+
+<div class="section-heading">
+
+<h2 id="featureTitle">
+One place. Many possibilities.
+</h2>
+
+<p id="featureSubtitle">
+Use what you already have in smarter ways.
+</p>
+
+</div>
+
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<div class="icon">🛠️</div>
+
+<h3 id="makeTitle">
+Make & Create
+</h3>
+
+<p id="makeText">
+Discover useful things you can create from materials
+and items already around you.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="icon">💰</div>
+
+<h3 id="saveTitle">
+Save Money
+</h3>
+
+<p id="saveText">
+Find practical alternatives before spending money
+on something new.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="icon">♻️</div>
+
+<h3 id="reuseTitle">
+Reuse & Repair
+</h3>
+
+<p id="reuseText">
+Give old, unused, or broken things another useful life.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer id="about">
+© 2026 UseWhat — Make More From What You Have.
 </footer>
 
 
 <script>
 
-/* =========================
-   LANGUAGE DATA
-========================= */
+/* ==========================================
+   SUPABASE
+========================================== */
 
-const translations = {
+const SUPABASE_URL =
+"https://ohzqkhefigdzzzvpgrep.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_XKuSD9VWGxKBcjwPiQtKfA_szPm0ZTj";
+
+
+/* ==========================================
+   LANGUAGE TEXT
+========================================== */
+
+const T={
 
 en:{
-title:"Turn What You Have Into",
-title2:"What You Need.",
-description:"Tell UseWhat what you already have. Discover what you can make, repair, reuse, save, or even turn into money.",
-search:"What do you have?",
-placeholder:"Example: broken chair, rice and eggs, old clothes...",
-button:"🔍 Find Ideas",
-try:"Try an example",
-make:"Make Something",
-makeText:"Discover useful things you can create.",
-repair:"Repair",
-repairText:"Find ideas for fixing broken things.",
-reuse:"Reuse",
-reuseText:"Give unused things a second life.",
-save:"Save & Earn",
-saveText:"Save money or discover ways to earn.",
-footer:"© 2026 UseWhat — Make More From What You Have.",
-result:"Ideas for you",
-youEntered:"You entered:",
-recipe:"🍳 Food / Recipe",
-repairCat:"🔧 Repair",
-reuseCat:"♻️ Reuse / DIY",
-money:"💰 Save / Earn",
-generic:"💡 General Idea",
-noInput:"Please enter something first.",
-noIdea:"Try describing the item with a little more detail."
+navHome:"Home",
+navHow:"How It Works",
+navAbout:"About",
+badge:"✨ Discover more from what you already have",
+line1:"Turn What You Have Into",
+line2:"What You Need.",
+hero:"Tell UseWhat what you have. Get ideas for making, repairing, reusing, saving money, or creating something useful.",
+placeholder:"What do you have?",
+button:"Find Ideas",
+quick:"Try something like:",
+results:"Ideas for you",
+empty:"No matching ideas found. Try another item.",
+featureTitle:"One place. Many possibilities.",
+featureSubtitle:"Use what you already have in smarter ways.",
+makeTitle:"Make & Create",
+makeText:"Discover useful things you can create from materials and items already around you.",
+saveTitle:"Save Money",
+saveText:"Find practical alternatives before spending money on something new.",
+reuseTitle:"Reuse & Repair",
+reuseText:"Give old, unused, or broken things another useful life."
 },
 
 bn:{
-title:"আপনার যা আছে তা দিয়ে তৈরি করুন",
-title2:"আপনার যা প্রয়োজন।",
-description:"আপনার কাছে কী আছে UseWhat-কে বলুন। আপনি কী বানাতে, মেরামত করতে, পুনরায় ব্যবহার করতে, টাকা বাঁচাতে বা আয় করতে পারেন তা আবিষ্কার করুন।",
-search:"আপনার কাছে কী আছে?",
-placeholder:"যেমন: ভাঙা চেয়ার, চাল ও ডিম, পুরোনো কাপড়...",
-button:"🔍 আইডিয়া খুঁজুন",
-try:"একটি উদাহরণ চেষ্টা করুন",
-make:"কিছু তৈরি করুন",
-makeText:"আপনার কাছে থাকা জিনিস দিয়ে কী তৈরি করা যায় তা খুঁজুন।",
-repair:"মেরামত করুন",
-repairText:"ভাঙা জিনিস মেরামতের আইডিয়া খুঁজুন।",
-reuse:"পুনরায় ব্যবহার",
-reuseText:"অপ্রয়োজনীয় জিনিসকে নতুন জীবন দিন।",
-save:"সঞ্চয় ও আয়",
-saveText:"টাকা বাঁচানোর বা আয় করার উপায় খুঁজুন।",
-footer:"© 2026 UseWhat — আপনার যা আছে তা দিয়ে আরও কিছু করুন।",
-result:"আপনার জন্য আইডিয়া",
-youEntered:"আপনি লিখেছেন:",
-recipe:"🍳 খাবার / রান্না",
-repairCat:"🔧 মেরামত",
-reuseCat:"♻️ পুনরায় ব্যবহার / DIY",
-money:"💰 সঞ্চয় / আয়",
-generic:"💡 সাধারণ আইডিয়া",
-noInput:"প্রথমে কিছু লিখুন।",
-noIdea:"জিনিসটি সম্পর্কে আরও একটু বিস্তারিত লিখে চেষ্টা করুন।"
+navHome:"হোম",
+navHow:"কীভাবে কাজ করে",
+navAbout:"আমাদের সম্পর্কে",
+badge:"✨ আপনার কাছে থাকা জিনিস থেকে নতুন সম্ভাবনা খুঁজুন",
+line1:"আপনার কাছে যা আছে তা দিয়ে",
+line2:"আপনার প্রয়োজনীয় কিছু তৈরি করুন।",
+hero:"আপনার কাছে কী আছে তা লিখুন। রান্না, তৈরি, মেরামত, পুনঃব্যবহার বা টাকা বাঁচানোর আইডিয়া খুঁজে নিন।",
+placeholder:"আপনার কাছে কী আছে?",
+button:"আইডিয়া খুঁজুন",
+quick:"এমন কিছু লিখে দেখুন:",
+results:"আপনার জন্য আইডিয়া",
+empty:"কোনো মিল পাওয়া যায়নি। অন্য কোনো জিনিস লিখে দেখুন।",
+featureTitle:"এক জায়গায় অনেক সম্ভাবনা।",
+featureSubtitle:"আপনার কাছে থাকা জিনিস আরও বুদ্ধিমানের মতো ব্যবহার করুন।",
+makeTitle:"তৈরি করুন",
+makeText:"আপনার কাছে থাকা জিনিস দিয়ে কী তৈরি করা যায় তা খুঁজে নিন।",
+saveTitle:"টাকা বাঁচান",
+saveText:"নতুন কিছু কেনার আগে আপনার কাছে থাকা জিনিস ব্যবহার করার উপায় খুঁজুন।",
+reuseTitle:"পুনঃব্যবহার ও মেরামত",
+reuseText:"পুরোনো, অব্যবহৃত বা ভাঙা জিনিসকে নতুন জীবন দিন।"
 },
 
 hi:{
-title:"आपके पास जो है उससे बनाएं",
-title2:"जो आपको चाहिए।",
-description:"UseWhat को बताएं कि आपके पास क्या है। जानें कि आप उससे क्या बना, ठीक, दोबारा इस्तेमाल, बचत या कमाई कर सकते हैं।",
-search:"आपके पास क्या है?",
-placeholder:"उदाहरण: टूटी कुर्सी, चावल और अंडे, पुराने कपड़े...",
-button:"🔍 आइडिया खोजें",
-try:"एक उदाहरण आज़माएं",
-make:"कुछ बनाएं",
-makeText:"आपके पास मौजूद चीजों से क्या बनाया जा सकता है।",
-repair:"मरम्मत",
-repairText:"टूटी हुई चीजों को ठीक करने के आइडिया खोजें।",
-reuse:"दोबारा इस्तेमाल",
-reuseText:"पुरानी चीजों को नया उपयोग दें।",
-save:"बचत और कमाई",
-saveText:"पैसे बचाने या कमाने के तरीके खोजें।",
-footer:"© 2026 UseWhat — आपके पास जो है उससे अधिक करें।",
-result:"आपके लिए आइडिया",
-youEntered:"आपने लिखा:",
-recipe:"🍳 खाना / रेसिपी",
-repairCat:"🔧 मरम्मत",
-reuseCat:"♻️ दोबारा इस्तेमाल / DIY",
-money:"💰 बचत / कमाई",
-generic:"💡 सामान्य आइडिया",
-noInput:"कृपया पहले कुछ लिखें।",
-noIdea:"आइटम के बारे में थोड़ा और विवरण लिखकर प्रयास करें।"
+navHome:"होम",
+navHow:"यह कैसे काम करता है",
+navAbout:"हमारे बारे में",
+badge:"✨ आपके पास मौजूद चीज़ों से नई संभावनाएँ खोजें",
+line1:"जो आपके पास है उससे",
+line2:"जो चाहिए वह बनाएं।",
+hero:"आपके पास जो कुछ है उसे लिखें और बनाने, मरम्मत, दोबारा उपयोग या पैसे बचाने के आइडिया खोजें।",
+placeholder:"आपके पास क्या है?",
+button:"आइडिया खोजें",
+quick:"ऐसा कुछ लिखें:",
+results:"आपके लिए आइडिया",
+empty:"कोई मिलती-जुलती आइडिया नहीं मिली। दूसरा आइटम आज़माएं।",
+featureTitle:"एक जगह। कई संभावनाएँ।",
+featureSubtitle:"आपके पास मौजूद चीज़ों का बेहतर उपयोग करें।",
+makeTitle:"बनाएं और तैयार करें",
+makeText:"मौजूद चीज़ों से उपयोगी चीज़ें बनाने के तरीके खोजें।",
+saveTitle:"पैसे बचाएं",
+saveText:"नई चीज़ खरीदने से पहले मौजूद चीज़ों के विकल्प खोजें।",
+reuseTitle:"दोबारा उपयोग और मरम्मत",
+reuseText:"पुरानी या टूटी चीज़ों को नया उपयोग दें।"
 },
 
 es:{
-title:"Convierte lo que tienes en",
-title2:"lo que necesitas.",
-description:"Dile a UseWhat qué tienes. Descubre qué puedes crear, reparar, reutilizar, ahorrar o convertir en dinero.",
-search:"¿Qué tienes?",
-placeholder:"Ejemplo: silla rota, arroz y huevos, ropa vieja...",
-button:"🔍 Buscar ideas",
-try:"Prueba un ejemplo",
-make:"Crear algo",
-makeText:"Descubre cosas útiles que puedes crear.",
-repair:"Reparar",
-repairText:"Encuentra ideas para reparar cosas rotas.",
-reuse:"Reutilizar",
-reuseText:"Dale una segunda vida a tus cosas.",
-save:"Ahorrar y ganar",
-saveText:"Descubre formas de ahorrar o ganar dinero.",
-footer:"© 2026 UseWhat — Haz más con lo que tienes.",
-result:"Ideas para ti",
-youEntered:"Escribiste:",
-recipe:"🍳 Comida / Receta",
-repairCat:"🔧 Reparación",
-reuseCat:"♻️ Reutilizar / DIY",
-money:"💰 Ahorrar / Ganar",
-generic:"💡 Idea general",
-noInput:"Primero escribe algo.",
-noIdea:"Describe el artículo con un poco más de detalle."
+navHome:"Inicio",
+navHow:"Cómo funciona",
+navAbout:"Acerca de",
+badge:"✨ Descubre más con lo que ya tienes",
+line1:"Convierte lo que tienes en",
+line2:"lo que necesitas.",
+hero:"Dinos qué tienes y descubre ideas para crear, reparar, reutilizar o ahorrar dinero.",
+placeholder:"¿Qué tienes?",
+button:"Buscar ideas",
+quick:"Prueba algo como:",
+results:"Ideas para ti",
+empty:"No encontramos ideas. Prueba con otro artículo.",
+featureTitle:"Un lugar. Muchas posibilidades.",
+featureSubtitle:"Usa mejor lo que ya tienes.",
+makeTitle:"Crear",
+makeText:"Descubre cosas útiles que puedes crear con lo que ya tienes.",
+saveTitle:"Ahorrar dinero",
+saveText:"Encuentra alternativas antes de comprar algo nuevo.",
+reuseTitle:"Reutilizar y reparar",
+reuseText:"Dale una nueva vida a objetos viejos o rotos."
 },
 
 fr:{
-title:"Transformez ce que vous avez en",
-title2:"ce dont vous avez besoin.",
-description:"Dites à UseWhat ce que vous avez. Découvrez ce que vous pouvez créer, réparer, réutiliser, économiser ou transformer en argent.",
-search:"Qu'avez-vous ?",
-placeholder:"Exemple : chaise cassée, riz et œufs, vieux vêtements...",
-button:"🔍 Trouver des idées",
-try:"Essayez un exemple",
-make:"Créer quelque chose",
-makeText:"Découvrez ce que vous pouvez créer avec vos objets.",
-repair:"Réparer",
-repairText:"Trouvez des idées pour réparer les objets cassés.",
-reuse:"Réutiliser",
-reuseText:"Donnez une seconde vie à vos objets.",
-save:"Économiser et gagner",
-saveText:"Découvrez comment économiser ou gagner de l'argent.",
-footer:"© 2026 UseWhat — Faites plus avec ce que vous avez.",
-result:"Idées pour vous",
-youEntered:"Vous avez écrit :",
-recipe:"🍳 Nourriture / Recette",
-repairCat:"🔧 Réparation",
-reuseCat:"♻️ Réutilisation / DIY",
-money:"💰 Économiser / Gagner",
-generic:"💡 Idée générale",
-noInput:"Veuillez d'abord écrire quelque chose.",
-noIdea:"Décrivez l'objet avec un peu plus de détails."
+navHome:"Accueil",
+navHow:"Comment ça marche",
+navAbout:"À propos",
+badge:"✨ Découvrez plus avec ce que vous avez déjà",
+line1:"Transformez ce que vous avez en",
+line2:"ce dont vous avez besoin.",
+hero:"Dites-nous ce que vous avez et découvrez des idées pour créer, réparer, réutiliser ou économiser.",
+placeholder:"Qu'avez-vous ?",
+button:"Trouver des idées",
+quick:"Essayez par exemple :",
+results:"Idées pour vous",
+empty:"Aucune idée correspondante. Essayez un autre article.",
+featureTitle:"Un endroit. Beaucoup de possibilités.",
+featureSubtitle:"Utilisez mieux ce que vous avez déjà.",
+makeTitle:"Créer",
+makeText:"Découvrez ce que vous pouvez créer avec les objets disponibles.",
+saveTitle:"Économiser",
+saveText:"Trouvez des alternatives avant d'acheter quelque chose de nouveau.",
+reuseTitle:"Réutiliser et réparer",
+reuseText:"Donnez une nouvelle vie aux objets anciens ou cassés."
 },
 
 de:{
-title:"Mach aus dem, was du hast",
-title2:"was du brauchst.",
-description:"Sag UseWhat, was du hast. Entdecke, was du daraus machen, reparieren, wiederverwenden oder verdienen kannst.",
-search:"Was hast du?",
-placeholder:"Beispiel: kaputter Stuhl, Reis und Eier, alte Kleidung...",
-button:"🔍 Ideen finden",
-try:"Beispiel ausprobieren",
-make:"Etwas machen",
-makeText:"Entdecke Dinge, die du erstellen kannst.",
-repair:"Reparieren",
-repairText:"Finde Ideen für kaputte Dinge.",
-reuse:"Wiederverwenden",
-reuseText:"Gib alten Dingen ein zweites Leben.",
-save:"Sparen & Verdienen",
-saveText:"Entdecke Möglichkeiten zum Sparen oder Geldverdienen.",
-footer:"© 2026 UseWhat — Mach mehr aus dem, was du hast.",
-result:"Ideen für dich",
-youEntered:"Du hast eingegeben:",
-recipe:"🍳 Essen / Rezept",
-repairCat:"🔧 Reparatur",
-reuseCat:"♻️ Wiederverwenden / DIY",
-money:"💰 Sparen / Verdienen",
-generic:"💡 Allgemeine Idee",
-noInput:"Bitte gib zuerst etwas ein.",
-noIdea:"Beschreibe den Gegenstand etwas genauer."
+navHome:"Startseite",
+navHow:"So funktioniert es",
+navAbout:"Über uns",
+badge:"✨ Entdecke mehr mit dem, was du bereits hast",
+line1:"Mach aus dem, was du hast,",
+line2:"was du brauchst.",
+hero:"Sag uns, was du hast, und entdecke Ideen zum Erstellen, Reparieren, Wiederverwenden oder Sparen.",
+placeholder:"Was hast du?",
+button:"Ideen finden",
+quick:"Versuche zum Beispiel:",
+results:"Ideen für dich",
+empty:"Keine passenden Ideen gefunden. Versuche einen anderen Gegenstand.",
+featureTitle:"Ein Ort. Viele Möglichkeiten.",
+featureSubtitle:"Nutze besser, was du bereits hast.",
+makeTitle:"Erstellen",
+makeText:"Entdecke nützliche Dinge, die du aus vorhandenen Materialien machen kannst.",
+saveTitle:"Geld sparen",
+saveText:"Finde Alternativen, bevor du etwas Neues kaufst.",
+reuseTitle:"Wiederverwenden und reparieren",
+reuseText:"Gib alten oder kaputten Dingen ein neues Leben."
 },
 
 pt:{
-title:"Transforme o que você tem em",
-title2:"o que você precisa.",
-description:"Diga ao UseWhat o que você tem. Descubra o que pode criar, reparar, reutilizar, economizar ou transformar em dinheiro.",
-search:"O que você tem?",
-placeholder:"Exemplo: cadeira quebrada, arroz e ovos, roupas velhas...",
-button:"🔍 Encontrar ideias",
-try:"Experimente um exemplo",
-make:"Criar algo",
-makeText:"Descubra coisas úteis que você pode criar.",
-repair:"Reparar",
-repairText:"Encontre ideias para consertar coisas quebradas.",
-reuse:"Reutilizar",
-reuseText:"Dê uma nova vida aos objetos antigos.",
-save:"Economizar e ganhar",
-saveText:"Descubra maneiras de economizar ou ganhar dinheiro.",
-footer:"© 2026 UseWhat — Faça mais com o que você tem.",
-result:"Ideias para você",
-youEntered:"Você digitou:",
-recipe:"🍳 Comida / Receita",
-repairCat:"🔧 Reparo",
-reuseCat:"♻️ Reutilizar / DIY",
-money:"💰 Economizar / Ganhar",
-generic:"💡 Ideia geral",
-noInput:"Digite algo primeiro.",
-noIdea:"Descreva o item com um pouco mais de detalhes."
+navHome:"Início",
+navHow:"Como funciona",
+navAbout:"Sobre",
+badge:"✨ Descubra mais usando o que você já tem",
+line1:"Transforme o que você tem em",
+line2:"o que você precisa.",
+hero:"Diga o que você tem e descubra ideias para criar, reparar, reutilizar ou economizar.",
+placeholder:"O que você tem?",
+button:"Encontrar ideias",
+quick:"Experimente algo como:",
+results:"Ideias para você",
+empty:"Nenhuma ideia encontrada. Tente outro item.",
+featureTitle:"Um lugar. Muitas possibilidades.",
+featureSubtitle:"Use melhor o que você já tem.",
+makeTitle:"Criar",
+makeText:"Descubra coisas úteis que você pode criar com o que já tem.",
+saveTitle:"Economizar",
+saveText:"Encontre alternativas antes de comprar algo novo.",
+reuseTitle:"Reutilizar e reparar",
+reuseText:"Dê uma nova vida a objetos antigos ou quebrados."
 },
 
-it:{
-title:"Trasforma ciò che hai in",
-title2:"ciò di cui hai bisogno.",
-description:"Dì a UseWhat cosa hai. Scopri cosa puoi creare, riparare, riutilizzare, risparmiare o trasformare in denaro.",
-search:"Cosa hai?",
-placeholder:"Esempio: sedia rotta, riso e uova, vecchi vestiti...",
-button:"🔍 Trova idee",
-try:"Prova un esempio",
-make:"Crea qualcosa",
-makeText:"Scopri cosa puoi creare con ciò che hai.",
-repair:"Ripara",
-repairText:"Trova idee per riparare oggetti rotti.",
-reuse:"Riutilizza",
-reuseText:"Dai una seconda vita alle cose inutilizzate.",
-save:"Risparmia e guadagna",
-saveText:"Scopri come risparmiare o guadagnare.",
-footer:"© 2026 UseWhat — Fai di più con ciò che hai.",
-result:"Idee per te",
-youEntered:"Hai inserito:",
-recipe:"🍳 Cibo / Ricetta",
-repairCat:"🔧 Riparazione",
-reuseCat:"♻️ Riutilizzo / DIY",
-money:"💰 Risparmio / Guadagno",
-generic:"💡 Idea generale",
-noInput:"Inserisci prima qualcosa.",
-noIdea:"Descrivi l'oggetto con qualche dettaglio in più."
+ar:{
+navHome:"الرئيسية",
+navHow:"كيف يعمل",
+navAbout:"حول",
+badge:"✨ اكتشف المزيد مما لديك بالفعل",
+line1:"حوّل ما لديك إلى",
+line2:"ما تحتاجه.",
+hero:"أخبرنا بما لديك واكتشف أفكارًا لصنع الأشياء أو إصلاحها أو إعادة استخدامها أو توفير المال.",
+placeholder:"ماذا لديك؟",
+button:"ابحث عن أفكار",
+quick:"جرّب شيئًا مثل:",
+results:"أفكار لك",
+empty:"لم نجد أفكارًا مطابقة. جرّب عنصرًا آخر.",
+featureTitle:"مكان واحد. إمكانيات كثيرة.",
+featureSubtitle:"استخدم ما لديك بطريقة أكثر ذكاءً.",
+makeTitle:"اصنع وأنشئ",
+makeText:"اكتشف أشياء مفيدة يمكنك صنعها من الأشياء الموجودة لديك.",
+saveTitle:"وفر المال",
+saveText:"ابحث عن بدائل قبل شراء شيء جديد.",
+reuseTitle:"إعادة الاستخدام والإصلاح",
+reuseText:"امنح الأشياء القديمة أو المكسورة حياة جديدة."
 },
 
-nl:{
-title:"Maak van wat je hebt",
-title2:"wat je nodig hebt.",
-description:"Vertel UseWhat wat je hebt. Ontdek wat je kunt maken, repareren, hergebruiken, besparen of verkopen.",
-search:"Wat heb je?",
-placeholder:"Voorbeeld: kapotte stoel, rijst en eieren, oude kleding...",
-button:"🔍 Vind ideeën",
-try:"Probeer een voorbeeld",
-make:"Iets maken",
-makeText:"Ontdek wat je kunt maken met wat je al hebt.",
-repair:"Repareren",
-repairText:"Vind ideeën om kapotte spullen te repareren.",
-reuse:"Hergebruiken",
-reuseText:"Geef oude spullen een tweede leven.",
-save:"Besparen & verdienen",
-saveText:"Ontdek manieren om geld te besparen of te verdienen.",
-footer:"© 2026 UseWhat — Maak meer met wat je hebt.",
-result:"Ideeën voor jou",
-youEntered:"Je hebt ingevoerd:",
-recipe:"🍳 Eten / Recept",
-repairCat:"🔧 Reparatie",
-reuseCat:"♻️ Hergebruik / DIY",
-money:"💰 Besparen / Verdienen",
-generic:"💡 Algemeen idee",
-noInput:"Voer eerst iets in.",
-noIdea:"Beschrijf het item met iets meer details."
+zh:{
+navHome:"首页",
+navHow:"工作原理",
+navAbout:"关于我们",
+badge:"✨ 用你已有的东西发现更多可能",
+line1:"把你拥有的变成",
+line2:"你需要的。",
+hero:"告诉 UseWhat 你有什么，我们会帮你找到制作、维修、再利用和省钱的方法。",
+placeholder:"你有什么？",
+button:"寻找创意",
+quick:"试试输入：",
+results:"为你推荐",
+empty:"暂时没有找到匹配的创意，请尝试其他物品。",
+featureTitle:"一个地方。无限可能。",
+featureSubtitle:"更聪明地使用你已经拥有的东西。",
+makeTitle:"制作与创造",
+makeText:"发现如何利用现有材料制作有用的东西。",
+saveTitle:"节省金钱",
+saveText:"购买新东西之前，先寻找现有物品的替代方法。",
+reuseTitle:"再利用与维修",
+reuseText:"让旧的或损坏的物品重新发挥作用。"
 },
 
 ja:{
-title:"持っているものを",
-title2:"必要なものに変えよう。",
-description:"UseWhatに持っているものを入力してください。作る、修理する、再利用する、節約する、収入につなげるアイデアを見つけます。",
-search:"何を持っていますか？",
-placeholder:"例：壊れた椅子、米と卵、古い服...",
-button:"🔍 アイデアを探す",
-try:"例を試す",
-make:"何かを作る",
-makeText:"持っているものから作れるものを見つけます。",
-repair:"修理",
-repairText:"壊れたものを直すアイデアを見つけます。",
-reuse:"再利用",
-reuseText:"古いものに新しい使い道を与えます。",
-save:"節約・収入",
-saveText:"お金を節約したり収入につなげる方法を探します。",
-footer:"© 2026 UseWhat — 持っているものをもっと活用しよう。",
-result:"あなたへのアイデア",
-youEntered:"入力内容：",
-recipe:"🍳 食べ物 / レシピ",
-repairCat:"🔧 修理",
-reuseCat:"♻️ 再利用 / DIY",
-money:"💰 節約 / 収入",
-generic:"💡 一般的なアイデア",
-noInput:"まず何か入力してください。",
-noIdea:"アイテムについてもう少し詳しく入力してください。"
+navHome:"ホーム",
+navHow:"使い方",
+navAbout:"概要",
+badge:"✨ 今あるものから新しい可能性を発見",
+line1:"持っているものを",
+line2:"必要なものに変える。",
+hero:"持っているものを入力すると、作る・修理する・再利用する・節約するアイデアを見つけられます。",
+placeholder:"何を持っていますか？",
+button:"アイデアを探す",
+quick:"例えば：",
+results:"あなたへのアイデア",
+empty:"一致するアイデアがありません。別のアイテムを試してください。",
+featureTitle:"一つの場所。たくさんの可能性。",
+featureSubtitle:"今あるものをもっと賢く使いましょう。",
+makeTitle:"作る・創る",
+makeText:"今ある材料から便利なものを作る方法を見つけます。",
+saveTitle:"節約",
+saveText:"新しいものを買う前に、今あるものを活用する方法を探します。",
+reuseTitle:"再利用・修理",
+reuseText:"古いものや壊れたものに新しい使い道を与えます。"
 }
 
 };
 
 
-/* =========================
-   CURRENT LANGUAGE
-========================= */
+/* ==========================================
+   ELEMENTS
+========================================== */
 
-let currentLanguage = "en";
+const languageSelect=document.getElementById("languageSelect");
+const searchInput=document.getElementById("searchInput");
+const searchBtn=document.getElementById("searchBtn");
+const resultsSection=document.getElementById("resultsSection");
+const results=document.getElementById("results");
 
 
-/* =========================
-   LANGUAGE CHANGE
-========================= */
-
-document.getElementById("languageSelect")
-.addEventListener("change",function(){
-
-    currentLanguage = this.value;
-
-    updateLanguage();
-
-});
-
+/* ==========================================
+   LANGUAGE UPDATE
+========================================== */
 
 function updateLanguage(){
 
-    const t = translations[currentLanguage];
+    const lang=languageSelect.value;
+    const t=T[lang];
 
-    document.getElementById("mainTitle").innerHTML =
-        t.title + "<br><span>" + t.title2 + "</span>";
+    document.getElementById("navHome").textContent=t.navHome;
+    document.getElementById("navHow").textContent=t.navHow;
+    document.getElementById("navAbout").textContent=t.navAbout;
 
-    document.getElementById("mainDescription").textContent =
-        t.description;
+    document.getElementById("badge").textContent=t.badge;
+    document.getElementById("heroLine1").textContent=t.line1;
+    document.getElementById("heroLine2").textContent=t.line2;
+    document.getElementById("heroText").textContent=t.hero;
 
-    document.getElementById("searchTitle").textContent =
-        t.search;
+    searchInput.placeholder=t.placeholder;
+    searchBtn.textContent=t.button;
 
-    document.getElementById("userInput").placeholder =
-        t.placeholder;
+    document.getElementById("quickText").textContent=t.quick;
 
-    document.getElementById("findBtn").textContent =
-        t.button;
+    document.getElementById("resultsTitle").textContent=t.results;
 
-    document.getElementById("quickTitle").textContent =
-        t.try;
+    document.getElementById("featureTitle").textContent=t.featureTitle;
+    document.getElementById("featureSubtitle").textContent=t.featureSubtitle;
 
-    document.getElementById("feature1Title").textContent =
-        t.make;
+    document.getElementById("makeTitle").textContent=t.makeTitle;
+    document.getElementById("makeText").textContent=t.makeText;
 
-    document.getElementById("feature1Text").textContent =
-        t.makeText;
+    document.getElementById("saveTitle").textContent=t.saveTitle;
+    document.getElementById("saveText").textContent=t.saveText;
 
-    document.getElementById("feature2Title").textContent =
-        t.repair;
+    document.getElementById("reuseTitle").textContent=t.reuseTitle;
+    document.getElementById("reuseText").textContent=t.reuseText;
 
-    document.getElementById("feature2Text").textContent =
-        t.repairText;
+    document.documentElement.lang=lang;
 
-    document.getElementById("feature3Title").textContent =
-        t.reuse;
-
-    document.getElementById("feature3Text").textContent =
-        t.reuseText;
-
-    document.getElementById("feature4Title").textContent =
-        t.save;
-
-    document.getElementById("feature4Text").textContent =
-        t.saveText;
-
-    document.getElementById("footerText").textContent =
-        t.footer;
-
-}
-
-
-/* =========================
-   EXAMPLE BUTTON
-========================= */
-
-function setExample(text){
-
-    document.getElementById("userInput").value = text;
-
-}
-
-
-/* =========================
-   FIND IDEAS
-========================= */
-
-document.getElementById("findBtn")
-.addEventListener("click",findIdeas);
-
-
-document.getElementById("userInput")
-.addEventListener("keydown",function(event){
-
-    if(event.key === "Enter"){
-        findIdeas();
+    if(lang==="ar"){
+        document.body.dir="rtl";
+    }else{
+        document.body.dir="ltr";
     }
+}
+
+
+/* ==========================================
+   TRANSLATION API
+   MyMemory is used only for translating
+   user search + database results.
+========================================== */
+
+async function translateText(text,from,to){
+
+    if(!text || from===to){
+        return text;
+    }
+
+    try{
+
+        const url =
+        "https://api.mymemory.translated.net/get?q=" +
+        encodeURIComponent(text) +
+        "&langpair=" +
+        encodeURIComponent(from+"|"+to);
+
+        const response=await fetch(url);
+
+        if(!response.ok){
+            return text;
+        }
+
+        const data=await response.json();
+
+        if(
+            data &&
+            data.responseData &&
+            data.responseData.translatedText
+        ){
+
+            return data.responseData.translatedText;
+        }
+
+        return text;
+
+    }catch(error){
+
+        console.log("Translation unavailable:",error);
+
+        return text;
+    }
+}
+
+
+/* ==========================================
+   SEARCH
+========================================== */
+
+async function searchIdeas(){
+
+    const query=searchInput.value.trim();
+
+    const lang=languageSelect.value;
+
+    const t=T[lang];
+
+
+    if(!query){
+
+        alert(t.placeholder);
+
+        return;
+    }
+
+
+    resultsSection.style.display="block";
+
+    results.innerHTML=
+    `<div class="loading">🔎 ${getLoadingText(lang)}</div>`;
+
+
+    try{
+
+        /*
+        Convert user's language into English.
+        This allows Hindi/Bengali/etc. searches
+        to match the English database.
+        */
+
+        const englishQuery =
+        await translateText(query,lang,"en");
+
+
+        const normalizedQuery=
+        englishQuery.toLowerCase().trim();
+
+
+        /* GET KEYWORDS */
+
+        const keywordResponse=
+        await fetch(
+            SUPABASE_URL+
+            "/rest/v1/item_keywords?select=item,keyword",
+            {
+                headers:{
+                    "apikey":SUPABASE_KEY,
+                    "Authorization":"Bearer "+SUPABASE_KEY
+                }
+            }
+        );
+
+
+        if(!keywordResponse.ok){
+            throw new Error("Keyword database error");
+        }
+
+
+        const keywords=
+        await keywordResponse.json();
+
+
+        /* MATCH KEYWORDS */
+
+        const matches=keywords.filter(row=>{
+
+            const item=
+            String(row.item||"").toLowerCase();
+
+            const keyword=
+            String(row.keyword||"").toLowerCase();
+
+            return normalizedQuery.includes(keyword) ||
+                   keyword.includes(normalizedQuery) ||
+                   normalizedQuery.includes(item) ||
+                   item.includes(normalizedQuery);
+
+        });
+
+
+        let relatedItems=
+        [...new Set(matches.map(row=>row.item))];
+
+
+        let ideas=[];
+
+
+        /* SEARCH MATCHING IDEAS */
+
+        if(relatedItems.length){
+
+            const conditions=
+            relatedItems
+            .slice(0,10)
+            .map(item=>
+                `items.ilike.*${encodeURIComponent(item)}*`
+            )
+            .join(",");
+
+
+            const ideaResponse=
+            await fetch(
+                SUPABASE_URL+
+                "/rest/v1/ideas?select=title,category,items,description,difficulty,language&or=("+
+                conditions+
+                ")",
+                {
+                    headers:{
+                        "apikey":SUPABASE_KEY,
+                        "Authorization":"Bearer "+SUPABASE_KEY
+                    }
+                }
+            );
+
+
+            if(ideaResponse.ok){
+
+                ideas=await ideaResponse.json();
+
+            }
+
+        }
+
+
+        /* DIRECT SEARCH FALLBACK */
+
+        if(!ideas.length){
+
+            const directResponse=
+            await fetch(
+                SUPABASE_URL+
+                "/rest/v1/ideas?select=title,category,items,description,difficulty,language&or=("+
+                "title.ilike.*"+encodeURIComponent(normalizedQuery)+"*,"+
+                "items.ilike.*"+encodeURIComponent(normalizedQuery)+"*,"+
+                "description.ilike.*"+encodeURIComponent(normalizedQuery)+"*"+
+                ")",
+                {
+                    headers:{
+                        "apikey":SUPABASE_KEY,
+                        "Authorization":"Bearer "+SUPABASE_KEY
+                    }
+                }
+            );
+
+
+            if(directResponse.ok){
+
+                ideas=await directResponse.json();
+
+            }
+
+        }
+
+
+        /* REMOVE DUPLICATES */
+
+        const unique=[];
+
+        ideas.forEach(idea=>{
+
+            if(
+                !unique.some(
+                    x=>x.title===idea.title
+                )
+            ){
+
+                unique.push(idea);
+
+            }
+
+        });
+
+
+        if(!unique.length){
+
+            results.innerHTML=
+            `<div class="result-card">
+                <h3>💡 ${t.empty}</h3>
+            </div>`;
+
+            return;
+        }
+
+
+        /*
+        Translate every result into
+        selected language.
+        */
+
+        const translatedResults=[];
+
+
+        for(
+            const idea of unique.slice(0,10)
+        ){
+
+            const translatedTitle=
+            await translateText(
+                idea.title||"",
+                "en",
+                lang
+            );
+
+            const translatedCategory=
+            await translateText(
+                idea.category||"Idea",
+                "en",
+                lang
+            );
+
+            const translatedDescription=
+            await translateText(
+                idea.description||"",
+                "en",
+                lang
+            );
+
+            const translatedDifficulty=
+            await translateText(
+                idea.difficulty||"",
+                "en",
+                lang
+            );
+
+
+            translatedResults.push({
+
+                title:translatedTitle,
+                category:translatedCategory,
+                description:translatedDescription,
+                difficulty:translatedDifficulty
+
+            });
+
+        }
+
+
+        displayResults(
+            translatedResults,
+            lang
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        results.innerHTML=
+        `<div class="result-card">
+            <h3>⚠️ ${getErrorText(lang)}</h3>
+        </div>`;
+
+    }
+
+}
+
+
+/* ==========================================
+   DISPLAY
+========================================== */
+
+function displayResults(ideas,lang){
+
+    const difficultyLabel=
+    getDifficultyLabel(lang);
+
+
+    results.innerHTML=
+    ideas.map(idea=>`
+
+        <div class="result-card">
+
+            <span class="result-category">
+                ${escapeHTML(idea.category)}
+            </span>
+
+            <h3>
+                ${escapeHTML(idea.title)}
+            </h3>
+
+            <p>
+                ${escapeHTML(idea.description)}
+            </p>
+
+            ${
+                idea.difficulty
+                ?
+                `<div class="difficulty">
+                    ${difficultyLabel}: ${escapeHTML(idea.difficulty)}
+                </div>`
+                :
+                ""
+            }
+
+        </div>
+
+    `).join("");
+
+}
+
+
+/* ==========================================
+   LOCAL UI TEXT
+========================================== */
+
+function getLoadingText(lang){
+
+    const x={
+        en:"Finding useful ideas...",
+        bn:"দরকারি আইডিয়া খোঁজা হচ্ছে...",
+        hi:"उपयोगी आइडिया खोजी जा रही हैं...",
+        es:"Buscando ideas útiles...",
+        fr:"Recherche d'idées utiles...",
+        de:"Nützliche Ideen werden gesucht...",
+        pt:"Procurando ideias úteis...",
+        ar:"جارٍ البحث عن أفكار مفيدة...",
+        zh:"正在寻找有用的创意...",
+        ja:"役立つアイデアを探しています..."
+    };
+
+    return x[lang]||x.en;
+}
+
+
+function getErrorText(lang){
+
+    const x={
+        en:"Something went wrong. Please try again.",
+        bn:"কিছু সমস্যা হয়েছে। আবার চেষ্টা করুন।",
+        hi:"कुछ गलत हुआ। कृपया फिर कोशिश करें।",
+        es:"Algo salió mal. Inténtalo de nuevo.",
+        fr:"Une erreur s'est produite. Réessayez.",
+        de:"Etwas ist schiefgelaufen. Bitte erneut versuchen.",
+        pt:"Algo deu errado. Tente novamente.",
+        ar:"حدث خطأ. حاول مرة أخرى.",
+        zh:"出现问题，请重试。",
+        ja:"問題が発生しました。もう一度お試しください。"
+    };
+
+    return x[lang]||x.en;
+}
+
+
+function getDifficultyLabel(lang){
+
+    const x={
+        en:"Difficulty",
+        bn:"কঠিনতা",
+        hi:"कठिनाई",
+        es:"Dificultad",
+        fr:"Difficulté",
+        de:"Schwierigkeit",
+        pt:"Dificuldade",
+        ar:"الصعوبة",
+        zh:"难度",
+        ja:"難易度"
+    };
+
+    return x[lang]||x.en;
+}
+
+
+/* ==========================================
+   EXAMPLE BUTTONS
+========================================== */
+
+document.querySelectorAll(".example")
+.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        searchInput.value=button.textContent;
+
+        searchIdeas();
+
+    });
 
 });
 
 
-function findIdeas(){
+/* ==========================================
+   EVENTS
+========================================== */
 
-    const input =
-        document.getElementById("userInput")
-        .value.trim();
-
-    const t = translations[currentLanguage];
-
-    if(!input){
-
-        alert(t.noInput);
-        return;
-
-    }
-
-    const text = input.toLowerCase();
-
-    let ideas = [];
+searchBtn.addEventListener(
+    "click",
+    searchIdeas
+);
 
 
-    /* FOOD */
+searchInput.addEventListener(
+    "keydown",
+    event=>{
 
-    if(
-        text.includes("rice") ||
-        text.includes("egg") ||
-        text.includes("tomato") ||
-        text.includes("potato") ||
-        text.includes("chicken") ||
-        text.includes("চাল") ||
-        text.includes("ডিম") ||
-        text.includes("টমেটো") ||
-        text.includes("আলু") ||
-        text.includes("মুরগি") ||
-        text.includes("चावल") ||
-        text.includes("अंडा") ||
-        text.includes("टमाटर") ||
-        text.includes("आलू") ||
-        text.includes("pollo") ||
-        text.includes("riz")
-    ){
+        if(event.key==="Enter"){
 
-        ideas.push({
-            title:
-            currentLanguage === "bn" ? "🍳 রান্নার আইডিয়া" :
-            currentLanguage === "hi" ? "🍳 खाना बनाने का आइडिया" :
-            currentLanguage === "es" ? "🍳 Idea de receta" :
-            currentLanguage === "fr" ? "🍳 Idée de recette" :
-            currentLanguage === "de" ? "🍳 Rezeptidee" :
-            currentLanguage === "pt" ? "🍳 Ideia de receita" :
-            currentLanguage === "it" ? "🍳 Idea di ricetta" :
-            currentLanguage === "nl" ? "🍳 Receptidee" :
-            currentLanguage === "ja" ? "🍳 レシピのアイデア" :
-            "🍳 Recipe Idea",
+            searchIdeas();
 
-            text:
-            currentLanguage === "bn" ? "আপনার থাকা উপকরণগুলো দিয়ে একটি সহজ রান্না তৈরি করার চেষ্টা করুন।" :
-            currentLanguage === "hi" ? "आपके पास मौजूद सामग्री से एक आसान भोजन बनाने की कोशिश करें।" :
-            currentLanguage === "es" ? "Intenta preparar una comida sencilla con los ingredientes que tienes." :
-            currentLanguage === "fr" ? "Essayez de préparer un repas simple avec les ingrédients disponibles." :
-            currentLanguage === "de" ? "Versuchen Sie, mit den vorhandenen Zutaten eine einfache Mahlzeit zuzubereiten." :
-            currentLanguage === "pt" ? "Tente preparar uma refeição simples com os ingredientes disponíveis." :
-            currentLanguage === "it" ? "Prova a preparare un pasto semplice con gli ingredienti che hai." :
-            currentLanguage === "nl" ? "Probeer een eenvoudige maaltijd te maken met de ingrediënten die je hebt." :
-            currentLanguage === "ja" ? "手元にある材料で簡単な料理を作ってみましょう。" :
-            "Try making a simple meal using the ingredients you already have.",
-
-            category:t.recipe
-        });
+        }
 
     }
+);
 
 
-    /* REPAIR */
-
-    if(
-        text.includes("broken") ||
-        text.includes("damage") ||
-        text.includes("repair") ||
-        text.includes("ভাঙা") ||
-        text.includes("নষ্ট") ||
-        text.includes("মেরামত") ||
-        text.includes("टूटा") ||
-        text.includes("मरम्मत") ||
-        text.includes("réparer") ||
-        text.includes("kaputt") ||
-        text.includes("壊れ")
-    ){
-
-        ideas.push({
-            title:
-            currentLanguage === "bn" ? "🔧 মেরামতের আইডিয়া" :
-            currentLanguage === "hi" ? "🔧 मरम्मत का आइडिया" :
-            currentLanguage === "es" ? "🔧 Idea de reparación" :
-            currentLanguage === "fr" ? "🔧 Idée de réparation" :
-            currentLanguage === "de" ? "🔧 Reparaturidee" :
-            currentLanguage === "pt" ? "🔧 Ideia de reparo" :
-            currentLanguage === "it" ? "🔧 Idea di riparazione" :
-            currentLanguage === "nl" ? "🔧 Reparatie-idee" :
-            currentLanguage === "ja" ? "🔧 修理アイデア" :
-            "🔧 Repair Idea",
-
-            text:
-            currentLanguage === "bn" ? "জিনিসটির কোন অংশটি নষ্ট হয়েছে তা পরীক্ষা করুন। ছোট সমস্যা হলে পরিষ্কার, শক্ত করা বা প্রয়োজনীয় অংশ পরিবর্তন করে মেরামত করা যেতে পারে।" :
-            currentLanguage === "hi" ? "देखें कि वस्तु का कौन सा हिस्सा खराब है। छोटी समस्या को साफ करके, कसकर या आवश्यक भाग बदलकर ठीक किया जा सकता है।" :
-            currentLanguage === "es" ? "Revisa qué parte está dañada. Los problemas pequeños pueden solucionarse limpiando, ajustando o reemplazando una pieza." :
-            currentLanguage === "fr" ? "Vérifiez quelle partie est endommagée. Les petits problèmes peuvent souvent être réparés en nettoyant, resserrant ou remplaçant une pièce." :
-            currentLanguage === "de" ? "Prüfen Sie, welches Teil beschädigt ist. Kleine Probleme lassen sich oft durch Reinigen, Festziehen oder Austauschen eines Teils beheben." :
-            currentLanguage === "pt" ? "Verifique qual parte está danificada. Pequenos problemas podem ser resolvidos limpando, apertando ou substituindo uma peça." :
-            currentLanguage === "it" ? "Controlla quale parte è danneggiata. I piccoli problemi possono essere risolti pulendo, stringendo o sostituendo un componente." :
-            currentLanguage === "nl" ? "Controleer welk onderdeel beschadigd is. Kleine problemen kunnen vaak worden opgelost door schoonmaken, vastzetten of een onderdeel te vervangen." :
-            currentLanguage === "ja" ? "どの部分が壊れているか確認してください。小さな問題なら、掃除、締め直し、部品交換などで修理できる場合があります。" :
-            "Check which part is damaged. Small problems may be fixed by cleaning, tightening, or replacing a necessary part.",
-
-            category:t.repairCat
-        });
-
-    }
+languageSelect.addEventListener(
+    "change",
+    updateLanguage
+);
 
 
-    /* REUSE */
-
-    if(
-        text.includes("old") ||
-        text.includes("unused") ||
-        text.includes("plastic") ||
-        text.includes("clothes") ||
-        text.includes("পুরোনো") ||
-        text.includes("পুরাতন") ||
-        text.includes("অপ্রয়োজনীয়") ||
-        text.includes("প্লাস্টিক") ||
-        text.includes("কাপড়") ||
-        text.includes("पुराना") ||
-        text.includes("प्लास्टिक") ||
-        text.includes("कपड़े") ||
-        text.includes("vieux") ||
-        text.includes("alte") ||
-        text.includes("oude") ||
-        text.includes("古い")
-    ){
-
-        ideas.push({
-            title:
-            currentLanguage === "bn" ? "♻️ পুনরায় ব্যবহারের আইডিয়া" :
-            currentLanguage === "hi" ? "♻️ दोबारा इस्तेमाल का आइडिया" :
-            currentLanguage === "es" ? "♻️ Idea de reutilización" :
-            currentLanguage === "fr" ? "♻️ Idée de réutilisation" :
-            currentLanguage === "de" ? "♻️ Wiederverwendungsidee" :
-            currentLanguage === "pt" ? "♻️ Ideia de reutilização" :
-            currentLanguage === "it" ? "♻️ Idea di riutilizzo" :
-            currentLanguage === "nl" ? "♻️ Idee voor hergebruik" :
-            currentLanguage === "ja" ? "♻️ 再利用アイデア" :
-            "♻️ Reuse Idea",
-
-            text:
-            currentLanguage === "bn" ? "ফেলে না দিয়ে জিনিসটি নতুন কাজে ব্যবহার করার চেষ্টা করুন। পুরোনো কাপড়, বোতল বা আসবাব DIY কাজে ব্যবহার করা যেতে পারে।" :
-            currentLanguage === "hi" ? "इसे फेंकने के बजाय किसी नए काम में इस्तेमाल करने की कोशिश करें। पुराने कपड़े, बोतल या फर्नीचर को DIY प्रोजेक्ट में बदला जा सकता है।" :
-            currentLanguage === "es" ? "En lugar de tirarlo, busca un nuevo uso. La ropa vieja, las botellas y los muebles pueden convertirse en proyectos DIY." :
-            currentLanguage === "fr" ? "Au lieu de le jeter, cherchez-lui une nouvelle utilisation. Les vieux vêtements, bouteilles et meubles peuvent servir à des projets DIY." :
-            currentLanguage === "de" ? "Versuchen Sie, einen neuen Zweck zu finden. Alte Kleidung, Flaschen und Möbel können für DIY-Projekte verwendet werden." :
-            currentLanguage === "pt" ? "Em vez de jogar fora, tente encontrar um novo uso. Roupas velhas, garrafas e móveis podem virar projetos DIY." :
-            currentLanguage === "it" ? "Invece di buttarlo, prova a trovare un nuovo utilizzo. Vecchi vestiti, bottiglie e mobili possono diventare progetti fai-da-te." :
-            currentLanguage === "nl" ? "Gooi het niet meteen weg. Oude kleding, flessen en meubels kunnen worden gebruikt voor creatieve DIY-projecten." :
-            currentLanguage === "ja" ? "捨てる前に新しい使い道を考えてみましょう。古い服、ボトル、家具はDIYプロジェクトに活用できます。" :
-            "Instead of throwing it away, find a new purpose. Old clothes, bottles, and furniture can be useful for DIY projects.",
-
-            category:t.reuseCat
-        });
-
-    }
-
-
-    /* MONEY */
-
-    if(
-        text.includes("money") ||
-        text.includes("sell") ||
-        text.includes("earn") ||
-        text.includes("টাকা") ||
-        text.includes("বিক্রি") ||
-        text.includes("আয়") ||
-        text.includes("पैसा") ||
-        text.includes("बेचना") ||
-        text.includes("कमाई") ||
-        text.includes("dinero") ||
-        text.includes("argent") ||
-        text.includes("geld") ||
-        text.includes("お金")
-    ){
-
-        ideas.push({
-            title:
-            currentLanguage === "bn" ? "💰 টাকা সাশ্রয় বা আয়ের আইডিয়া" :
-            currentLanguage === "hi" ? "💰 पैसे बचाने या कमाने का आइडिया" :
-            currentLanguage === "es" ? "💰 Idea para ahorrar o ganar" :
-            currentLanguage === "fr" ? "💰 Idée pour économiser ou gagner" :
-            currentLanguage === "de" ? "💰 Spar- oder Verdienstidee" :
-            currentLanguage === "pt" ? "💰 Ideia para economizar ou ganhar" :
-            currentLanguage === "it" ? "💰 Idea per risparmiare o guadagnare" :
-            currentLanguage === "nl" ? "💰 Idee om te besparen of verdienen" :
-            currentLanguage === "ja" ? "💰 節約・収入アイデア" :
-            "💰 Save or Earn Idea",
-
-            text:
-            currentLanguage === "bn" ? "জিনিসটি সরাসরি ফেলে না দিয়ে বিক্রি, মেরামত করে বিক্রি অথবা অন্য কাজে ব্যবহার করে খরচ কমানোর সুযোগ দেখুন।" :
-            currentLanguage === "hi" ? "इसे फेंकने के बजाय बेचने, मरम्मत करके बेचने या किसी अन्य उपयोग से खर्च कम करने का तरीका देखें।" :
-            currentLanguage === "es" ? "En lugar de desecharlo, considera venderlo, repararlo para venderlo o reutilizarlo para reducir gastos." :
-            currentLanguage === "fr" ? "Au lieu de le jeter, envisagez de le vendre, de le réparer pour le vendre ou de le réutiliser afin de réduire les dépenses." :
-            currentLanguage === "de" ? "Statt es wegzuwerfen, können Sie es verkaufen, reparieren und verkaufen oder wiederverwenden, um Kosten zu sparen." :
-            currentLanguage === "pt" ? "Em vez de descartar, considere vender, reparar para vender ou reutilizar para reduzir custos." :
-            currentLanguage === "it" ? "Invece di buttarlo, valuta se venderlo, ripararlo per rivenderlo o riutilizzarlo per ridurre le spese." :
-            currentLanguage === "nl" ? "Overweeg om het te verkopen, te repareren voor verkoop of opnieuw te gebruiken om kosten te besparen." :
-            currentLanguage === "ja" ? "捨てるのではなく、売る、修理して売る、別の用途に使うことで出費を減らせないか考えてみましょう。" :
-            "Instead of throwing it away, consider selling it, repairing it for resale, or reusing it to reduce expenses.",
-
-            category:t.money
-        });
-
-    }
-
-
-    /* GENERAL IDEA */
-
-    if(ideas.length === 0){
-
-        ideas.push({
-
-            title:t.generic,
-
-            text:t.noIdea,
-
-            category:t.generic
-
-        });
-
-    }
-
-
-    /* SHOW RESULTS */
-
-    let html = `
-        <div class="result-box">
-
-            <h2>${t.result}</h2>
-
-            <p class="result-input">
-                ${t.youEntered}
-                <strong>${escapeHTML(input)}</strong>
-            </p>
-    `;
-
-
-    ideas.forEach(idea => {
-
-        html += `
-            <div class="idea">
-
-                <h3>${idea.title}</h3>
-
-                <p>${idea.text}</p>
-
-                <span class="category">
-                    ${idea.category}
-                </span>
-
-            </div>
-        `;
-
-    });
-
-
-    html += `</div>`;
-
-
-    document.getElementById("results").innerHTML = html;
-
-    document.getElementById("results")
-        .scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
-
-}
-
-
-/* =========================
+/* ==========================================
    SECURITY
-========================= */
+========================================== */
 
-function escapeHTML(text){
+function escapeHTML(value){
 
-    const div = document.createElement("div");
-
-    div.textContent = text;
-
-    return div.innerHTML;
+    return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
 
-/* INITIAL LANGUAGE */
+/* ==========================================
+   START
+========================================== */
 
 updateLanguage();
 
