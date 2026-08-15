@@ -264,6 +264,61 @@
 <footer>
     <p>© 2026 UseWhat — Make More From What You Have.</p>
 </footer>
+<script>
+    const items = document.querySelectorAll(".item");
+    const findBtn = document.querySelector(".find-btn");
+
+    let selectedItems = [];
+
+    items.forEach(item => {
+        item.addEventListener("click", () => {
+            const itemName = item.textContent.trim();
+
+            if (selectedItems.includes(itemName)) {
+                selectedItems = selectedItems.filter(i => i !== itemName);
+                item.style.background = "white";
+                item.style.borderColor = "#d8dee9";
+                item.style.color = "#172033";
+            } else {
+                selectedItems.push(itemName);
+                item.style.background = "#2563eb";
+                item.style.borderColor = "#2563eb";
+                item.style.color = "white";
+            }
+        });
+    });
+
+    findBtn.addEventListener("click", () => {
+
+        if (selectedItems.length === 0) {
+            alert("Please select at least one item.");
+            return;
+        }
+
+        let result = document.getElementById("results");
+
+        if (!result) {
+            result = document.createElement("div");
+            result.id = "results";
+            result.style.marginTop = "25px";
+            result.style.padding = "20px";
+            result.style.background = "#eff6ff";
+            result.style.borderRadius = "12px";
+            result.style.textAlign = "left";
+            findBtn.parentElement.appendChild(result);
+        }
+
+        result.innerHTML = `
+            <h3>💡 What you can make</h3>
+            <p style="margin-top:10px;">
+                You selected: <strong>${selectedItems.join(", ")}</strong>
+            </p>
+            <p style="margin-top:10px;">
+                UseWhat is finding useful ideas for you...
+            </p>
+        `;
+    });
+</script>
 
 </body>
 </html>
