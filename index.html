@@ -272,7 +272,7 @@
 
     items.forEach(item => {
         item.addEventListener("click", () => {
-            const itemName = item.textContent.trim();
+            const itemName = item.textContent.trim().split(" ").slice(1).join(" ");
 
             if (selectedItems.includes(itemName)) {
                 selectedItems = selectedItems.filter(i => i !== itemName);
