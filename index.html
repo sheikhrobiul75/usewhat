@@ -1,243 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>UseWhat - Turn What You Have Into What You Need</title>
+<title>UseWhat - Turn What You Have Into What You Need</title>
 
-    <meta name="description" content="Tell UseWhat what you have and discover useful recipes, projects, money-saving ideas and more.">
+<meta name="description" content="Tell UseWhat what you have and discover ideas to make, repair, reuse, save money or make money.">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f7f9fc;
-            color: #172033;
-        }
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-        header {
-            background: #ffffff;
-            padding: 18px 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eeeeee;
-        }
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f6f8fc;
+    color:#172033;
+    line-height:1.6;
+}
 
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-        }
+/* HEADER */
 
-        .logo span {
-            color: #2563eb;
-        }
+header{
+    background:#ffffff;
+    border-bottom:1px solid #e5e7eb;
+    padding:18px 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
 
-        nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #555555;
-            font-size: 15px;
-        }
+.logo{
+    font-size:30px;
+    font-weight:800;
+    letter-spacing:-1px;
+}
 
-        .hero {
-            text-align: center;
-            padding: 75px 20px 55px;
-            background: linear-gradient(135deg, #eef5ff, #ffffff);
-        }
+.logo span{
+    color:#2563eb;
+}
 
-        .hero h1 {
-            font-size: 48px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
+.language-box select{
+    border:1px solid #d7dce5;
+    border-radius:10px;
+    padding:9px 12px;
+    background:white;
+    font-size:14px;
+    cursor:pointer;
+}
 
-        .hero h1 span {
-            color: #2563eb;
-        }
+/* HERO */
 
-        .hero > p {
-            max-width: 650px;
-            margin: auto;
-            font-size: 19px;
-            line-height: 1.6;
-            color: #5b6472;
-        }
+.hero{
+    text-align:center;
+    padding:70px 20px 65px;
+    background:linear-gradient(135deg,#eef5ff,#ffffff);
+}
 
-        .search-box {
-            max-width: 720px;
-            margin: 35px auto 0;
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 18px;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-        }
+.hero h1{
+    font-size:48px;
+    line-height:1.12;
+    max-width:850px;
+    margin:0 auto 20px;
+}
 
-        .search-box h2 {
-            margin-bottom: 20px;
-            font-size: 22px;
-        }
+.hero h1 span{
+    color:#2563eb;
+}
 
-        .items {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
+.hero-description{
+    max-width:700px;
+    margin:0 auto;
+    color:#5d6878;
+    font-size:19px;
+}
 
-        .item {
-            border: 1px solid #d8dee9;
-            background: #ffffff;
-            padding: 12px 18px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 15px;
-            transition: 0.2s;
-        }
+/* SEARCH */
 
-        .item:hover {
-            border-color: #2563eb;
-            background: #eff6ff;
-        }
+.search-container{
+    max-width:780px;
+    margin:38px auto 0;
+    background:#ffffff;
+    padding:30px;
+    border-radius:22px;
+    box-shadow:0 15px 45px rgba(0,0,0,.08);
+    text-align:left;
+}
 
-        .item.selected {
-            background: #2563eb;
-            border-color: #2563eb;
-            color: #ffffff;
-        }
+.search-container h2{
+    text-align:center;
+    margin-bottom:18px;
+    font-size:24px;
+}
 
-        .find-btn {
-            margin-top: 25px;
-            width: 100%;
-            border: none;
-            padding: 15px;
-            border-radius: 10px;
-            background: #2563eb;
-            color: #ffffff;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.search-help{
+    text-align:center;
+    color:#6b7280;
+    font-size:14px;
+    margin-bottom:18px;
+}
 
-        .find-btn:hover {
-            background: #1d4ed8;
-        }
+textarea{
+    width:100%;
+    min-height:130px;
+    resize:vertical;
+    border:2px solid #dbe1ea;
+    border-radius:15px;
+    padding:17px;
+    font-family:Arial,sans-serif;
+    font-size:17px;
+    outline:none;
+    transition:.2s;
+}
 
-        #results {
-            margin-top: 25px;
-            padding: 20px;
-            background: #eff6ff;
-            border-radius: 12px;
-            text-align: left;
-            display: none;
-        }
+textarea:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 4px rgba(37,99,235,.10);
+}
 
-        #results h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
+.find-button{
+    width:100%;
+    margin-top:15px;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
 
-        .selected-text {
-            color: #4b5563;
-            line-height: 1.6;
-        }
+.find-button:hover{
+    background:#1d4ed8;
+    transform:translateY(-1px);
+}
 
-        .suggestion {
-            background: #ffffff;
-            padding: 15px;
-            margin-top: 10px;
-            border-radius: 10px;
-            font-weight: bold;
-            border: 1px solid #e5e7eb;
-        }
+.example-text{
+    text-align:center;
+    margin-top:15px;
+    color:#7b8493;
+    font-size:13px;
+}
 
-        .suggestion small {
-            display: block;
-            margin-top: 6px;
-            color: #6b7280;
-            font-weight: normal;
-        }
+/* RESULTS */
 
-        .features {
-            max-width: 1100px;
-            margin: 55px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+.results{
+    display:none;
+    max-width:780px;
+    margin:25px auto 0;
+    background:#ffffff;
+    padding:28px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
 
-        .card {
-            background: #ffffff;
-            padding: 30px 25px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
+.results.show{
+    display:block;
+}
 
-        .card .icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
+.results-title{
+    font-size:25px;
+    margin-bottom:8px;
+}
 
-        .card h3 {
-            margin-bottom: 10px;
-        }
+.results-subtitle{
+    color:#6b7280;
+    margin-bottom:20px;
+}
 
-        .card p {
-            color: #687386;
-            line-height: 1.5;
-        }
+.result-card{
+    background:#f8faff;
+    border:1px solid #e1e7f0;
+    padding:18px;
+    border-radius:14px;
+    margin-top:12px;
+}
 
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            background: #111827;
-            color: #cbd5e1;
-            margin-top: 50px;
-        }
+.result-card h3{
+    font-size:17px;
+    margin-bottom:6px;
+}
 
-        @media (max-width: 700px) {
+.result-card p{
+    color:#667085;
+    font-size:14px;
+}
 
-            header {
-                padding: 16px 20px;
-            }
+.category{
+    display:inline-block;
+    padding:4px 9px;
+    border-radius:20px;
+    background:#eaf1ff;
+    color:#2563eb;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
 
-            .hero {
-                padding: 55px 15px 45px;
-            }
+/* FEATURES */
 
-            .hero h1 {
-                font-size: 36px;
-            }
+.features{
+    max-width:1100px;
+    margin:65px auto;
+    padding:0 20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
 
-            .hero > p {
-                font-size: 17px;
-            }
+.feature-card{
+    background:white;
+    border-radius:18px;
+    padding:32px 25px;
+    text-align:center;
+    box-shadow:0 7px 25px rgba(0,0,0,.05);
+}
 
-            .search-box {
-                padding: 22px 15px;
-            }
+.feature-icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
 
-            .features {
-                grid-template-columns: 1fr;
-                padding: 0 20px;
-            }
+.feature-card h3{
+    margin-bottom:10px;
+    font-size:20px;
+}
 
-            nav {
-                display: none;
-            }
-        }
-    </style>
+.feature-card p{
+    color:#697386;
+    font-size:15px;
+}
+
+/* HOW IT WORKS */
+
+.how{
+    background:#ffffff;
+    padding:70px 20px;
+    text-align:center;
+}
+
+.how h2{
+    font-size:32px;
+    margin-bottom:35px;
+}
+
+.steps{
+    max-width:950px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.step{
+    padding:25px;
+}
+
+.step-number{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#2563eb;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 15px;
+    font-weight:bold;
+    font-size:20px;
+}
+
+.step h3{
+    margin-bottom:8px;
+}
+
+.step p{
+    color:#697386;
+    font-size:14px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111827;
+    color:#cbd5e1;
+    text-align:center;
+    padding:35px 20px;
+}
+
+footer strong{
+    color:white;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    header{
+        padding:15px 20px;
+    }
+
+    .logo{
+        font-size:27px;
+    }
+
+    .hero{
+        padding:50px 18px;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .hero-description{
+        font-size:17px;
+    }
+
+    .search-container{
+        padding:22px;
+        border-radius:18px;
+    }
+
+    .search-container h2{
+        font-size:22px;
+    }
+
+    textarea{
+        font-size:16px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+        margin:45px auto;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
+
+<!-- HEADER -->
 
 <header>
 
@@ -245,121 +362,133 @@
         Use<span>What</span>
     </div>
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">How It Works</a>
-        <a href="#">About</a>
-    </nav>
+    <div class="language-box">
+
+        <select id="languageSelect">
+
+            <option value="en">🇺🇸 English</option>
+            <option value="bn">🇧🇩 বাংলা</option>
+            <option value="hi">🇮🇳 हिन्दी</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="ar">🇸🇦 العربية</option>
+
+        </select>
+
+    </div>
 
 </header>
 
 
+<!-- HERO -->
+
 <section class="hero">
 
-    <h1>
-        Turn What You Have Into<br>
+    <h1 id="heroTitle">
+        Turn What You Have Into
         <span>What You Need.</span>
     </h1>
 
-    <p>
-        Tell UseWhat what you already have at home.
-        We'll help you discover what you can make, save,
-        reuse, or even turn into money.
+    <p class="hero-description" id="heroDescription">
+        Tell UseWhat what you already have.
+        We'll help you discover what you can make,
+        repair, reuse, save, or even turn into money.
     </p>
 
 
-    <div class="search-box">
+    <!-- SEARCH BOX -->
 
-        <h2>What do you have?</h2>
+    <div class="search-container">
 
-        <div class="items">
+        <h2 id="searchTitle">
+            What do you have?
+        </h2>
 
-            <button type="button" class="item" data-item="Tomato">
-                🍅 Tomato
-            </button>
+        <p class="search-help" id="searchHelp">
+            Type anything you have at home, work, garage or anywhere else.
+        </p>
 
-            <button type="button" class="item" data-item="Egg">
-                🥚 Egg
-            </button>
+        <textarea
+            id="userInput"
+            placeholder="Example: I have an old wooden chair, some plastic bottles and a broken fan..."
+        ></textarea>
 
-            <button type="button" class="item" data-item="Rice">
-                🍚 Rice
-            </button>
-
-            <button type="button" class="item" data-item="Potato">
-                🥔 Potato
-            </button>
-
-            <button type="button" class="item" data-item="Onion">
-                🧅 Onion
-            </button>
-
-            <button type="button" class="item" data-item="Bread">
-                🍞 Bread
-            </button>
-
-            <button type="button" class="item" data-item="Carrot">
-                🥕 Carrot
-            </button>
-
-            <button type="button" class="item" data-item="Chicken">
-                🍗 Chicken
-            </button>
-
-        </div>
-
-
-        <button type="button" class="find-btn" id="findBtn">
-            🔍 Find What I Can Make
+        <button class="find-button" id="findButton">
+            🔍 Find What I Can Do
         </button>
 
+        <p class="example-text" id="exampleText">
+            You can enter food, old items, broken things, tools,
+            clothes, furniture, electronics or anything else.
+        </p>
 
-        <div id="results"></div>
+    </div>
+
+
+    <!-- RESULTS -->
+
+    <div class="results" id="results">
+
+        <h2 class="results-title" id="resultsTitle">
+            💡 Ideas for You
+        </h2>
+
+        <p class="results-subtitle" id="resultsSubtitle"></p>
+
+        <div id="resultList"></div>
 
     </div>
 
 </section>
 
 
+<!-- FEATURES -->
+
 <section class="features">
 
-    <div class="card">
+    <div class="feature-card">
 
-        <div class="icon">🍳</div>
+        <div class="feature-icon">🍳</div>
 
-        <h3>Make Something</h3>
+        <h3 id="feature1Title">
+            Make Something
+        </h3>
 
-        <p>
-            Find recipes, projects and useful things
+        <p id="feature1Text">
+            Discover recipes, DIY projects and useful things
             you can create with what you already have.
         </p>
 
     </div>
 
 
-    <div class="card">
+    <div class="feature-card">
 
-        <div class="icon">💰</div>
+        <div class="feature-icon">🔧</div>
 
-        <h3>Save Money</h3>
+        <h3 id="feature2Title">
+            Repair & Reuse
+        </h3>
 
-        <p>
-            Discover ways to use existing items
-            instead of buying something new.
+        <p id="feature2Text">
+            Find practical ways to repair, reuse and
+            transform old or broken items.
         </p>
 
     </div>
 
 
-    <div class="card">
+    <div class="feature-card">
 
-        <div class="icon">♻️</div>
+        <div class="feature-icon">💰</div>
 
-        <h3>Reuse & Reduce Waste</h3>
+        <h3 id="feature3Title">
+            Save or Make Money
+        </h3>
 
-        <p>
-            Give unused items a second life and
-            reduce unnecessary waste.
+        <p id="feature3Text">
+            Discover ways to avoid unnecessary purchases
+            or turn unused items into income.
         </p>
 
     </div>
@@ -367,10 +496,75 @@
 </section>
 
 
+<!-- HOW IT WORKS -->
+
+<section class="how">
+
+    <h2 id="howTitle">
+        How UseWhat Works
+    </h2>
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">1</div>
+
+            <h3 id="step1Title">
+                Tell Us What You Have
+            </h3>
+
+            <p id="step1Text">
+                Type anything you have, from food to
+                broken household items.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">2</div>
+
+            <h3 id="step2Title">
+                UseWhat Understands
+            </h3>
+
+            <p id="step2Text">
+                UseWhat analyzes your items and looks
+                for useful possibilities.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">3</div>
+
+            <h3 id="step3Title">
+                Discover Ideas
+            </h3>
+
+            <p id="step3Text">
+                Get ideas for making, repairing,
+                reusing, saving or earning.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
 <footer>
 
     <p>
-        © 2026 UseWhat — Make More From What You Have.
+        © 2026 <strong>UseWhat</strong> —
+        Make More From What You Have.
     </p>
 
 </footer>
@@ -378,264 +572,645 @@
 
 <script>
 
-    // Selected items
-    let selectedItems = [];
+/* =====================================================
+   USEWHAT
+   MULTILINGUAL + FREE TEXT IDEA ENGINE
+   ===================================================== */
 
 
-    // Get all item buttons
-    const itemButtons = document.querySelectorAll(".item");
+/* LANGUAGE DATA */
+
+const translations = {
+
+    en: {
+
+        title:"Turn What You Have Into|What You Need.",
+        description:"Tell UseWhat what you already have. We'll help you discover what you can make, repair, reuse, save, or even turn into money.",
+        searchTitle:"What do you have?",
+        searchHelp:"Type anything you have at home, work, garage or anywhere else.",
+        placeholder:"Example: I have an old wooden chair, some plastic bottles and a broken fan...",
+        button:"🔍 Find What I Can Do",
+        example:"You can enter food, old items, broken things, tools, clothes, furniture, electronics or anything else.",
+        results:"💡 Ideas for You",
+        selected:"You entered:",
+        feature1Title:"Make Something",
+        feature1Text:"Discover recipes, DIY projects and useful things you can create with what you already have.",
+        feature2Title:"Repair & Reuse",
+        feature2Text:"Find practical ways to repair, reuse and transform old or broken items.",
+        feature3Title:"Save or Make Money",
+        feature3Text:"Discover ways to avoid unnecessary purchases or turn unused items into income.",
+        howTitle:"How UseWhat Works",
+        step1Title:"Tell Us What You Have",
+        step1Text:"Type anything you have, from food to broken household items.",
+        step2Title:"UseWhat Understands",
+        step2Text:"UseWhat analyzes your items and looks for useful possibilities.",
+        step3Title:"Discover Ideas",
+        step3Text:"Get ideas for making, repairing, reusing, saving or earning.",
+        empty:"Please tell UseWhat what you have first.",
+        noMatch:"Try adding more details about the item. UseWhat can help with food, furniture, clothes, tools, electronics, broken items and many other things."
+
+    },
+
+    bn: {
+
+        title:"আপনার কাছে যা আছে তা দিয়ে|আপনার যা প্রয়োজন তা তৈরি করুন।",
+        description:"আপনার কাছে কী আছে UseWhat-কে বলুন। আমরা আপনাকে দেখাব কীভাবে সেটা দিয়ে কিছু বানানো, মেরামত, পুনর্ব্যবহার, টাকা বাঁচানো বা আয় করা যায়।",
+        searchTitle:"আপনার কাছে কী আছে?",
+        searchHelp:"বাড়ি, অফিস, গ্যারেজ বা অন্য যেকোনো জায়গায় থাকা জিনিস নিজের ভাষায় লিখুন।",
+        placeholder:"উদাহরণ: আমার কাছে একটি পুরোনো কাঠের চেয়ার, কিছু প্লাস্টিকের বোতল এবং একটি ভাঙা ফ্যান আছে...",
+        button:"🔍 আমি কী করতে পারি?",
+        example:"খাবার, পুরোনো জিনিস, ভাঙা জিনিস, যন্ত্রপাতি, কাপড়, আসবাবপত্র, ইলেকট্রনিক্স—যেকোনো কিছু লিখতে পারেন।",
+        results:"💡 আপনার জন্য আইডিয়া",
+        selected:"আপনি লিখেছেন:",
+        feature1Title:"কিছু বানান",
+        feature1Text:"আপনার কাছে থাকা জিনিস দিয়ে খাবার, DIY project বা দরকারি কিছু বানানোর আইডিয়া পান।",
+        feature2Title:"মেরামত ও পুনর্ব্যবহার",
+        feature2Text:"পুরোনো বা ভাঙা জিনিস মেরামত, পুনর্ব্যবহার বা নতুনভাবে ব্যবহার করার উপায় খুঁজুন।",
+        feature3Title:"টাকা বাঁচান বা আয় করুন",
+        feature3Text:"নতুন কিছু কেনার প্রয়োজন কমান অথবা অব্যবহৃত জিনিস থেকে আয় করার সুযোগ খুঁজুন।",
+        howTitle:"UseWhat কীভাবে কাজ করে",
+        step1Title:"আপনার কাছে কী আছে বলুন",
+        step1Text:"খাবার থেকে শুরু করে ভাঙা household items—যেকোনো কিছু লিখুন।",
+        step2Title:"UseWhat বুঝবে",
+        step2Text:"UseWhat আপনার দেওয়া তথ্য বিশ্লেষণ করে সম্ভাব্য ব্যবহার খুঁজবে।",
+        step3Title:"আইডিয়া পান",
+        step3Text:"বানানো, মেরামত, পুনর্ব্যবহার, টাকা বাঁচানো বা আয় করার আইডিয়া পান।",
+        empty:"প্রথমে আপনার কাছে কী আছে সেটা লিখুন।",
+        noMatch:"জিনিসটি সম্পর্কে আরও কিছু তথ্য লিখুন। খাবার, আসবাবপত্র, কাপড়, যন্ত্রপাতি, ইলেকট্রনিক্স, ভাঙা জিনিসসহ অনেক কিছু নিয়ে UseWhat সাহায্য করতে পারে।"
+
+    },
+
+    hi: {
+
+        title:"आपके पास जो है उससे|जो चाहिए वह बनाएं।",
+        description:"आपके पास क्या है UseWhat को बताएं। हम आपको बनाने, मरम्मत करने, दोबारा इस्तेमाल करने, पैसे बचाने या कमाने के तरीके बताएंगे।",
+        searchTitle:"आपके पास क्या है?",
+        searchHelp:"घर, ऑफिस, गैरेज या कहीं भी मौजूद चीज़ों के बारे में लिखें।",
+        placeholder:"उदाहरण: मेरे पास एक पुरानी लकड़ी की कुर्सी और कुछ प्लास्टिक की बोतलें हैं...",
+        button:"🔍 मैं क्या कर सकता हूँ?",
+        example:"खाना, पुराने सामान, टूटी चीज़ें, कपड़े, फर्नीचर, इलेक्ट्रॉनिक्स या कुछ भी लिखें।",
+        results:"💡 आपके लिए आइडिया",
+        selected:"आपने लिखा:",
+        feature1Title:"कुछ बनाएं",
+        feature1Text:"अपने पास मौजूद चीज़ों से recipes, DIY projects और उपयोगी चीज़ें बनाने के तरीके खोजें।",
+        feature2Title:"मरम्मत और पुनः उपयोग",
+        feature2Text:"पुरानी या टूटी चीज़ों को repair और reuse करने के तरीके खोजें।",
+        feature3Title:"पैसे बचाएं या कमाएं",
+        feature3Text:"अनावश्यक खरीदारी से बचें या बेकार सामान से कमाई के तरीके खोजें।",
+        howTitle:"UseWhat कैसे काम करता है",
+        step1Title:"बताएं आपके पास क्या है",
+        step1Text:"खाने से लेकर टूटी घरेलू चीज़ों तक कुछ भी लिखें।",
+        step2Title:"UseWhat समझेगा",
+        step2Text:"UseWhat आपके इनपुट को समझकर संभावित उपयोग खोजेगा।",
+        step3Title:"आइडिया पाएं",
+        step3Text:"बनाने, मरम्मत, reuse, बचत या कमाई के आइडिया पाएं।",
+        empty:"पहले बताएं कि आपके पास क्या है।",
+        noMatch:"वस्तु के बारे में थोड़ा और विवरण दें। UseWhat कई प्रकार की चीज़ों में मदद कर सकता है।"
+
+    },
+
+    es: {
+
+        title:"Convierte lo que tienes en|lo que necesitas.",
+        description:"Dile a UseWhat qué tienes. Descubre cómo crear, reparar, reutilizar, ahorrar dinero o incluso ganar dinero.",
+        searchTitle:"¿Qué tienes?",
+        searchHelp:"Escribe cualquier cosa que tengas en casa, trabajo, garaje o cualquier lugar.",
+        placeholder:"Ejemplo: Tengo una silla de madera vieja, botellas de plástico y un ventilador roto...",
+        button:"🔍 Ver qué puedo hacer",
+        example:"Puedes escribir comida, objetos viejos, cosas rotas, herramientas, ropa, muebles o electrónica.",
+        results:"💡 Ideas para ti",
+        selected:"Has escrito:",
+        feature1Title:"Crea algo",
+        feature1Text:"Descubre recetas, proyectos DIY y cosas útiles que puedes crear.",
+        feature2Title:"Repara y reutiliza",
+        feature2Text:"Encuentra formas prácticas de reparar y reutilizar objetos.",
+        feature3Title:"Ahorra o gana dinero",
+        feature3Text:"Evita compras innecesarias o convierte objetos sin usar en ingresos.",
+        howTitle:"Cómo funciona UseWhat",
+        step1Title:"Dinos qué tienes",
+        step1Text:"Escribe cualquier cosa que tengas.",
+        step2Title:"UseWhat lo entiende",
+        step2Text:"UseWhat analiza tu información.",
+        step3Title:"Descubre ideas",
+        step3Text:"Obtén ideas para crear, reparar, reutilizar, ahorrar o ganar.",
+        empty:"Primero escribe qué tienes.",
+        noMatch:"Añade más detalles sobre el objeto para obtener mejores ideas."
+
+    },
+
+    fr: {
+
+        title:"Transformez ce que vous avez en|ce dont vous avez besoin.",
+        description:"Dites à UseWhat ce que vous avez. Découvrez comment créer, réparer, réutiliser, économiser ou gagner de l'argent.",
+        searchTitle:"Qu'avez-vous ?",
+        searchHelp:"Écrivez tout ce que vous avez chez vous, au travail ou ailleurs.",
+        placeholder:"Exemple : J'ai une vieille chaise en bois, des bouteilles en plastique et un ventilateur cassé...",
+        button:"🔍 Trouver des idées",
+        example:"Vous pouvez écrire des aliments, objets anciens, objets cassés, vêtements, meubles, outils ou appareils électroniques.",
+        results:"💡 Idées pour vous",
+        selected:"Vous avez écrit :",
+        feature1Title:"Créer quelque chose",
+        feature1Text:"Découvrez des recettes, projets DIY et objets utiles à créer.",
+        feature2Title:"Réparer et réutiliser",
+        feature2Text:"Trouvez des façons de réparer et réutiliser les anciens objets.",
+        feature3Title:"Économiser ou gagner",
+        feature3Text:"Évitez les achats inutiles ou transformez vos objets en revenus.",
+        howTitle:"Comment fonctionne UseWhat",
+        step1Title:"Dites-nous ce que vous avez",
+        step1Text:"Écrivez tout ce que vous possédez.",
+        step2Title:"UseWhat comprend",
+        step2Text:"UseWhat analyse vos informations.",
+        step3Title:"Découvrez des idées",
+        step3Text:"Obtenez des idées pour créer, réparer, réutiliser, économiser ou gagner.",
+        empty:"Écrivez d'abord ce que vous avez.",
+        noMatch:"Ajoutez plus de détails sur l'objet pour obtenir de meilleures idées."
+
+    },
+
+    ar: {
+
+        title:"حوّل ما لديك إلى|ما تحتاج إليه.",
+        description:"أخبر UseWhat بما لديك. سنساعدك على اكتشاف طرق لصنع الأشياء أو إصلاحها أو إعادة استخدامها أو توفير المال أو كسبه.",
+        searchTitle:"ماذا لديك؟",
+        searchHelp:"اكتب أي شيء لديك في المنزل أو العمل أو المرآب أو أي مكان آخر.",
+        placeholder:"مثال: لدي كرسي خشبي قديم وبعض الزجاجات البلاستيكية ومروحة مكسورة...",
+        button:"🔍 اكتشف ما يمكنك فعله",
+        example:"يمكنك كتابة الطعام أو الأشياء القديمة أو المكسورة أو الملابس أو الأثاث أو الأدوات أو الإلكترونيات.",
+        results:"💡 أفكار لك",
+        selected:"لقد كتبت:",
+        feature1Title:"اصنع شيئاً",
+        feature1Text:"اكتشف وصفات ومشاريع وأشياء مفيدة يمكنك صنعها.",
+        feature2Title:"أصلح وأعد الاستخدام",
+        feature2Text:"اكتشف طرقاً عملية لإصلاح وإعادة استخدام الأشياء القديمة.",
+        feature3Title:"وفر أو اكسب المال",
+        feature3Text:"تجنب المشتريات غير الضرورية أو حوّل الأشياء غير المستخدمة إلى دخل.",
+        howTitle:"كيف يعمل UseWhat",
+        step1Title:"أخبرنا بما لديك",
+        step1Text:"اكتب أي شيء موجود لديك.",
+        step2Title:"UseWhat يفهم",
+        step2Text:"يقوم UseWhat بتحليل المعلومات.",
+        step3Title:"اكتشف الأفكار",
+        step3Text:"احصل على أفكار للصنع والإصلاح وإعادة الاستخدام والتوفير والكسب.",
+        empty:"اكتب أولاً ما لديك.",
+        noMatch:"أضف المزيد من التفاصيل عن الشيء للحصول على أفكار أفضل."
+
+    }
+
+};
 
 
-    // Get Find button
-    const findBtn = document.getElementById("findBtn");
+/* IDEA DATABASE */
+
+const ideas = [
+
+    {
+        keys:["tomato","egg","টমেটো","ডিম"],
+        category:"🍳 Food",
+        title:"Tomato Egg Scramble",
+        description:"Cook the tomato with egg, onion and simple spices for a quick meal."
+    },
+
+    {
+        keys:["rice","egg","ভাত","চাল","ডিম"],
+        category:"🍳 Food",
+        title:"Egg Fried Rice",
+        description:"Turn leftover rice and eggs into a quick fried-rice meal."
+    },
+
+    {
+        keys:["bread","egg","পাউরুটি","রুটি","ডিম"],
+        category:"🍳 Food",
+        title:"Egg Toast",
+        description:"Use bread and eggs to make a quick breakfast."
+    },
+
+    {
+        keys:["potato","egg","আলু","ডিম"],
+        category:"🍳 Food",
+        title:"Potato Egg Fry",
+        description:"Make a simple potato and egg dish with onion and spices."
+    },
+
+    {
+        keys:["chicken","rice","মুরগি","চিকেন","ভাত","চাল"],
+        category:"🍳 Food",
+        title:"Chicken Fried Rice",
+        description:"Use chicken and rice to create a filling homemade meal."
+    },
+
+    {
+        keys:["old chair","পুরোনো চেয়ার","পুরাতন চেয়ার","chair","চেয়ার"],
+        category:"🔧 Repair / DIY",
+        title:"Restore the Old Chair",
+        description:"Clean, repair, sand and repaint the chair. It can become useful furniture again."
+    },
+
+    {
+        keys:["wood","কাঠ","wooden","কাঠের"],
+        category:"🛠️ DIY",
+        title:"Create a Small Home Project",
+        description:"Old wood can be turned into shelves, plant stands, organizers or decorative items."
+    },
+
+    {
+        keys:["plastic bottle","plastic bottles","প্লাস্টিক বোতল","বোতল"],
+        category:"♻️ Reuse",
+        title:"Turn Plastic Bottles Into Useful Items",
+        description:"Reuse bottles as plant pots, organizers, storage containers or simple DIY projects."
+    },
+
+    {
+        keys:["jeans","old jeans","জিন্স","পুরোনো জিন্স"],
+        category:"♻️ Upcycling",
+        title:"Upcycle Old Jeans",
+        description:"Old jeans can become bags, organizers, small storage pockets or decorative items."
+    },
+
+    {
+        keys:["broken fan","ভাঙা ফ্যান","fan","ফ্যান"],
+        category:"🔧 Repair / Reuse",
+        title:"Repair or Reuse the Fan",
+        description:"Check the motor, capacitor, wiring and switch. Parts that cannot be repaired may still be reusable."
+    },
+
+    {
+        keys:["bottle","বোতল"],
+        category:"♻️ Reuse",
+        title:"Create a Bottle Organizer",
+        description:"Clean unused bottles and turn them into organizers or storage containers."
+    },
+
+    {
+        keys:["cardboard","কার্ডবোর্ড","carton","কার্টন"],
+        category:"♻️ DIY",
+        title:"Make a Cardboard Organizer",
+        description:"Old cardboard boxes can become desk organizers, storage boxes or simple craft projects."
+    },
+
+    {
+        keys:["old tire","tire","টায়ার","পুরোনো টায়ার"],
+        category:"♻️ Upcycling",
+        title:"Reuse an Old Tire",
+        description:"Old tires can become garden planters, seats, tables or decorative outdoor items."
+    },
+
+    {
+        keys:["clothes","কাপড়","পুরোনো কাপড়"],
+        category:"♻️ Upcycling",
+        title:"Turn Old Clothes Into Something Useful",
+        description:"Old clothes can become cleaning cloths, bags, pillow covers or simple DIY projects."
+    },
+
+    {
+        keys:["phone","পুরোনো ফোন","মোবাইল","mobile"],
+        category:"💰 Save Money",
+        title:"Reuse an Old Phone",
+        description:"An old phone can become a security camera, media player, remote control or dedicated device."
+    },
+
+    {
+        keys:["computer","laptop","কম্পিউটার","ল্যাপটপ"],
+        category:"🔧 Repair / Reuse",
+        title:"Repurpose the Old Computer",
+        description:"An old computer may work as a media center, home server, learning machine or backup device."
+    },
+
+    {
+        keys:["glass jar","jar","কাঁচের বোতল","জার"],
+        category:"♻️ Reuse",
+        title:"Reuse Glass Jars",
+        description:"Clean glass jars can be used for spices, storage, plants, crafts or organization."
+    },
+
+    {
+        keys:["broken table","ভাঙা টেবিল","table","টেবিল"],
+        category:"🔧 Repair / DIY",
+        title:"Repair or Transform the Table",
+        description:"Repair the damaged parts or reuse the tabletop for a shelf, workbench or small project."
+    },
+
+    {
+        keys:["metal","লোহা","ধাতু"],
+        category:"🛠️ DIY / Reuse",
+        title:"Turn Scrap Metal Into Something Useful",
+        description:"Clean and usable metal pieces can be used for brackets, shelves, frames or workshop projects."
+    },
+
+    {
+        keys:["paper","কাগজ"],
+        category:"♻️ Reuse",
+        title:"Reuse Old Paper",
+        description:"Old paper can be used for notes, crafts, packaging, organizers or recycling."
+    }
+
+];
 
 
-    // Get result box
-    const results = document.getElementById("results");
+/* DOM */
+
+const languageSelect =
+    document.getElementById("languageSelect");
+
+const userInput =
+    document.getElementById("userInput");
+
+const findButton =
+    document.getElementById("findButton");
+
+const results =
+    document.getElementById("results");
+
+const resultList =
+    document.getElementById("resultList");
+
+const resultsSubtitle =
+    document.getElementById("resultsSubtitle");
 
 
-    // Item button click
-    itemButtons.forEach(function(button) {
+/* CURRENT LANGUAGE */
 
-        button.addEventListener("click", function() {
-
-            const itemName = button.getAttribute("data-item");
+let currentLanguage = "en";
 
 
-            // If already selected, remove it
-            if (selectedItems.includes(itemName)) {
+/* CHANGE LANGUAGE */
 
-                selectedItems = selectedItems.filter(function(item) {
-                    return item !== itemName;
-                });
+languageSelect.addEventListener("change", function(){
 
-                button.classList.remove("selected");
+    currentLanguage = this.value;
 
-            }
+    applyLanguage(currentLanguage);
 
-            // Otherwise select it
-            else {
+});
 
-                selectedItems.push(itemName);
 
-                button.classList.add("selected");
+/* APPLY LANGUAGE */
 
-            }
+function applyLanguage(lang){
 
-        });
+    const t = translations[lang];
+
+    document.documentElement.lang = lang;
+
+    document.getElementById("heroTitle").innerHTML =
+        t.title.replace("|","<br>");
+
+    document.getElementById("heroDescription").textContent =
+        t.description;
+
+    document.getElementById("searchTitle").textContent =
+        t.searchTitle;
+
+    document.getElementById("searchHelp").textContent =
+        t.searchHelp;
+
+    userInput.placeholder =
+        t.placeholder;
+
+    findButton.textContent =
+        t.button;
+
+    document.getElementById("exampleText").textContent =
+        t.example;
+
+    document.getElementById("resultsTitle").textContent =
+        t.results;
+
+    document.getElementById("feature1Title").textContent =
+        t.feature1Title;
+
+    document.getElementById("feature1Text").textContent =
+        t.feature1Text;
+
+    document.getElementById("feature2Title").textContent =
+        t.feature2Title;
+
+    document.getElementById("feature2Text").textContent =
+        t.feature2Text;
+
+    document.getElementById("feature3Title").textContent =
+        t.feature3Title;
+
+    document.getElementById("feature3Text").textContent =
+        t.feature3Text;
+
+    document.getElementById("howTitle").textContent =
+        t.howTitle;
+
+    document.getElementById("step1Title").textContent =
+        t.step1Title;
+
+    document.getElementById("step1Text").textContent =
+        t.step1Text;
+
+    document.getElementById("step2Title").textContent =
+        t.step2Title;
+
+    document.getElementById("step2Text").textContent =
+        t.step2Text;
+
+    document.getElementById("step3Title").textContent =
+        t.step3Title;
+
+    document.getElementById("step3Text").textContent =
+        t.step3Text;
+
+    if(lang === "ar"){
+        document.body.style.direction = "rtl";
+    }else{
+        document.body.style.direction = "ltr";
+    }
+
+}
+
+
+/* FIND IDEAS */
+
+findButton.addEventListener("click", findIdeas);
+
+
+/* ENTER KEY */
+
+userInput.addEventListener("keydown", function(event){
+
+    if(event.key === "Enter" && !event.shiftKey){
+
+        event.preventDefault();
+
+        findIdeas();
+
+    }
+
+});
+
+
+/* MAIN FUNCTION */
+
+function findIdeas(){
+
+    const text =
+        userInput.value.trim();
+
+    const t =
+        translations[currentLanguage];
+
+
+    /* EMPTY */
+
+    if(!text){
+
+        results.classList.add("show");
+
+        resultsSubtitle.textContent =
+            t.empty;
+
+        resultList.innerHTML = "";
+
+        return;
+
+    }
+
+
+    /* SEARCH TEXT */
+
+    const searchText =
+        text.toLowerCase();
+
+
+    let matchedIdeas = [];
+
+
+    /* CHECK DATABASE */
+
+    ideas.forEach(idea => {
+
+        const found =
+            idea.keys.some(key =>
+                searchText.includes(key.toLowerCase())
+            );
+
+        if(found){
+
+            matchedIdeas.push(idea);
+
+        }
 
     });
 
 
-    // Find button click
-    findBtn.addEventListener("click", function() {
+    /* REMOVE DUPLICATES */
 
+    matchedIdeas =
+        matchedIdeas.filter(
+            (idea,index,self) =>
+            index === self.findIndex(
+                x => x.title === idea.title
+            )
+        );
 
-        // No item selected
-        if (selectedItems.length === 0) {
 
-            results.style.display = "block";
+    /* RESULTS */
 
-            results.innerHTML = `
-                <h3>⚠️ Select Something First</h3>
+    results.classList.add("show");
 
-                <p style="margin-top:10px;">
-                    Please select at least one item above.
-                </p>
-            `;
 
-            return;
-        }
+    resultsSubtitle.innerHTML =
+        `${t.selected} <strong>${escapeHTML(text)}</strong>`;
 
 
-        // Create suggestions
-        let suggestions = [];
+    resultList.innerHTML = "";
 
 
-        // Helper function
-        function has(item) {
+    /* IF MATCH FOUND */
 
-            return selectedItems.includes(item);
+    if(matchedIdeas.length > 0){
 
-        }
+        matchedIdeas.forEach(idea => {
 
+            const card =
+                document.createElement("div");
 
-        // Tomato + Egg
-        if (has("Tomato") && has("Egg")) {
+            card.className =
+                "result-card";
 
-            suggestions.push({
-                name: "🍳 Tomato Egg Scramble",
-                description: "A quick and simple egg dish with fresh tomato."
-            });
+            card.innerHTML = `
 
-        }
-
-
-        // Tomato + Rice
-        if (has("Tomato") && has("Rice")) {
-
-            suggestions.push({
-                name: "🍅 Tomato Rice",
-                description: "Turn your rice and tomato into a simple flavorful meal."
-            });
-
-        }
-
-
-        // Egg + Bread
-        if (has("Egg") && has("Bread")) {
-
-            suggestions.push({
-                name: "🥪 Egg Sandwich",
-                description: "Make a quick breakfast sandwich with egg and bread."
-            });
-
-        }
-
-
-        // Potato + Egg
-        if (has("Potato") && has("Egg")) {
-
-            suggestions.push({
-                name: "🥔 Potato Egg Fry",
-                description: "A simple potato and egg meal you can make at home."
-            });
-
-        }
-
-
-        // Rice + Chicken
-        if (has("Rice") && has("Chicken")) {
-
-            suggestions.push({
-                name: "🍗 Chicken Fried Rice",
-                description: "Use your rice and chicken to make a satisfying meal."
-            });
-
-        }
-
-
-        // Potato + Onion
-        if (has("Potato") && has("Onion")) {
-
-            suggestions.push({
-                name: "🥔 Potato Onion Fry",
-                description: "A quick side dish using potato and onion."
-            });
-
-        }
-
-
-        // Carrot + Chicken
-        if (has("Carrot") && has("Chicken")) {
-
-            suggestions.push({
-                name: "🥕 Chicken Carrot Stir-Fry",
-                description: "A simple stir-fry using chicken and carrot."
-            });
-
-        }
-
-
-        // Rice + Egg
-        if (has("Rice") && has("Egg")) {
-
-            suggestions.push({
-                name: "🍚 Egg Fried Rice",
-                description: "A classic quick meal using rice and egg."
-            });
-
-        }
-
-
-        // Bread + Tomato
-        if (has("Bread") && has("Tomato")) {
-
-            suggestions.push({
-                name: "🍞 Tomato Toast",
-                description: "Make a quick tomato toast with your bread."
-            });
-
-        }
-
-
-        // Potato + Carrot
-        if (has("Potato") && has("Carrot")) {
-
-            suggestions.push({
-                name: "🥔 Potato Carrot Mix",
-                description: "Combine potato and carrot for a simple vegetable dish."
-            });
-
-        }
-
-
-        // If no specific suggestion
-        if (suggestions.length === 0) {
-
-            suggestions.push({
-                name: "💡 Explore Your Ingredients",
-                description: "Try selecting two or more items to discover more ideas."
-            });
-
-        }
-
-
-        // Build suggestions HTML
-        let suggestionHTML = "";
-
-
-        suggestions.forEach(function(suggestion) {
-
-            suggestionHTML += `
-                <div class="suggestion">
-
-                    ${suggestion.name}
-
-                    <small>
-                        ${suggestion.description}
-                    </small>
-
+                <div class="category">
+                    ${idea.category}
                 </div>
+
+                <h3>
+                    ${idea.title}
+                </h3>
+
+                <p>
+                    ${idea.description}
+                </p>
+
             `;
+
+            resultList.appendChild(card);
 
         });
 
+    }
 
-        // Show result
-        results.style.display = "block";
+    else{
 
+        const card =
+            document.createElement("div");
 
-        results.innerHTML = `
+        card.className =
+            "result-card";
 
-            <h3>💡 What You Can Make</h3>
+        card.innerHTML = `
 
-            <p class="selected-text" style="margin-top:10px;">
+            <h3>
+                💡 ${t.results}
+            </h3>
 
-                You selected:
-
-                <strong>
-                    ${selectedItems.join(", ")}
-                </strong>
-
+            <p>
+                ${t.noMatch}
             </p>
-
-            <div style="margin-top:15px;">
-
-                ${suggestionHTML}
-
-            </div>
 
         `;
 
+        resultList.appendChild(card);
 
-        // Scroll result into view
+    }
+
+
+    /* SCROLL TO RESULTS */
+
+    setTimeout(function(){
+
         results.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
+            behavior:"smooth",
+            block:"start"
         });
 
-    });
+    },100);
+
+}
+
+
+/* SECURITY */
+
+function escapeHTML(text){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+
+/* INITIAL LANGUAGE */
+
+applyLanguage("en");
 
 </script>
 
