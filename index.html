@@ -2,30 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>UseWhat — Make More From What You Have</title>
 
-<meta name="description" content="UseWhat helps you solve everyday problems, reuse what you have, save money, and discover useful ideas with AI.">
+<meta name="description"
+content="UseWhat helps you find solutions, ideas, repairs, recipes, and ways to reuse what you already have.">
 
 <style>
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 :root{
-    --blue:#2563eb;
-    --blue-dark:#1d4ed8;
-    --blue-light:#eff6ff;
-    --text:#111827;
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+    --text:#0f172a;
     --muted:#64748b;
-    --border:#e5e7eb;
     --bg:#f8fafc;
-    --white:#ffffff;
-    --dark:#0f172a;
-    --green:#16a34a;
+    --white:#fff;
+    --border:#e2e8f0;
+    --soft:#eff6ff;
     --shadow:0 10px 35px rgba(15,23,42,.08);
 }
 
@@ -34,153 +33,112 @@ html{
 }
 
 body{
-    font-family:Inter,Arial,Helvetica,sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
     background:var(--bg);
     color:var(--text);
     line-height:1.5;
 }
 
-body.menu-open{
-    overflow:hidden;
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
 }
 
 /* =========================
    HEADER
 ========================= */
 
-.header{
+header{
     height:68px;
     background:rgba(255,255,255,.96);
-    backdrop-filter:blur(12px);
     border-bottom:1px solid var(--border);
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 6%;
+    padding:0 5%;
     position:sticky;
     top:0;
-    z-index:1000;
+    z-index:999;
+    backdrop-filter:blur(12px);
 }
 
 .logo{
-    text-decoration:none;
-    color:var(--text);
     font-size:25px;
     font-weight:800;
     letter-spacing:-1.2px;
+    color:var(--text);
 }
 
 .logo span{
-    color:var(--blue);
+    color:var(--primary);
 }
 
 .desktop-nav{
     display:flex;
     align-items:center;
-    gap:27px;
+    gap:24px;
 }
 
 .desktop-nav a{
-    color:#475569;
     text-decoration:none;
+    color:#475569;
     font-size:14px;
     font-weight:600;
-    transition:.2s;
 }
 
 .desktop-nav a:hover{
-    color:var(--blue);
+    color:var(--primary);
 }
 
 .language{
     border:1px solid var(--border);
-    background:white;
     border-radius:9px;
     padding:8px 10px;
+    background:#fff;
     color:#334155;
-    cursor:pointer;
     outline:none;
 }
 
-/* MOBILE MENU BUTTON */
+/* MOBILE MENU */
 
-.menu-button{
+.menu-btn{
     display:none;
+    border:1px solid var(--border);
+    background:#fff;
     width:40px;
     height:40px;
-    border:1px solid var(--border);
-    background:white;
     border-radius:10px;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    font-size:21px;
+    font-size:20px;
 }
 
-/* MOBILE DRAWER */
-
 .mobile-menu{
-    position:fixed;
+    display:none;
+    position:absolute;
     top:68px;
-    right:-100%;
-    width:min(340px,88%);
-    height:calc(100vh - 68px);
-    background:white;
-    z-index:999;
-    padding:22px;
-    box-shadow:-15px 0 40px rgba(15,23,42,.12);
-    transition:.3s ease;
-    overflow-y:auto;
+    left:0;
+    right:0;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    padding:15px 20px 20px;
+    box-shadow:0 10px 25px rgba(15,23,42,.08);
 }
 
 .mobile-menu.active{
-    right:0;
+    display:block;
 }
 
 .mobile-menu a{
-    display:flex;
-    align-items:center;
-    gap:12px;
+    display:block;
+    padding:13px 4px;
     text-decoration:none;
     color:#334155;
-    padding:14px 10px;
-    border-radius:10px;
     font-weight:600;
-    margin-bottom:3px;
-}
-
-.mobile-menu a:hover{
-    background:var(--blue-light);
-    color:var(--blue);
-}
-
-.mobile-menu-title{
-    color:#94a3b8;
-    font-size:11px;
-    font-weight:800;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    margin:10px 10px;
-}
-
-.menu-divider{
-    height:1px;
-    background:var(--border);
-    margin:14px 0;
-}
-
-/* OVERLAY */
-
-.overlay{
-    display:none;
-    position:fixed;
-    inset:68px 0 0 0;
-    background:rgba(15,23,42,.38);
-    z-index:998;
-}
-
-.overlay.active{
-    display:block;
+    border-bottom:1px solid #f1f5f9;
 }
 
 /* =========================
@@ -188,43 +146,51 @@ body.menu-open{
 ========================= */
 
 .hero{
-    background:
-        radial-gradient(circle at 10% 5%,#dbeafe 0,transparent 28%),
-        radial-gradient(circle at 90% 5%,#e0e7ff 0,transparent 28%),
-        #fff;
-    padding:82px 20px 72px;
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     text-align:center;
+    padding:80px 20px 70px;
+    background:
+        radial-gradient(circle at 15% 10%,#dbeafe 0,transparent 30%),
+        radial-gradient(circle at 85% 10%,#e0e7ff 0,transparent 30%),
+        #fff;
+}
+
+.hero-inner{
+    width:100%;
+    max-width:920px;
 }
 
 .badge{
     display:inline-flex;
     align-items:center;
     gap:6px;
-    background:var(--blue-light);
-    color:var(--blue);
-    border:1px solid #dbeafe;
-    border-radius:30px;
+    background:var(--soft);
+    color:var(--primary);
     padding:7px 14px;
-    font-size:12px;
+    border-radius:30px;
+    font-size:13px;
     font-weight:700;
     margin-bottom:20px;
 }
 
 .hero h1{
+    font-size:clamp(40px,6vw,68px);
+    line-height:1.03;
+    letter-spacing:-3px;
     max-width:850px;
     margin:auto;
-    font-size:clamp(40px,6vw,67px);
-    line-height:1.02;
-    letter-spacing:-3px;
 }
 
 .hero h1 .blue{
-    color:var(--blue);
+    color:var(--primary);
 }
 
 .hero-text{
-    max-width:670px;
-    margin:20px auto 0;
+    max-width:690px;
+    margin:22px auto 0;
     color:var(--muted);
     font-size:17px;
 }
@@ -234,176 +200,186 @@ body.menu-open{
 ========================= */
 
 .search-wrapper{
-    width:min(650px,100%);
-    margin:30px auto 0;
+    width:min(820px,100%);
+    margin:34px auto 0;
 }
 
 .search-box{
-    height:56px;
     display:flex;
     align-items:center;
+    gap:5px;
     background:#fff;
     border:1px solid #cbd5e1;
-    border-radius:13px;
+    border-radius:15px;
     padding:5px;
-    box-shadow:0 10px 30px rgba(15,23,42,.08);
-    transition:.2s;
-}
-
-.search-box:focus-within{
-    border-color:#93c5fd;
-    box-shadow:0 0 0 4px #eff6ff;
+    box-shadow:0 12px 35px rgba(37,99,235,.10);
 }
 
 .search-icon{
-    width:40px;
-    color:#94a3b8;
+    width:42px;
+    flex:none;
+    text-align:center;
     font-size:18px;
 }
 
-.search-input{
+#searchInput{
     flex:1;
     min-width:0;
     border:0;
     outline:0;
     background:transparent;
+    padding:11px 4px;
+    font-size:15px;
     color:var(--text);
-    font-size:14px;
 }
 
-.search-input::placeholder{
+#searchInput::placeholder{
     color:#94a3b8;
+}
+
+.search-option{
+    flex:none;
+    border:1px solid var(--border);
+    background:#fff;
+    color:#475569;
+    border-radius:10px;
+    padding:9px 11px;
+    font-size:13px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+.search-option:hover{
+    background:#f8fafc;
 }
 
 .search-btn{
-    height:44px;
+    flex:none;
     border:0;
-    border-radius:9px;
-    background:var(--blue);
-    color:white;
-    padding:0 17px;
-    font-weight:700;
+    background:var(--primary);
+    color:#fff;
+    border-radius:10px;
+    padding:10px 16px;
     font-size:13px;
-    cursor:pointer;
-    white-space:nowrap;
-    transition:.2s;
+    font-weight:700;
 }
 
 .search-btn:hover{
-    background:var(--blue-dark);
+    background:var(--primary-dark);
 }
 
-.search-hint{
-    margin-top:12px;
+.quick{
+    margin-top:13px;
     color:#94a3b8;
-    font-size:11px;
+    font-size:12px;
 }
 
-.example-list{
+.examples{
     margin-top:9px;
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:6px;
+    gap:7px;
 }
 
 .example{
-    background:#fff;
     border:1px solid var(--border);
+    background:#fff;
+    color:#475569;
     border-radius:20px;
-    padding:6px 10px;
-    color:#64748b;
-    font-size:11px;
-    cursor:pointer;
-    transition:.2s;
+    padding:6px 11px;
+    font-size:12px;
 }
 
-.example:hover{
-    color:var(--blue);
-    border-color:#bfdbfe;
-    background:#eff6ff;
+/* IMAGE UPLOAD */
+
+#imageInput{
+    display:none;
 }
 
 /* =========================
-   SEARCH MODE
+   AI MODE
 ========================= */
 
-.search-modes{
-    width:min(850px,100%);
-    margin:30px auto 0;
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:10px;
+.ai-mode{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-top:15px;
 }
 
-.mode-card{
-    background:#fff;
+.mode{
     border:1px solid var(--border);
-    border-radius:12px;
-    padding:13px 8px;
-    cursor:pointer;
-    transition:.2s;
+    background:#fff;
+    color:#64748b;
+    border-radius:20px;
+    padding:6px 12px;
+    font-size:12px;
 }
 
-.mode-card:hover,
-.mode-card.active{
+.mode.active{
+    background:var(--soft);
     border-color:#bfdbfe;
-    background:#eff6ff;
-    transform:translateY(-2px);
-}
-
-.mode-icon{
-    font-size:20px;
-    margin-bottom:5px;
-}
-
-.mode-card strong{
-    display:block;
-    font-size:11px;
-}
-
-.mode-card small{
-    display:block;
-    color:#94a3b8;
-    font-size:9px;
-    margin-top:2px;
+    color:var(--primary);
+    font-weight:700;
 }
 
 /* =========================
    RESULTS
 ========================= */
 
-.results{
+.results-section{
     width:min(1050px,92%);
-    margin:45px auto 0;
+    margin:40px auto;
     display:none;
 }
 
-.results.active{
-    display:block;
-}
-
-.results-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+.results-title{
+    font-size:24px;
     margin-bottom:18px;
 }
 
-.results-header h2{
-    font-size:22px;
-    letter-spacing:-.5px;
+.ai-answer{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:24px;
+    box-shadow:var(--shadow);
+    margin-bottom:20px;
 }
 
-.result-count{
-    color:#94a3b8;
-    font-size:12px;
+.ai-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:15px;
+}
+
+.ai-icon{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    background:var(--soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+}
+
+.ai-header h3{
+    font-size:17px;
+}
+
+.ai-content{
+    color:#475569;
+    font-size:15px;
+    white-space:pre-wrap;
 }
 
 .result-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:16px;
+    gap:15px;
 }
 
 .result-card{
@@ -419,96 +395,95 @@ body.menu-open{
     box-shadow:var(--shadow);
 }
 
-.result-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:10px;
-}
-
 .result-category{
-    display:inline-flex;
-    background:#eff6ff;
-    color:var(--blue);
+    display:inline-block;
+    background:var(--soft);
+    color:var(--primary);
     padding:5px 9px;
     border-radius:7px;
-    font-size:10px;
-    font-weight:800;
+    font-size:11px;
+    font-weight:700;
+    margin-bottom:10px;
 }
 
 .result-card h3{
-    margin-top:11px;
     font-size:17px;
-    line-height:1.3;
+    margin-bottom:7px;
 }
 
 .result-card p{
-    margin-top:7px;
-    color:#64748b;
-    font-size:13px;
+    color:var(--muted);
+    font-size:14px;
 }
 
-.result-meta{
+.difficulty{
+    margin-top:12px;
+    font-size:12px;
+    font-weight:700;
+    color:#475569;
+}
+
+/* IMAGE RESULTS */
+
+.image-results{
+    margin-top:25px;
+}
+
+.image-results h3{
+    margin-bottom:14px;
+}
+
+.image-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.image-placeholder{
+    min-height:150px;
+    background:#f1f5f9;
+    border-radius:14px;
     display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-    margin-top:14px;
+    align-items:center;
+    justify-content:center;
+    color:#94a3b8;
+    text-align:center;
+    padding:15px;
 }
 
-.meta{
-    background:#f8fafc;
-    border:1px solid var(--border);
-    padding:5px 8px;
-    border-radius:7px;
-    color:#64748b;
-    font-size:10px;
-    font-weight:600;
-}
+/* LOADING */
 
 .loading{
-    text-align:center;
-    padding:35px;
-    color:#64748b;
-}
-
-.empty{
     text-align:center;
     background:#fff;
     border:1px solid var(--border);
     border-radius:16px;
-    padding:35px 20px;
-    color:#64748b;
-}
-
-.empty-icon{
-    font-size:35px;
-    margin-bottom:8px;
+    padding:35px;
+    color:var(--muted);
 }
 
 /* =========================
    FEATURES
 ========================= */
 
-.section{
-    width:min(1080px,92%);
-    margin:85px auto;
+.features{
+    width:min(1050px,92%);
+    margin:80px auto;
 }
 
 .section-heading{
     text-align:center;
-    max-width:650px;
-    margin:0 auto 30px;
+    margin-bottom:30px;
 }
 
 .section-heading h2{
     font-size:32px;
-    letter-spacing:-1.2px;
+    letter-spacing:-1px;
 }
 
 .section-heading p{
-    color:var(--muted);
-    font-size:14px;
     margin-top:7px;
+    color:var(--muted);
 }
 
 .feature-grid{
@@ -520,25 +495,19 @@ body.menu-open{
 .feature-card{
     background:#fff;
     border:1px solid var(--border);
-    border-radius:18px;
     padding:28px 23px;
-    transition:.2s;
+    border-radius:18px;
 }
 
-.feature-card:hover{
-    transform:translateY(-3px);
-    box-shadow:var(--shadow);
-}
-
-.feature-icon{
-    width:45px;
-    height:45px;
-    border-radius:12px;
+.icon{
+    width:46px;
+    height:46px;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:var(--blue-light);
-    font-size:21px;
+    background:var(--soft);
+    border-radius:12px;
+    font-size:22px;
     margin-bottom:16px;
 }
 
@@ -549,133 +518,6 @@ body.menu-open{
 
 .feature-card p{
     color:var(--muted);
-    font-size:13px;
-}
-
-/* =========================
-   HOW IT WORKS
-========================= */
-
-.steps{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.step{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:25px;
-}
-
-.step-number{
-    width:35px;
-    height:35px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:var(--blue);
-    color:white;
-    font-weight:800;
-    font-size:12px;
-    margin-bottom:15px;
-}
-
-.step h3{
-    font-size:17px;
-    margin-bottom:7px;
-}
-
-.step p{
-    color:var(--muted);
-    font-size:13px;
-}
-
-/* =========================
-   EXPLORE
-========================= */
-
-.category-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-}
-
-.category{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:18px 12px;
-    text-align:center;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.category:hover{
-    border-color:#bfdbfe;
-    background:#eff6ff;
-    transform:translateY(-2px);
-}
-
-.category-icon{
-    font-size:24px;
-    margin-bottom:7px;
-}
-
-.category strong{
-    font-size:12px;
-}
-
-/* =========================
-   CTA
-========================= */
-
-.cta{
-    width:min(900px,92%);
-    margin:80px auto;
-    background:var(--dark);
-    color:white;
-    border-radius:22px;
-    text-align:center;
-    padding:48px 25px;
-}
-
-.cta h2{
-    font-size:32px;
-    letter-spacing:-1px;
-}
-
-.cta p{
-    color:#94a3b8;
-    max-width:550px;
-    margin:10px auto 20px;
-    font-size:14px;
-}
-
-.cta-button{
-    border:0;
-    background:var(--blue);
-    color:white;
-    padding:12px 20px;
-    border-radius:9px;
-    font-weight:700;
-    cursor:pointer;
-}
-
-/* =========================
-   ABOUT
-========================= */
-
-.about-box{
-    max-width:750px;
-    margin:auto;
-    text-align:center;
-}
-
-.about-box p{
-    color:var(--muted);
     font-size:14px;
 }
 
@@ -683,114 +525,108 @@ body.menu-open{
    FOOTER
 ========================= */
 
-.footer{
+footer{
     background:#0f172a;
     color:#94a3b8;
-    padding:45px 6% 25px;
-}
-
-.footer-grid{
-    width:min(1080px,100%);
-    margin:auto;
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr 1fr;
-    gap:35px;
-}
-
-.footer-logo{
-    color:white;
-    font-size:23px;
-    font-weight:800;
-    margin-bottom:10px;
-}
-
-.footer-logo span{
-    color:#60a5fa;
-}
-
-.footer p{
-    font-size:12px;
-    line-height:1.7;
-}
-
-.footer h4{
-    color:white;
-    font-size:12px;
-    margin-bottom:12px;
-}
-
-.footer a{
-    display:block;
-    color:#94a3b8;
-    text-decoration:none;
-    font-size:12px;
-    margin-bottom:8px;
-}
-
-.footer a:hover{
-    color:white;
-}
-
-.copyright{
-    width:min(1080px,100%);
-    margin:30px auto 0;
-    padding-top:20px;
-    border-top:1px solid rgba(255,255,255,.08);
     text-align:center;
-    font-size:11px;
+    padding:32px 20px;
+    font-size:13px;
+    margin-top:80px;
 }
 
 /* =========================
-   RESPONSIVE
+   MOBILE
 ========================= */
 
-@media(max-width:850px){
+@media(max-width:760px){
+
+    header{
+        height:62px;
+        padding:0 16px;
+    }
 
     .desktop-nav{
         display:none;
     }
 
-    .menu-button{
-        display:flex;
+    .menu-btn{
+        display:block;
     }
 
-    .header{
-        padding:0 18px;
+    .mobile-menu{
+        top:62px;
     }
 
     .hero{
-        padding:55px 16px 50px;
+        min-height:auto;
+        padding:55px 15px 45px;
     }
 
     .hero h1{
-        font-size:43px;
+        font-size:40px;
         letter-spacing:-2px;
     }
 
     .hero-text{
-        font-size:14px;
+        font-size:15px;
+        margin-top:17px;
     }
 
     .search-wrapper{
-        margin-top:25px;
+        margin-top:26px;
     }
 
     .search-box{
-        height:52px;
+        border-radius:13px;
+        padding:4px;
+    }
+
+    .search-icon{
+        width:30px;
+        font-size:16px;
+    }
+
+    #searchInput{
+        font-size:14px;
+        padding:10px 2px;
+    }
+
+    .search-option{
+        font-size:0;
+        width:39px;
+        height:39px;
+        padding:0;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .search-option::before{
+        font-size:17px;
+    }
+
+    #imageSearchBtn::before{
+        content:"🖼️";
+    }
+
+    #cameraBtn::before{
+        content:"📷";
     }
 
     .search-btn{
-        height:40px;
-        padding:0 13px;
-        font-size:12px;
+        font-size:0;
+        width:42px;
+        height:39px;
+        padding:0;
     }
 
-    .search-modes{
-        grid-template-columns:repeat(2,1fr);
+    .search-btn::after{
+        content:"➜";
+        font-size:17px;
     }
 
-    .mode-card:last-child{
-        grid-column:1 / -1;
+    .examples{
+        gap:6px;
     }
 
     .result-grid{
@@ -801,312 +637,178 @@ body.menu-open{
         grid-template-columns:1fr;
     }
 
-    .steps{
-        grid-template-columns:1fr;
-    }
-
-    .category-grid{
+    .image-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .footer-grid{
-        grid-template-columns:1fr 1fr;
+    .results-section{
+        width:94%;
     }
+
 }
 
-@media(max-width:480px){
+/* SMALL PHONES */
 
-    .logo{
-        font-size:22px;
-    }
-
-    .hero{
-        padding:42px 14px 40px;
-    }
-
-    .badge{
-        font-size:10px;
-        padding:6px 10px;
-    }
+@media(max-width:390px){
 
     .hero h1{
-        font-size:37px;
-        line-height:1.06;
-    }
-
-    .hero-text{
-        font-size:13px;
-        line-height:1.6;
-    }
-
-    .search-box{
-        padding:4px;
-        border-radius:11px;
+        font-size:34px;
     }
 
     .search-icon{
-        width:32px;
-        font-size:15px;
+        display:none;
     }
 
-    .search-input{
-        font-size:12px;
+    .search-option{
+        width:36px;
     }
 
     .search-btn{
-        padding:0 11px;
-        font-size:11px;
+        width:38px;
     }
 
-    .example{
-        font-size:10px;
-        padding:5px 8px;
-    }
-
-    .search-modes{
-        gap:7px;
-        margin-top:24px;
-    }
-
-    .mode-card{
-        padding:11px 5px;
-    }
-
-    .mode-card strong{
-        font-size:10px;
-    }
-
-    .section{
-        margin:65px auto;
-    }
-
-    .section-heading h2{
-        font-size:26px;
-    }
-
-    .category-grid{
-        gap:8px;
-    }
-
-    .category{
-        padding:14px 7px;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr;
-    }
-
-    .cta{
-        padding:38px 18px;
-    }
-
-    .cta h2{
-        font-size:26px;
-    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
+<header>
 
-<header class="header">
-
-<a href="#home" class="logo">
+<div class="logo">
 Use<span>What</span>
-</a>
+</div>
 
 <nav class="desktop-nav">
+<a href="#home" data-i18n="home">Home</a>
+<a href="#features" data-i18n="how">How It Works</a>
+<a href="#about" data-i18n="about">About</a>
 
-<a href="#home">Home</a>
-<a href="#how">How It Works</a>
-<a href="#explore">Explore</a>
-<a href="#ai">AI Search</a>
-<a href="#about">About</a>
-
-<select class="language" id="language">
+<select id="languageSelect" class="language">
 <option value="en">English</option>
 <option value="bn">বাংলা</option>
 <option value="hi">हिन्दी</option>
 <option value="es">Español</option>
 <option value="fr">Français</option>
+<option value="de">Deutsch</option>
+<option value="pt">Português</option>
+<option value="ar">العربية</option>
+<option value="zh">中文</option>
+<option value="ja">日本語</option>
 </select>
-
 </nav>
 
-<button class="menu-button" id="menuButton">
-☰
-</button>
+<button class="menu-btn" id="menuBtn">☰</button>
+
+<div class="mobile-menu" id="mobileMenu">
+<a href="#home" data-i18n="home">Home</a>
+<a href="#features" data-i18n="how">How It Works</a>
+<a href="#about" data-i18n="about">About</a>
+
+<select id="mobileLanguage" class="language">
+<option value="en">English</option>
+<option value="bn">বাংলা</option>
+<option value="hi">हिन्दी</option>
+<option value="es">Español</option>
+<option value="fr">Français</option>
+<option value="de">Deutsch</option>
+<option value="pt">Português</option>
+<option value="ar">العربية</option>
+<option value="zh">中文</option>
+<option value="ja">日本語</option>
+</select>
+</div>
 
 </header>
 
 
-<!-- MOBILE MENU -->
-
-<div class="overlay" id="overlay"></div>
-
-<aside class="mobile-menu" id="mobileMenu">
-
-<div class="mobile-menu-title">
-Main Menu
-</div>
-
-<a href="#home">🏠 Home</a>
-<a href="#ai">🔎 AI Search</a>
-<a href="#explore">✨ Explore Ideas</a>
-
-<div class="menu-divider"></div>
-
-<div class="mobile-menu-title">
-UseWhat Tools
-</div>
-
-<a href="#modes">🛠 Make & Create</a>
-<a href="#modes">💰 Save Money</a>
-<a href="#modes">♻️ Reuse & Repair</a>
-<a href="#modes">💵 Make Money</a>
-<a href="#modes">❓ I Don't Know</a>
-
-<div class="menu-divider"></div>
-
-<div class="mobile-menu-title">
-Information
-</div>
-
-<a href="#how">📖 How It Works</a>
-<a href="#about">ℹ️ About UseWhat</a>
-
-<div class="menu-divider"></div>
-
-<label class="mobile-menu-title" for="mobileLanguage">
-Language
-</label>
-
-<select class="language" id="mobileLanguage">
-<option value="en">English</option>
-<option value="bn">বাংলা</option>
-<option value="hi">हिन्दी</option>
-<option value="es">Español</option>
-<option value="fr">Français</option>
-</select>
-
-</aside>
-
-
-<!-- =========================
-     HERO
-========================= -->
-
 <section class="hero" id="home">
 
-<div class="badge">
-✨ Smart solutions for everyday life
+<div class="hero-inner">
+
+<div class="badge" id="badge">
+✨ Discover more from what you already have
 </div>
 
 <h1>
-Turn What You Have Into
+<span id="heroLine1">Turn What You Have Into</span>
 <br>
-<span class="blue">What You Need.</span>
+<span class="blue" id="heroLine2">What You Need.</span>
 </h1>
 
-<p class="hero-text">
-Tell UseWhat what you have, what you need,
-or what problem you're facing. Discover practical
-ideas, solutions, ways to save money, reuse things,
-and create something useful.
+<p class="hero-text" id="heroText">
+Ask UseWhat anything. Find ideas, solutions, repairs,
+recipes, ways to save money, reuse items, and more.
 </p>
 
 
-<!-- SEARCH -->
-
-<div class="search-wrapper" id="ai">
+<div class="search-wrapper">
 
 <div class="search-box">
 
-<div class="search-icon">
-🔍
-</div>
+<div class="search-icon">🔍</div>
 
 <input
-class="search-input"
 id="searchInput"
 type="text"
 autocomplete="off"
-placeholder="What do you have or need help with?"
+placeholder="Ask UseWhat anything..."
 >
 
-<button class="search-btn" id="searchBtn">
-Find Solutions
+<button
+class="search-option"
+id="imageSearchBtn"
+title="Image Search">
+🖼️ Image
+</button>
+
+<button
+class="search-option"
+id="cameraBtn"
+title="Upload or take a photo">
+📷
+</button>
+
+<button
+class="search-btn"
+id="searchBtn">
+Search
 </button>
 
 </div>
 
-<div class="search-hint">
+<input
+type="file"
+id="imageInput"
+accept="image/*"
+capture="environment"
+>
+
+<div class="quick" id="quickText">
 Try something like:
 </div>
 
-<div class="example-list">
+<div class="examples">
 
-<button class="example">
-Plastic bottles
+<button class="example">Plastic bottles</button>
+<button class="example">Broken chair</button>
+<button class="example">Rice & eggs</button>
+<button class="example">Old clothes</button>
+
+</div>
+
+<div class="ai-mode">
+
+<button class="mode active" id="aiMode">
+🤖 AI Search
 </button>
 
-<button class="example">
-Old clothes
-</button>
-
-<button class="example">
-Broken chair
-</button>
-
-<button class="example">
-Rice & eggs
-</button>
-
-<button class="example">
-Save electricity
+<button class="mode" id="imageMode">
+🖼️ Image Search
 </button>
 
 </div>
 
-</div>
-
-
-<!-- SEARCH MODES -->
-
-<div class="search-modes" id="modes">
-
-<div class="mode-card active" data-mode="create">
-<div class="mode-icon">🛠️</div>
-<strong>Make & Create</strong>
-<small>Build something useful</small>
-</div>
-
-<div class="mode-card" data-mode="save">
-<div class="mode-icon">💰</div>
-<strong>Save Money</strong>
-<small>Spend less</small>
-</div>
-
-<div class="mode-card" data-mode="reuse">
-<div class="mode-icon">♻️</div>
-<strong>Reuse & Repair</strong>
-<small>Give it new life</small>
-</div>
-
-<div class="mode-card" data-mode="money">
-<div class="mode-icon">💵</div>
-<strong>Make Money</strong>
-<small>Find opportunities</small>
-</div>
-
-<div class="mode-card" data-mode="unknown">
-<div class="mode-icon">✨</div>
-<strong>I Don't Know</strong>
-<small>Surprise me</small>
 </div>
 
 </div>
@@ -1114,191 +816,56 @@ Save electricity
 </section>
 
 
-<!-- =========================
-     RESULTS
-========================= -->
+<section class="results-section" id="resultsSection">
 
-<section class="results" id="resultsSection">
-
-<div class="results-header">
-
-<h2 id="resultsTitle">
-Ideas for you
+<h2 class="results-title" id="resultsTitle">
+Results
 </h2>
 
-<span class="result-count" id="resultCount"></span>
-
-</div>
+<div id="aiAnswer"></div>
 
 <div class="result-grid" id="results"></div>
 
-</section>
+<div class="image-results" id="imageResults" style="display:none;">
 
+<h3 id="imageResultsTitle">
+🖼️ Image Results
+</h3>
 
-<!-- =========================
-     EXPLORE
-========================= -->
-
-<section class="section" id="explore">
-
-<div class="section-heading">
-
-<h2>Explore Possibilities</h2>
-
-<p>
-Find useful ideas by category.
-</p>
-
-</div>
-
-<div class="category-grid">
-
-<div class="category" data-search="gardening">
-<div class="category-icon">🌱</div>
-<strong>Gardening</strong>
-</div>
-
-<div class="category" data-search="DIY">
-<div class="category-icon">🛠️</div>
-<strong>DIY</strong>
-</div>
-
-<div class="category" data-search="food">
-<div class="category-icon">🍳</div>
-<strong>Food & Cooking</strong>
-</div>
-
-<div class="category" data-search="repair">
-<div class="category-icon">🔧</div>
-<strong>Repair</strong>
-</div>
-
-<div class="category" data-search="recycling">
-<div class="category-icon">♻️</div>
-<strong>Recycling</strong>
-</div>
-
-<div class="category" data-search="clothing">
-<div class="category-icon">👕</div>
-<strong>Clothing</strong>
-</div>
-
-<div class="category" data-search="money">
-<div class="category-icon">💰</div>
-<strong>Save Money</strong>
-</div>
-
-<div class="category" data-search="business">
-<div class="category-icon">💵</div>
-<strong>Make Money</strong>
-</div>
+<div class="image-grid" id="imageGrid"></div>
 
 </div>
 
 </section>
 
 
-<!-- =========================
-     HOW IT WORKS
-========================= -->
-
-<section class="section" id="how">
+<section class="features" id="features">
 
 <div class="section-heading">
 
-<h2>How UseWhat Works</h2>
+<h2 id="featureTitle">
+One place. Many possibilities.
+</h2>
 
-<p>
-Three simple steps to find a better solution.
-</p>
-
-</div>
-
-<div class="steps">
-
-<div class="step">
-
-<div class="step-number">
-01
-</div>
-
-<h3>Tell Us</h3>
-
-<p>
-Tell UseWhat what you have,
-what you need, or what problem
-you're trying to solve.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">
-02
-</div>
-
-<h3>We Understand</h3>
-
-<p>
-UseWhat searches its knowledge
-base and understands your request
-to find the most relevant options.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">
-03
-</div>
-
-<h3>Get Solutions</h3>
-
-<p>
-Get practical ideas, alternatives,
-instructions, and useful next steps.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     FEATURES
-========================= -->
-
-<section class="section">
-
-<div class="section-heading">
-
-<h2>One Place. Many Possibilities.</h2>
-
-<p>
+<p id="featureSubtitle">
 Use what you already have in smarter ways.
 </p>
 
 </div>
 
+
 <div class="feature-grid">
 
 <div class="feature-card">
 
-<div class="feature-icon">
-🛠️
-</div>
+<div class="icon">🤖</div>
 
-<h3>Make & Create</h3>
+<h3 id="makeTitle">
+AI Answers
+</h3>
 
-<p>
-Discover useful things you can create
-from materials and items already around you.
+<p id="makeText">
+Ask questions naturally and get practical answers and solutions.
 </p>
 
 </div>
@@ -1306,15 +873,14 @@ from materials and items already around you.
 
 <div class="feature-card">
 
-<div class="feature-icon">
-💰
-</div>
+<div class="icon">📷</div>
 
-<h3>Save Money</h3>
+<h3 id="saveTitle">
+Search With Images
+</h3>
 
-<p>
-Find practical alternatives before
-spending money on something new.
+<p id="saveText">
+Take a photo or upload an image and let UseWhat understand it.
 </p>
 
 </div>
@@ -1322,15 +888,14 @@ spending money on something new.
 
 <div class="feature-card">
 
-<div class="feature-icon">
-♻️
-</div>
+<div class="icon">♻️</div>
 
-<h3>Reuse & Repair</h3>
+<h3 id="reuseTitle">
+Reuse & Solve
+</h3>
 
-<p>
-Give old, unused, or broken things
-another useful life.
+<p id="reuseText">
+Discover ways to repair, reuse, create, save money, and solve everyday problems.
 </p>
 
 </div>
@@ -1340,127 +905,16 @@ another useful life.
 </section>
 
 
-<!-- =========================
-     CTA
-========================= -->
-
-<section class="cta">
-
-<h2>Have a problem to solve?</h2>
-
-<p>
-Tell UseWhat what you're dealing with.
-We'll help you explore practical possibilities.
-</p>
-
-<button class="cta-button" id="ctaButton">
-Ask UseWhat
-</button>
-
-</section>
-
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section class="section" id="about">
-
-<div class="section-heading">
-
-<h2>About UseWhat</h2>
-
-</div>
-
-<div class="about-box">
-
-<p>
-UseWhat is designed to help people get more value
-from the things, resources, skills, and opportunities
-they already have. Instead of immediately buying
-something new, UseWhat helps you explore what is
-already possible.
-</p>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer class="footer">
-
-<div class="footer-grid">
-
-<div>
-
-<div class="footer-logo">
-Use<span>What</span>
-</div>
-
-<p>
-Make more from what you have.
-Discover practical solutions,
-save money, reuse things,
-and create new possibilities.
-</p>
-
-</div>
-
-
-<div>
-
-<h4>Explore</h4>
-
-<a href="#home">Home</a>
-<a href="#ai">AI Search</a>
-<a href="#explore">Explore</a>
-<a href="#how">How It Works</a>
-
-</div>
-
-
-<div>
-
-<h4>Tools</h4>
-
-<a href="#modes">Make & Create</a>
-<a href="#modes">Save Money</a>
-<a href="#modes">Reuse & Repair</a>
-<a href="#modes">Make Money</a>
-
-</div>
-
-
-<div>
-
-<h4>Company</h4>
-
-<a href="#about">About</a>
-<a href="#">Privacy</a>
-<a href="#">Terms</a>
-<a href="#">Contact</a>
-
-</div>
-
-</div>
-
-
-<div class="copyright">
+<footer id="about">
 © 2026 UseWhat — Make More From What You Have.
-</div>
-
 </footer>
 
 
 <script>
 
-/* =========================================
+/* ==========================================
    SUPABASE
-========================================= */
+========================================== */
 
 const SUPABASE_URL =
 "https://ohzqkhefigdzzzvpgrep.supabase.co";
@@ -1469,18 +923,15 @@ const SUPABASE_KEY =
 "sb_publishable_XKuSD9VWGxKBcjwPiQtKfA_szPm0ZTj";
 
 
-/* =========================================
+/* ==========================================
    ELEMENTS
-========================================= */
+========================================== */
 
-const menuButton =
-document.getElementById("menuButton");
+const languageSelect =
+document.getElementById("languageSelect");
 
-const mobileMenu =
-document.getElementById("mobileMenu");
-
-const overlay =
-document.getElementById("overlay");
+const mobileLanguage =
+document.getElementById("mobileLanguage");
 
 const searchInput =
 document.getElementById("searchInput");
@@ -1488,124 +939,493 @@ document.getElementById("searchInput");
 const searchBtn =
 document.getElementById("searchBtn");
 
+const imageSearchBtn =
+document.getElementById("imageSearchBtn");
+
+const cameraBtn =
+document.getElementById("cameraBtn");
+
+const imageInput =
+document.getElementById("imageInput");
+
 const resultsSection =
 document.getElementById("resultsSection");
 
 const results =
 document.getElementById("results");
 
-const resultCount =
-document.getElementById("resultCount");
+const aiAnswer =
+document.getElementById("aiAnswer");
+
+const imageResults =
+document.getElementById("imageResults");
+
+const imageGrid =
+document.getElementById("imageGrid");
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const mobileMenu =
+document.getElementById("mobileMenu");
+
+let currentMode="ai";
 
 
-/* =========================================
-   MOBILE MENU
-========================================= */
+/* ==========================================
+   LANGUAGE DATA
+========================================== */
 
-function closeMenu(){
+const LANG={
 
+en:{
+home:"Home",
+how:"How It Works",
+about:"About",
+badge:"✨ Discover more from what you already have",
+line1:"Turn What You Have Into",
+line2:"What You Need.",
+hero:"Ask UseWhat anything. Find ideas, solutions, repairs, recipes, ways to save money, reuse items, and more.",
+placeholder:"Ask UseWhat anything...",
+search:"Search",
+quick:"Try something like:",
+results:"Results",
+imageResults:"🖼️ Image Results",
+featureTitle:"One place. Many possibilities.",
+featureSubtitle:"Use what you already have in smarter ways.",
+makeTitle:"AI Answers",
+makeText:"Ask questions naturally and get practical answers and solutions.",
+saveTitle:"Search With Images",
+saveText:"Take a photo or upload an image and let UseWhat understand it.",
+reuseTitle:"Reuse & Solve",
+reuseText:"Discover ways to repair, reuse, create, save money, and solve everyday problems.",
+loading:"Finding the best answer...",
+empty:"No matching results found. Try another question.",
+error:"Something went wrong. Please try again."
+},
+
+bn:{
+home:"হোম",
+how:"কীভাবে কাজ করে",
+about:"আমাদের সম্পর্কে",
+badge:"✨ আপনার কাছে থাকা জিনিস থেকে নতুন সম্ভাবনা খুঁজুন",
+line1:"আপনার কাছে যা আছে তা দিয়ে",
+line2:"আপনার প্রয়োজনীয় কিছু তৈরি করুন।",
+hero:"UseWhat-কে যেকোনো প্রশ্ন করুন। আইডিয়া, সমাধান, মেরামত, রেসিপি, টাকা বাঁচানো এবং পুনঃব্যবহারের উপায় খুঁজে নিন।",
+placeholder:"UseWhat-কে যেকোনো প্রশ্ন করুন...",
+search:"সার্চ",
+quick:"এমন কিছু লিখে দেখুন:",
+results:"ফলাফল",
+imageResults:"🖼️ ছবির ফলাফল",
+featureTitle:"এক জায়গায় অনেক সম্ভাবনা।",
+featureSubtitle:"আপনার কাছে থাকা জিনিস আরও বুদ্ধিমানের মতো ব্যবহার করুন।",
+makeTitle:"AI উত্তর",
+makeText:"স্বাভাবিকভাবে প্রশ্ন করুন এবং ব্যবহারিক উত্তর ও সমাধান পান।",
+saveTitle:"ছবি দিয়ে সার্চ",
+saveText:"ছবি তুলুন বা আপলোড করুন এবং UseWhat-কে ছবিটি বুঝতে দিন।",
+reuseTitle:"পুনঃব্যবহার ও সমাধান",
+reuseText:"মেরামত, পুনঃব্যবহার, তৈরি, টাকা বাঁচানো এবং দৈনন্দিন সমস্যার সমাধান খুঁজুন।",
+loading:"সেরা উত্তর খোঁজা হচ্ছে...",
+empty:"কোনো ফলাফল পাওয়া যায়নি। অন্য প্রশ্ন চেষ্টা করুন।",
+error:"কিছু সমস্যা হয়েছে। আবার চেষ্টা করুন।"
+},
+
+hi:{
+home:"होम",
+how:"यह कैसे काम करता है",
+about:"हमारे बारे में",
+badge:"✨ आपके पास मौजूद चीज़ों से नई संभावनाएँ खोजें",
+line1:"जो आपके पास है उससे",
+line2:"जो चाहिए वह बनाएं।",
+hero:"UseWhat से कोई भी सवाल पूछें और आइडिया, समाधान, मरम्मत, रेसिपी और पैसे बचाने के तरीके खोजें।",
+placeholder:"UseWhat से कुछ भी पूछें...",
+search:"सर्च",
+quick:"ऐसा कुछ लिखें:",
+results:"परिणाम",
+imageResults:"🖼️ इमेज परिणाम",
+featureTitle:"एक जगह। कई संभावनाएँ।",
+featureSubtitle:"जो आपके पास है उसका बेहतर उपयोग करें।",
+makeTitle:"AI उत्तर",
+makeText:"स्वाभाविक सवाल पूछें और उपयोगी समाधान पाएं।",
+saveTitle:"इमेज से खोजें",
+saveText:"फोटो लें या अपलोड करें और UseWhat उसे समझेगा।",
+reuseTitle:"दोबारा उपयोग और समाधान",
+reuseText:"मरम्मत, पुन: उपयोग, निर्माण और बचत के तरीके खोजें।",
+loading:"सबसे अच्छा उत्तर खोजा जा रहा है...",
+empty:"कोई परिणाम नहीं मिला। दूसरा सवाल आज़माएं।",
+error:"कुछ गलत हुआ। फिर कोशिश करें।"
+},
+
+es:{
+home:"Inicio",
+how:"Cómo funciona",
+about:"Acerca de",
+badge:"✨ Descubre más con lo que ya tienes",
+line1:"Convierte lo que tienes en",
+line2:"lo que necesitas.",
+hero:"Pregunta cualquier cosa a UseWhat y descubre ideas, soluciones, reparaciones, recetas y formas de ahorrar.",
+placeholder:"Pregunta lo que quieras...",
+search:"Buscar",
+quick:"Prueba algo como:",
+results:"Resultados",
+imageResults:"🖼️ Resultados de imágenes",
+featureTitle:"Un lugar. Muchas posibilidades.",
+featureSubtitle:"Usa mejor lo que ya tienes.",
+makeTitle:"Respuestas de IA",
+makeText:"Haz preguntas y obtén soluciones prácticas.",
+saveTitle:"Buscar con imágenes",
+saveText:"Toma o sube una foto para que UseWhat la entienda.",
+reuseTitle:"Reutilizar y resolver",
+reuseText:"Encuentra formas de reparar, reutilizar, crear y ahorrar.",
+loading:"Buscando la mejor respuesta...",
+empty:"No se encontraron resultados.",
+error:"Algo salió mal. Inténtalo de nuevo."
+},
+
+fr:{
+home:"Accueil",
+how:"Comment ça marche",
+about:"À propos",
+badge:"✨ Découvrez plus avec ce que vous avez déjà",
+line1:"Transformez ce que vous avez en",
+line2:"ce dont vous avez besoin.",
+hero:"Posez n'importe quelle question à UseWhat et découvrez des idées, solutions, réparations, recettes et économies.",
+placeholder:"Demandez n'importe quoi...",
+search:"Rechercher",
+quick:"Essayez par exemple :",
+results:"Résultats",
+imageResults:"🖼️ Résultats d'images",
+featureTitle:"Un endroit. Beaucoup de possibilités.",
+featureSubtitle:"Utilisez mieux ce que vous avez déjà.",
+makeTitle:"Réponses IA",
+makeText:"Posez vos questions et obtenez des solutions pratiques.",
+saveTitle:"Recherche par image",
+saveText:"Prenez ou téléchargez une photo pour que UseWhat l'analyse.",
+reuseTitle:"Réutiliser et résoudre",
+reuseText:"Trouvez des façons de réparer, réutiliser, créer et économiser.",
+loading:"Recherche de la meilleure réponse...",
+empty:"Aucun résultat trouvé.",
+error:"Une erreur s'est produite."
+},
+
+de:{
+home:"Startseite",
+how:"So funktioniert es",
+about:"Über uns",
+badge:"✨ Entdecke mehr mit dem, was du bereits hast",
+line1:"Mach aus dem, was du hast,",
+line2:"was du brauchst.",
+hero:"Stelle UseWhat jede Frage und finde Ideen, Lösungen, Reparaturen, Rezepte und Möglichkeiten zum Sparen.",
+placeholder:"Frage UseWhat alles...",
+search:"Suchen",
+quick:"Versuche zum Beispiel:",
+results:"Ergebnisse",
+imageResults:"🖼️ Bildergebnisse",
+featureTitle:"Ein Ort. Viele Möglichkeiten.",
+featureSubtitle:"Nutze besser, was du bereits hast.",
+makeTitle:"KI-Antworten",
+makeText:"Stelle Fragen und erhalte praktische Lösungen.",
+saveTitle:"Mit Bildern suchen",
+saveText:"Nimm ein Foto auf oder lade es hoch.",
+reuseTitle:"Wiederverwenden und lösen",
+reuseText:"Finde Möglichkeiten zum Reparieren, Wiederverwenden, Erstellen und Sparen.",
+loading:"Beste Antwort wird gesucht...",
+empty:"Keine Ergebnisse gefunden.",
+error:"Etwas ist schiefgelaufen."
+},
+
+pt:{
+home:"Início",
+how:"Como funciona",
+about:"Sobre",
+badge:"✨ Descubra mais usando o que você já tem",
+line1:"Transforme o que você tem em",
+line2:"o que você precisa.",
+hero:"Pergunte qualquer coisa ao UseWhat e encontre ideias, soluções, reparos, receitas e formas de economizar.",
+placeholder:"Pergunte qualquer coisa...",
+search:"Pesquisar",
+quick:"Experimente algo como:",
+results:"Resultados",
+imageResults:"🖼️ Resultados de imagens",
+featureTitle:"Um lugar. Muitas possibilidades.",
+featureSubtitle:"Use melhor o que você já tem.",
+makeTitle:"Respostas de IA",
+makeText:"Faça perguntas e receba soluções práticas.",
+saveTitle:"Pesquisar com imagens",
+saveText:"Tire ou envie uma foto para análise.",
+reuseTitle:"Reutilizar e resolver",
+reuseText:"Encontre maneiras de reparar, reutilizar, criar e economizar.",
+loading:"Procurando a melhor resposta...",
+empty:"Nenhum resultado encontrado.",
+error:"Algo deu errado."
+},
+
+ar:{
+home:"الرئيسية",
+how:"كيف يعمل",
+about:"حول",
+badge:"✨ اكتشف المزيد مما لديك بالفعل",
+line1:"حوّل ما لديك إلى",
+line2:"ما تحتاجه.",
+hero:"اسأل UseWhat عن أي شيء واحصل على أفكار وحلول وإصلاحات ووصفات وطرق لتوفير المال.",
+placeholder:"اسأل UseWhat عن أي شيء...",
+search:"بحث",
+quick:"جرّب شيئًا مثل:",
+results:"النتائج",
+imageResults:"🖼️ نتائج الصور",
+featureTitle:"مكان واحد. إمكانيات كثيرة.",
+featureSubtitle:"استخدم ما لديك بطريقة أكثر ذكاءً.",
+makeTitle:"إجابات الذكاء الاصطناعي",
+makeText:"اطرح الأسئلة واحصل على حلول عملية.",
+saveTitle:"البحث بالصور",
+saveText:"التقط صورة أو ارفعها ودع UseWhat يحللها.",
+reuseTitle:"إعادة الاستخدام والحلول",
+reuseText:"اكتشف طرق الإصلاح وإعادة الاستخدام والتوفير.",
+loading:"جارٍ البحث عن أفضل إجابة...",
+empty:"لم يتم العثور على نتائج.",
+error:"حدث خطأ. حاول مرة أخرى."
+},
+
+zh:{
+home:"首页",
+how:"工作原理",
+about:"关于我们",
+badge:"✨ 用你已有的东西发现更多可能",
+line1:"把你拥有的变成",
+line2:"你需要的。",
+hero:"向 UseWhat 提出任何问题，寻找创意、解决方案、维修方法、食谱和省钱方法。",
+placeholder:"向 UseWhat 提问...",
+search:"搜索",
+quick:"试试输入：",
+results:"结果",
+imageResults:"🖼️ 图片结果",
+featureTitle:"一个地方。无限可能。",
+featureSubtitle:"更聪明地使用你已经拥有的东西。",
+makeTitle:"AI 答案",
+makeText:"自然地提问并获得实用解决方案。",
+saveTitle:"图片搜索",
+saveText:"拍照或上传图片，让 UseWhat 理解它。",
+reuseTitle:"再利用与解决",
+reuseText:"寻找维修、再利用、创造和省钱的方法。",
+loading:"正在寻找最佳答案...",
+empty:"没有找到结果。",
+error:"出现问题，请重试。"
+},
+
+ja:{
+home:"ホーム",
+how:"使い方",
+about:"概要",
+badge:"✨ 今あるものから新しい可能性を発見",
+line1:"持っているものを",
+line2:"必要なものに変える。",
+hero:"UseWhatに何でも質問してください。アイデア、修理、レシピ、節約方法などを見つけられます。",
+placeholder:"UseWhatに質問...",
+search:"検索",
+quick:"例えば：",
+results:"結果",
+imageResults:"🖼️ 画像結果",
+featureTitle:"一つの場所。たくさんの可能性。",
+featureSubtitle:"今あるものをもっと賢く使いましょう。",
+makeTitle:"AI回答",
+makeText:"質問して実用的な解決策を見つけましょう。",
+saveTitle:"画像検索",
+saveText:"写真を撮るかアップロードして分析できます。",
+reuseTitle:"再利用と解決",
+reuseText:"修理、再利用、制作、節約の方法を探します。",
+loading:"最適な回答を探しています...",
+empty:"結果が見つかりませんでした。",
+error:"問題が発生しました。"
+}
+
+};
+
+
+/* ==========================================
+   LANGUAGE
+========================================== */
+
+function applyLanguage(lang){
+
+    const t=LANG[lang]||LANG.en;
+
+    document.querySelectorAll("[data-i18n]")
+    .forEach(el=>{
+        const key=el.getAttribute("data-i18n");
+        if(t[key]) el.textContent=t[key];
+    });
+
+    document.getElementById("badge").textContent=t.badge;
+    document.getElementById("heroLine1").textContent=t.line1;
+    document.getElementById("heroLine2").textContent=t.line2;
+    document.getElementById("heroText").textContent=t.hero;
+
+    searchInput.placeholder=t.placeholder;
+    searchBtn.textContent=t.search;
+    document.getElementById("quickText").textContent=t.quick;
+    document.getElementById("resultsTitle").textContent=t.results;
+    document.getElementById("imageResultsTitle").textContent=t.imageResults;
+
+    document.getElementById("featureTitle").textContent=t.featureTitle;
+    document.getElementById("featureSubtitle").textContent=t.featureSubtitle;
+    document.getElementById("makeTitle").textContent=t.makeTitle;
+    document.getElementById("makeText").textContent=t.makeText;
+    document.getElementById("saveTitle").textContent=t.saveTitle;
+    document.getElementById("saveText").textContent=t.saveText;
+    document.getElementById("reuseTitle").textContent=t.reuseTitle;
+    document.getElementById("reuseText").textContent=t.reuseText;
+
+    document.documentElement.lang=lang;
+
+    document.body.dir=
+        lang==="ar" ? "rtl" : "ltr";
+
+    languageSelect.value=lang;
+    mobileLanguage.value=lang;
+
+    localStorage.setItem("usewhat_language",lang);
+}
+
+
+languageSelect.addEventListener(
+"change",
+()=>{
+    applyLanguage(languageSelect.value);
+});
+
+
+mobileLanguage.addEventListener(
+"change",
+()=>{
+    applyLanguage(mobileLanguage.value);
     mobileMenu.classList.remove("active");
-    overlay.classList.remove("active");
-    document.body.classList.remove("menu-open");
+});
 
-}
 
-function toggleMenu(){
+/* ==========================================
+   MOBILE MENU
+========================================== */
 
+menuBtn.addEventListener(
+"click",
+()=>{
     mobileMenu.classList.toggle("active");
-    overlay.classList.toggle("active");
-    document.body.classList.toggle("menu-open");
+});
 
-}
-
-menuButton.addEventListener(
-    "click",
-    toggleMenu
-);
-
-overlay.addEventListener(
-    "click",
-    closeMenu
-);
 
 document.querySelectorAll(".mobile-menu a")
 .forEach(link=>{
-
     link.addEventListener(
-        "click",
-        closeMenu
-    );
-
-});
-
-
-/* =========================================
-   MODE SELECTION
-========================================= */
-
-let selectedMode="create";
-
-document.querySelectorAll(".mode-card")
-.forEach(card=>{
-
-    card.addEventListener("click",()=>{
-
-        document
-        .querySelectorAll(".mode-card")
-        .forEach(x=>
-            x.classList.remove("active")
-        );
-
-        card.classList.add("active");
-
-        selectedMode =
-        card.dataset.mode;
-
-        searchInput.focus();
-
+    "click",
+    ()=>{
+        mobileMenu.classList.remove("active");
     });
-
 });
 
 
-/* =========================================
-   SEARCH
-========================================= */
+/* ==========================================
+   MODE
+========================================== */
+
+const aiMode=document.getElementById("aiMode");
+const imageMode=document.getElementById("imageMode");
+
+aiMode.addEventListener(
+"click",
+()=>{
+    currentMode="ai";
+    aiMode.classList.add("active");
+    imageMode.classList.remove("active");
+});
+
+
+imageMode.addEventListener(
+"click",
+()=>{
+    currentMode="image";
+    imageMode.classList.add("active");
+    aiMode.classList.remove("active");
+    searchInput.focus();
+});
+
+
+/* ==========================================
+   CAMERA / UPLOAD
+========================================== */
+
+cameraBtn.addEventListener(
+"click",
+()=>{
+    imageInput.click();
+});
+
+
+imageInput.addEventListener(
+"change",
+()=>{
+    if(imageInput.files.length){
+        analyzeImage(imageInput.files[0]);
+    }
+});
+
+
+/* ==========================================
+   AI SEARCH
+========================================== */
 
 async function searchIdeas(){
 
-    const query =
-    searchInput.value.trim();
+    const query=
+        searchInput.value.trim();
+
+    const lang=
+        languageSelect.value;
+
+    const t=
+        LANG[lang];
 
     if(!query){
 
         searchInput.focus();
 
         return;
-
     }
 
-    resultsSection.classList.add("active");
+    resultsSection.style.display="block";
 
-    results.innerHTML =
-    `<div class="loading">
-        🔎 Finding useful ideas...
-    </div>`;
+    aiAnswer.innerHTML=
+    `<div class="loading">🤖 ${t.loading}</div>`;
 
-    resultCount.textContent="";
+    results.innerHTML="";
+    imageResults.style.display="none";
 
+    /*
+       IMPORTANT:
+
+       This frontend is ready for
+       Cloudflare Worker AI.
+
+       Worker endpoint will be added
+       in the next step.
+
+       For now we search Supabase.
+    */
 
     try{
 
-        /*
-        STEP 1
-        Search item keywords
-        */
-
-        const keywordResponse =
+        const response=
         await fetch(
-            SUPABASE_URL +
-            "/rest/v1/item_keywords?select=item,keyword",
+            SUPABASE_URL+
+            "/rest/v1/ideas?select=title,category,items,description,difficulty&or=("+
+            "title.ilike.*"+
+            encodeURIComponent(query)+
+            "*,"+
+            "items.ilike.*"+
+            encodeURIComponent(query)+
+            "*,"+
+            "description.ilike.*"+
+            encodeURIComponent(query)+
+            "*)&limit=10",
             {
                 headers:{
                     "apikey":SUPABASE_KEY,
@@ -1615,457 +1435,261 @@ async function searchIdeas(){
             }
         );
 
+        let data=[];
 
-        if(!keywordResponse.ok){
-
-            throw new Error(
-                "Keyword database error"
-            );
-
+        if(response.ok){
+            data=await response.json();
         }
 
-
-        const keywords =
-        await keywordResponse.json();
-
-
-        const normalized =
-        query.toLowerCase();
-
-
         /*
-        STEP 2
-        Find matching items
+           If database has results,
+           show them.
         */
 
-        const matches =
-        keywords.filter(row=>{
+        if(data.length){
 
-            const item =
-            String(row.item || "")
-            .toLowerCase();
-
-            const keyword =
-            String(row.keyword || "")
-            .toLowerCase();
-
-            return(
-                normalized.includes(keyword) ||
-                keyword.includes(normalized) ||
-                normalized.includes(item) ||
-                item.includes(normalized)
-            );
-
-        });
-
-
-        const relatedItems =
-        [...new Set(
-            matches.map(
-                row=>row.item
-            )
-        )];
-
-
-        let ideas=[];
-
-
-        /*
-        STEP 3
-        Search ideas table
-        */
-
-        if(relatedItems.length){
-
-            const conditions =
-            relatedItems
-            .slice(0,10)
-            .map(item=>
-                `items.ilike.*${encodeURIComponent(item)}*`
-            )
-            .join(",");
-
-
-            const response =
-            await fetch(
-                SUPABASE_URL +
-                "/rest/v1/ideas?select=title,category,items,description,difficulty,language&or=(" +
-                conditions +
-                ")",
-                {
-                    headers:{
-                        "apikey":SUPABASE_KEY,
-                        "Authorization":
-                        "Bearer "+SUPABASE_KEY
-                    }
-                }
-            );
-
-
-            if(response.ok){
-
-                ideas =
-                await response.json();
-
-            }
-
-        }
-
-
-        /*
-        STEP 4
-        Direct search fallback
-        */
-
-        if(!ideas.length){
-
-            const response =
-            await fetch(
-                SUPABASE_URL +
-                "/rest/v1/ideas?select=title,category,items,description,difficulty,language&or=" +
-                "(" +
-                "title.ilike.*"+
-                encodeURIComponent(query)+
-                "*,"+
-                "items.ilike.*"+
-                encodeURIComponent(query)+
-                "*,"+
-                "description.ilike.*"+
-                encodeURIComponent(query)+
-                "*" +
-                ")",
-                {
-                    headers:{
-                        "apikey":SUPABASE_KEY,
-                        "Authorization":
-                        "Bearer "+SUPABASE_KEY
-                    }
-                }
-            );
-
-
-            if(response.ok){
-
-                ideas =
-                await response.json();
-
-            }
-
-        }
-
-
-        /*
-        STEP 5
-        Remove duplicates
-        */
-
-        const unique=[];
-
-        ideas.forEach(idea=>{
-
-            if(
-                !unique.some(
-                    x=>x.title===idea.title
-                )
-            ){
-
-                unique.push(idea);
-
-            }
-
-        });
-
-
-        /*
-        STEP 6
-        Display
-        */
-
-        if(!unique.length){
-
-            results.innerHTML=`
-
-                <div class="empty">
-
-                    <div class="empty-icon">
-                        💡
-                    </div>
-
-                    <strong>
-                        No matching ideas found yet.
-                    </strong>
-
-                    <p style="margin-top:6px;">
-                        Try another item, problem,
-                        or goal.
-                    </p>
-
+            aiAnswer.innerHTML=
+            `<div class="ai-answer">
+                <div class="ai-header">
+                    <div class="ai-icon">🤖</div>
+                    <h3>UseWhat</h3>
                 </div>
 
-            `;
+                <div class="ai-content">
+                    ${escapeHTML(
+                        data[0].description ||
+                        t.loading
+                    )}
+                </div>
+            </div>`;
 
-            return;
+            displayResults(data);
+
+        }else{
+
+            /*
+              Temporary message until
+              Cloudflare AI Worker is connected.
+            */
+
+            aiAnswer.innerHTML=
+            `<div class="ai-answer">
+
+                <div class="ai-header">
+                    <div class="ai-icon">🤖</div>
+
+                    <h3>UseWhat AI</h3>
+                </div>
+
+                <div class="ai-content">
+                    ${escapeHTML(t.empty)}
+
+                    <br><br>
+
+                    <small>
+                    AI Search will be connected through
+                    Cloudflare Worker in the next step.
+                    </small>
+                </div>
+
+            </div>`;
 
         }
-
-
-        displayResults(
-            unique.slice(0,12)
-        );
-
 
     }catch(error){
 
         console.error(error);
 
-        results.innerHTML=`
-
-            <div class="empty">
-
-                <div class="empty-icon">
-                    ⚠️
-                </div>
-
-                <strong>
-                    Something went wrong.
-                </strong>
-
-                <p style="margin-top:6px;">
-                    Please try again.
-                </p>
-
+        aiAnswer.innerHTML=
+        `<div class="ai-answer">
+            <div class="ai-content">
+                ⚠️ ${escapeHTML(t.error)}
             </div>
-
-        `;
+        </div>`;
 
     }
-
 }
 
 
-/* =========================================
-   DISPLAY RESULTS
-========================================= */
+/* ==========================================
+   DISPLAY DATABASE RESULTS
+========================================== */
 
-function displayResults(ideas){
+function displayResults(data){
 
-    resultCount.textContent =
-    ideas.length + " ideas";
+    results.innerHTML=
+    data.map(idea=>`
 
+        <div class="result-card">
 
-    results.innerHTML =
-    ideas.map(idea=>`
-
-        <article class="result-card">
-
-            <div class="result-top">
-
-                <span class="result-category">
-                    ${escapeHTML(
-                        idea.category || "Idea"
-                    )}
-                </span>
-
-            </div>
+            <span class="result-category">
+                ${escapeHTML(
+                    idea.category||"Idea"
+                )}
+            </span>
 
             <h3>
                 ${escapeHTML(
-                    idea.title || "Useful Idea"
+                    idea.title||""
                 )}
             </h3>
 
             <p>
                 ${escapeHTML(
-                    idea.description || ""
+                    idea.description||""
                 )}
             </p>
 
-            <div class="result-meta">
+            ${
+                idea.difficulty
+                ?
+                `<div class="difficulty">
+                    Difficulty:
+                    ${escapeHTML(
+                        idea.difficulty
+                    )}
+                </div>`
+                :
+                ""
+            }
 
-                ${
-                    idea.difficulty
-                    ?
-                    `<span class="meta">
-                        ⚙️ ${escapeHTML(
-                            idea.difficulty
-                        )}
-                    </span>`
-                    :
-                    ""
-                }
-
-                ${
-                    idea.items
-                    ?
-                    `<span class="meta">
-                        📦 ${escapeHTML(
-                            idea.items
-                        )}
-                    </span>`
-                    :
-                    ""
-                }
-
-            </div>
-
-        </article>
+        </div>
 
     `).join("");
-
 }
 
 
-/* =========================================
+/* ==========================================
+   IMAGE SEARCH
+========================================== */
+
+imageSearchBtn.addEventListener(
+"click",
+()=>{
+    imageMode.click();
+    searchIdeas();
+});
+
+
+/*
+   This is the UI-ready image search area.
+
+   Real image API will be connected
+   through Cloudflare Worker.
+*/
+
+
+/* ==========================================
+   IMAGE ANALYSIS
+========================================== */
+
+async function analyzeImage(file){
+
+    const lang=
+        languageSelect.value;
+
+    const t=
+        LANG[lang];
+
+    resultsSection.style.display="block";
+
+    aiAnswer.innerHTML=
+    `<div class="loading">
+        📷 ${t.loading}
+    </div>`;
+
+    results.innerHTML="";
+    imageResults.style.display="none";
+
+    /*
+       Real AI Vision processing will happen
+       through Cloudflare Worker.
+
+       We do NOT put an AI secret key
+       inside this frontend.
+    */
+
+    const reader=
+    new FileReader();
+
+    reader.onload=
+    function(){
+
+        aiAnswer.innerHTML=
+        `<div class="ai-answer">
+
+            <div class="ai-header">
+
+                <div class="ai-icon">
+                    📷
+                </div>
+
+                <h3>
+                    UseWhat Image AI
+                </h3>
+
+            </div>
+
+            <div class="ai-content">
+
+                ${escapeHTML(
+                    t.loading
+                )}
+
+                <br><br>
+
+                <small>
+                Image AI will be connected
+                through Cloudflare Worker.
+                </small>
+
+            </div>
+
+        </div>`;
+
+    };
+
+    reader.readAsDataURL(file);
+}
+
+
+/* ==========================================
    EXAMPLES
-========================================= */
+========================================== */
 
 document.querySelectorAll(".example")
 .forEach(button=>{
 
     button.addEventListener(
-        "click",
-        ()=>{
-
-            searchInput.value =
-            button.textContent.trim();
-
-            document.getElementById("ai")
-            .scrollIntoView({
-                behavior:"smooth",
-                block:"center"
-            });
-
-            searchIdeas();
-
-        }
-    );
-
-});
-
-
-/* =========================================
-   CATEGORY SEARCH
-========================================= */
-
-document.querySelectorAll(".category")
-.forEach(category=>{
-
-    category.addEventListener(
-        "click",
-        ()=>{
-
-            const value =
-            category.dataset.search;
-
-            searchInput.value=value;
-
-            document.getElementById("ai")
-            .scrollIntoView({
-                behavior:"smooth",
-                block:"center"
-            });
-
-            searchIdeas();
-
-        }
-    );
-
-});
-
-
-/* =========================================
-   SEARCH EVENTS
-========================================= */
-
-searchBtn.addEventListener(
     "click",
-    searchIdeas
-);
+    ()=>{
+        searchInput.value=
+            button.textContent;
 
+        searchIdeas();
+    });
+
+});
+
+
+/* ==========================================
+   ENTER
+========================================== */
 
 searchInput.addEventListener(
-    "keydown",
-    event=>{
+"keydown",
+event=>{
 
-        if(event.key==="Enter"){
-
-            searchIdeas();
-
-        }
-
+    if(event.key==="Enter"){
+        searchIdeas();
     }
-);
+
+});
 
 
-/* =========================================
-   CTA
-========================================= */
-
-document.getElementById("ctaButton")
-.addEventListener(
-    "click",
-    ()=>{
-
-        document.getElementById("ai")
-        .scrollIntoView({
-            behavior:"smooth",
-            block:"center"
-        });
-
-        setTimeout(
-            ()=>searchInput.focus(),
-            500
-        );
-
-    }
-);
-
-
-/* =========================================
-   LANGUAGE
-========================================= */
-
-const language =
-document.getElementById("language");
-
-const mobileLanguage =
-document.getElementById("mobileLanguage");
-
-
-function syncLanguage(value){
-
-    language.value=value;
-    mobileLanguage.value=value;
-
-    /*
-    Full translation system will be connected
-    in the next frontend/AI localization step.
-    */
-
-}
-
-
-language.addEventListener(
-    "change",
-    ()=>{
-        syncLanguage(language.value);
-    }
-);
-
-
-mobileLanguage.addEventListener(
-    "change",
-    ()=>{
-        syncLanguage(
-            mobileLanguage.value
-        );
-    }
-);
-
-
-/* =========================================
+/* ==========================================
    SECURITY
-========================================= */
+========================================== */
 
 function escapeHTML(value){
 
@@ -2077,6 +1701,18 @@ function escapeHTML(value){
     .replace(/'/g,"&#039;");
 
 }
+
+
+/* ==========================================
+   START
+========================================== */
+
+const savedLanguage=
+localStorage.getItem(
+    "usewhat_language"
+) || "en";
+
+applyLanguage(savedLanguage);
 
 </script>
 
