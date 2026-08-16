@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>UseWhat — Make More From What You Have</title>
 
-<meta name="description"
-content="UseWhat helps you find solutions, ideas, repairs, recipes, and ways to reuse what you already have.">
+<meta name="description" content="UseWhat helps you discover what you can make, repair, reuse, save, or create from what you already have.">
 
 <style>
 *{
@@ -17,15 +16,15 @@ content="UseWhat helps you find solutions, ideas, repairs, recipes, and ways to 
 }
 
 :root{
-    --primary:#2563eb;
-    --primary-dark:#1d4ed8;
+    --blue:#2563eb;
+    --blue-dark:#1d4ed8;
+    --blue-light:#eff6ff;
     --text:#0f172a;
     --muted:#64748b;
-    --bg:#f8fafc;
-    --white:#fff;
     --border:#e2e8f0;
-    --soft:#eff6ff;
-    --shadow:0 10px 35px rgba(15,23,42,.08);
+    --bg:#f8fafc;
+    --white:#ffffff;
+    --green:#16a34a;
 }
 
 html{
@@ -33,7 +32,13 @@ html{
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
     background:var(--bg);
     color:var(--text);
     line-height:1.5;
@@ -45,130 +50,88 @@ select{
     font:inherit;
 }
 
-button{
-    cursor:pointer;
-}
-
 /* =========================
-   HEADER
+HEADER
 ========================= */
 
 header{
     height:68px;
-    background:rgba(255,255,255,.96);
+    background:#fff;
     border-bottom:1px solid var(--border);
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 5%;
+    padding:0 6%;
     position:sticky;
     top:0;
-    z-index:999;
-    backdrop-filter:blur(12px);
+    z-index:1000;
 }
 
 .logo{
     font-size:25px;
     font-weight:800;
-    letter-spacing:-1.2px;
-    color:var(--text);
+    letter-spacing:-1px;
 }
 
 .logo span{
-    color:var(--primary);
+    color:var(--blue);
 }
 
-.desktop-nav{
+nav{
     display:flex;
     align-items:center;
     gap:24px;
 }
 
-.desktop-nav a{
+nav a{
     text-decoration:none;
     color:#475569;
     font-size:14px;
     font-weight:600;
 }
 
-.desktop-nav a:hover{
-    color:var(--primary);
+nav a:hover{
+    color:var(--blue);
 }
 
 .language{
     border:1px solid var(--border);
+    background:#fff;
     border-radius:9px;
     padding:8px 10px;
-    background:#fff;
+    cursor:pointer;
     color:#334155;
-    outline:none;
-}
-
-/* MOBILE MENU */
-
-.menu-btn{
-    display:none;
-    border:1px solid var(--border);
-    background:#fff;
-    width:40px;
-    height:40px;
-    border-radius:10px;
-    font-size:20px;
-}
-
-.mobile-menu{
-    display:none;
-    position:absolute;
-    top:68px;
-    left:0;
-    right:0;
-    background:#fff;
-    border-bottom:1px solid var(--border);
-    padding:15px 20px 20px;
-    box-shadow:0 10px 25px rgba(15,23,42,.08);
-}
-
-.mobile-menu.active{
-    display:block;
-}
-
-.mobile-menu a{
-    display:block;
-    padding:13px 4px;
-    text-decoration:none;
-    color:#334155;
-    font-weight:600;
-    border-bottom:1px solid #f1f5f9;
 }
 
 /* =========================
-   HERO
+HERO
 ========================= */
 
 .hero{
-    min-height:650px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    min-height:620px;
     text-align:center;
     padding:80px 20px 70px;
-    background:
-        radial-gradient(circle at 15% 10%,#dbeafe 0,transparent 30%),
-        radial-gradient(circle at 85% 10%,#e0e7ff 0,transparent 30%),
-        #fff;
-}
 
-.hero-inner{
-    width:100%;
-    max-width:920px;
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            #dbeafe 0,
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 85% 10%,
+            #e0e7ff 0,
+            transparent 32%
+        ),
+        #fff;
 }
 
 .badge{
     display:inline-flex;
     align-items:center;
-    gap:6px;
-    background:var(--soft);
-    color:var(--primary);
+    background:var(--blue-light);
+    color:var(--blue);
+    border:1px solid #dbeafe;
     padding:7px 14px;
     border-radius:30px;
     font-size:13px;
@@ -177,48 +140,46 @@ header{
 }
 
 .hero h1{
-    font-size:clamp(40px,6vw,68px);
-    line-height:1.03;
-    letter-spacing:-3px;
     max-width:850px;
     margin:auto;
+    font-size:clamp(38px,6vw,65px);
+    line-height:1.04;
+    letter-spacing:-3px;
 }
 
 .hero h1 .blue{
-    color:var(--primary);
+    color:var(--blue);
 }
 
-.hero-text{
-    max-width:690px;
+.hero p{
+    max-width:650px;
     margin:22px auto 0;
     color:var(--muted);
     font-size:17px;
 }
 
 /* =========================
-   SEARCH
+SEARCH
 ========================= */
 
-.search-wrapper{
-    width:min(820px,100%);
+.search-area{
+    width:min(680px,100%);
     margin:34px auto 0;
 }
 
 .search-box{
     display:flex;
     align-items:center;
-    gap:5px;
     background:#fff;
     border:1px solid #cbd5e1;
-    border-radius:15px;
+    border-radius:13px;
     padding:5px;
-    box-shadow:0 12px 35px rgba(37,99,235,.10);
+    box-shadow:0 10px 35px rgba(15,23,42,.10);
 }
 
 .search-icon{
-    width:42px;
+    width:40px;
     flex:none;
-    text-align:center;
     font-size:18px;
 }
 
@@ -228,45 +189,57 @@ header{
     border:0;
     outline:0;
     background:transparent;
-    padding:11px 4px;
-    font-size:15px;
     color:var(--text);
+    font-size:15px;
+    padding:11px 5px;
 }
 
 #searchInput::placeholder{
     color:#94a3b8;
 }
 
-.search-option{
-    flex:none;
-    border:1px solid var(--border);
-    background:#fff;
-    color:#475569;
-    border-radius:10px;
-    padding:9px 11px;
-    font-size:13px;
+.search-btn{
+    border:0;
+    background:var(--blue);
+    color:#fff;
+    padding:11px 18px;
+    border-radius:9px;
+    font-size:14px;
     font-weight:700;
+    cursor:pointer;
     white-space:nowrap;
 }
 
-.search-option:hover{
-    background:#f8fafc;
-}
-
-.search-btn{
-    flex:none;
-    border:0;
-    background:var(--primary);
-    color:#fff;
-    border-radius:10px;
-    padding:10px 16px;
-    font-size:13px;
-    font-weight:700;
-}
-
 .search-btn:hover{
-    background:var(--primary-dark);
+    background:var(--blue-dark);
 }
+
+.search-btn:disabled{
+    opacity:.65;
+    cursor:not-allowed;
+}
+
+/* IMAGE BUTTON */
+
+.image-btn{
+    width:40px;
+    height:40px;
+    border:0;
+    background:transparent;
+    border-radius:9px;
+    cursor:pointer;
+    font-size:19px;
+}
+
+.image-btn:hover{
+    background:#f1f5f9;
+}
+
+#imageInput{
+    display:none;
+}
+
+/* QUICK */
 
 .quick{
     margin-top:13px;
@@ -289,97 +262,57 @@ header{
     border-radius:20px;
     padding:6px 11px;
     font-size:12px;
+    cursor:pointer;
 }
 
-/* IMAGE UPLOAD */
-
-#imageInput{
-    display:none;
+.example:hover{
+    border-color:#bfdbfe;
+    color:var(--blue);
+    background:#f8fbff;
 }
 
 /* =========================
-   AI MODE
+SEARCH INFO
 ========================= */
 
-.ai-mode{
-    display:flex;
-    justify-content:center;
-    gap:8px;
+.search-info{
     margin-top:15px;
-}
-
-.mode{
-    border:1px solid var(--border);
-    background:#fff;
-    color:#64748b;
-    border-radius:20px;
-    padding:6px 12px;
     font-size:12px;
-}
-
-.mode.active{
-    background:var(--soft);
-    border-color:#bfdbfe;
-    color:var(--primary);
-    font-weight:700;
+    color:#94a3b8;
 }
 
 /* =========================
-   RESULTS
+RESULTS
 ========================= */
 
 .results-section{
     width:min(1050px,92%);
-    margin:40px auto;
+    margin:0 auto 70px;
     display:none;
+}
+
+.results-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:18px;
 }
 
 .results-title{
     font-size:24px;
-    margin-bottom:18px;
+    letter-spacing:-.5px;
 }
 
-.ai-answer{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:24px;
-    box-shadow:var(--shadow);
-    margin-bottom:20px;
-}
-
-.ai-header{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:15px;
-}
-
-.ai-icon{
-    width:40px;
-    height:40px;
-    border-radius:12px;
-    background:var(--soft);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:20px;
-}
-
-.ai-header h3{
-    font-size:17px;
-}
-
-.ai-content{
-    color:#475569;
-    font-size:15px;
-    white-space:pre-wrap;
+.result-count{
+    color:#64748b;
+    font-size:13px;
 }
 
 .result-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:15px;
+    gap:16px;
 }
 
 .result-card{
@@ -387,28 +320,29 @@ header{
     border:1px solid var(--border);
     border-radius:16px;
     padding:20px;
-    transition:.2s;
+    transition:.2s ease;
 }
 
 .result-card:hover{
     transform:translateY(-2px);
-    box-shadow:var(--shadow);
+    box-shadow:0 12px 30px rgba(15,23,42,.08);
 }
 
 .result-category{
     display:inline-block;
-    background:var(--soft);
-    color:var(--primary);
-    padding:5px 9px;
+    background:var(--blue-light);
+    color:var(--blue);
     border-radius:7px;
+    padding:5px 9px;
     font-size:11px;
     font-weight:700;
     margin-bottom:10px;
 }
 
 .result-card h3{
-    font-size:17px;
-    margin-bottom:7px;
+    font-size:18px;
+    line-height:1.3;
+    margin-bottom:8px;
 }
 
 .result-card p{
@@ -416,74 +350,75 @@ header{
     font-size:14px;
 }
 
-.difficulty{
-    margin-top:12px;
-    font-size:12px;
-    font-weight:700;
-    color:#475569;
-}
-
-/* IMAGE RESULTS */
-
-.image-results{
-    margin-top:25px;
-}
-
-.image-results h3{
-    margin-bottom:14px;
-}
-
-.image-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-}
-
-.image-placeholder{
-    min-height:150px;
-    background:#f1f5f9;
-    border-radius:14px;
+.result-meta{
+    margin-top:13px;
     display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#94a3b8;
-    text-align:center;
-    padding:15px;
+    flex-wrap:wrap;
+    gap:7px;
 }
 
-/* LOADING */
+.meta{
+    background:#f8fafc;
+    border:1px solid var(--border);
+    color:#475569;
+    border-radius:7px;
+    padding:4px 8px;
+    font-size:11px;
+}
 
 .loading{
-    text-align:center;
     background:#fff;
     border:1px solid var(--border);
-    border-radius:16px;
-    padding:35px;
+    border-radius:15px;
+    padding:30px;
+    text-align:center;
+    color:#64748b;
+}
+
+.no-result{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:35px 20px;
+    text-align:center;
+}
+
+.no-result-icon{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.no-result h3{
+    margin-bottom:5px;
+}
+
+.no-result p{
     color:var(--muted);
+    font-size:14px;
 }
 
 /* =========================
-   FEATURES
+FEATURES
 ========================= */
 
 .features{
     width:min(1050px,92%);
-    margin:80px auto;
+    margin:70px auto;
 }
 
 .section-heading{
     text-align:center;
-    margin-bottom:30px;
+    margin-bottom:28px;
 }
 
 .section-heading h2{
-    font-size:32px;
+    font-size:30px;
     letter-spacing:-1px;
 }
 
 .section-heading p{
-    margin-top:7px;
     color:var(--muted);
+    margin-top:7px;
 }
 
 .feature-grid{
@@ -495,17 +430,17 @@ header{
 .feature-card{
     background:#fff;
     border:1px solid var(--border);
-    padding:28px 23px;
-    border-radius:18px;
+    padding:27px 23px;
+    border-radius:17px;
 }
 
 .icon{
-    width:46px;
-    height:46px;
+    width:45px;
+    height:45px;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:var(--soft);
+    background:var(--blue-light);
     border-radius:12px;
     font-size:22px;
     margin-bottom:16px;
@@ -522,111 +457,116 @@ header{
 }
 
 /* =========================
-   FOOTER
+FOOTER
 ========================= */
 
 footer{
+    margin-top:70px;
     background:#0f172a;
     color:#94a3b8;
     text-align:center;
-    padding:32px 20px;
+    padding:30px 20px;
     font-size:13px;
-    margin-top:80px;
 }
 
 /* =========================
-   MOBILE
+MOBILE
 ========================= */
 
-@media(max-width:760px){
+@media(max-width:700px){
 
     header{
         height:62px;
         padding:0 16px;
     }
 
-    .desktop-nav{
+    .logo{
+        font-size:22px;
+    }
+
+    nav{
+        gap:8px;
+    }
+
+    nav a{
         display:none;
     }
 
-    .menu-btn{
-        display:block;
-    }
-
-    .mobile-menu{
-        top:62px;
+    .language{
+        padding:7px 8px;
+        font-size:12px;
     }
 
     .hero{
         min-height:auto;
-        padding:55px 15px 45px;
+        padding:55px 16px 50px;
+    }
+
+    .badge{
+        font-size:11px;
     }
 
     .hero h1{
-        font-size:40px;
+        font-size:42px;
         letter-spacing:-2px;
     }
 
-    .hero-text{
-        font-size:15px;
-        margin-top:17px;
+    .hero p{
+        font-size:14px;
+        margin-top:18px;
     }
 
-    .search-wrapper{
+    .search-area{
         margin-top:26px;
     }
 
     .search-box{
-        border-radius:13px;
+        border-radius:11px;
         padding:4px;
     }
 
     .search-icon{
-        width:30px;
+        width:34px;
         font-size:16px;
     }
 
     #searchInput{
         font-size:14px;
-        padding:10px 2px;
+        padding:10px 3px;
     }
 
-    .search-option{
-        font-size:0;
-        width:39px;
-        height:39px;
-        padding:0;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-    }
-
-    .search-option::before{
+    .image-btn{
+        width:34px;
+        height:36px;
         font-size:17px;
-    }
-
-    #imageSearchBtn::before{
-        content:"🖼️";
-    }
-
-    #cameraBtn::before{
-        content:"📷";
     }
 
     .search-btn{
-        font-size:0;
-        width:42px;
-        height:39px;
-        padding:0;
-    }
-
-    .search-btn::after{
-        content:"➜";
-        font-size:17px;
+        padding:10px 12px;
+        font-size:12px;
     }
 
     .examples{
         gap:6px;
+    }
+
+    .example{
+        font-size:11px;
+        padding:5px 9px;
+    }
+
+    .results-section{
+        width:92%;
+        margin-top:0;
+    }
+
+    .results-header{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .results-title{
+        font-size:21px;
     }
 
     .result-grid{
@@ -637,36 +577,25 @@ footer{
         grid-template-columns:1fr;
     }
 
-    .image-grid{
-        grid-template-columns:repeat(2,1fr);
+    .section-heading h2{
+        font-size:25px;
     }
-
-    .results-section{
-        width:94%;
-    }
-
 }
 
-/* SMALL PHONES */
+/* =========================
+RTL
+========================= */
 
-@media(max-width:390px){
+body.rtl{
+    direction:rtl;
+}
 
-    .hero h1{
-        font-size:34px;
-    }
+body.rtl .search-icon{
+    order:3;
+}
 
-    .search-icon{
-        display:none;
-    }
-
-    .search-option{
-        width:36px;
-    }
-
-    .search-btn{
-        width:38px;
-    }
-
+body.rtl #searchInput{
+    text-align:right;
 }
 </style>
 </head>
@@ -675,714 +604,873 @@ footer{
 
 <header>
 
-<div class="logo">
-Use<span>What</span>
-</div>
+    <div class="logo">
+        Use<span>What</span>
+    </div>
 
-<nav class="desktop-nav">
-<a href="#home" data-i18n="home">Home</a>
-<a href="#features" data-i18n="how">How It Works</a>
-<a href="#about" data-i18n="about">About</a>
+    <nav>
 
-<select id="languageSelect" class="language">
-<option value="en">English</option>
-<option value="bn">বাংলা</option>
-<option value="hi">हिन्दी</option>
-<option value="es">Español</option>
-<option value="fr">Français</option>
-<option value="de">Deutsch</option>
-<option value="pt">Português</option>
-<option value="ar">العربية</option>
-<option value="zh">中文</option>
-<option value="ja">日本語</option>
-</select>
-</nav>
+        <a href="#home" id="navHome">Home</a>
+        <a href="#features" id="navHow">How It Works</a>
+        <a href="#about" id="navAbout">About</a>
 
-<button class="menu-btn" id="menuBtn">☰</button>
+        <select id="languageSelect" class="language">
 
-<div class="mobile-menu" id="mobileMenu">
-<a href="#home" data-i18n="home">Home</a>
-<a href="#features" data-i18n="how">How It Works</a>
-<a href="#about" data-i18n="about">About</a>
+            <option value="en">English</option>
+            <option value="bn">বাংলা</option>
+            <option value="hi">हिन्दी</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="pt">Português</option>
+            <option value="ar">العربية</option>
+            <option value="zh">中文</option>
+            <option value="ja">日本語</option>
 
-<select id="mobileLanguage" class="language">
-<option value="en">English</option>
-<option value="bn">বাংলা</option>
-<option value="hi">हिन्दी</option>
-<option value="es">Español</option>
-<option value="fr">Français</option>
-<option value="de">Deutsch</option>
-<option value="pt">Português</option>
-<option value="ar">العربية</option>
-<option value="zh">中文</option>
-<option value="ja">日本語</option>
-</select>
-</div>
+        </select>
+
+    </nav>
 
 </header>
 
 
 <section class="hero" id="home">
 
-<div class="hero-inner">
+    <div class="badge" id="badge">
+        ✨ Discover more from what you already have
+    </div>
 
-<div class="badge" id="badge">
-✨ Discover more from what you already have
-</div>
+    <h1>
+        <span id="heroLine1">Turn What You Have Into</span>
+        <br>
+        <span class="blue" id="heroLine2">What You Need.</span>
+    </h1>
 
-<h1>
-<span id="heroLine1">Turn What You Have Into</span>
-<br>
-<span class="blue" id="heroLine2">What You Need.</span>
-</h1>
-
-<p class="hero-text" id="heroText">
-Ask UseWhat anything. Find ideas, solutions, repairs,
-recipes, ways to save money, reuse items, and more.
-</p>
+    <p id="heroText">
+        Tell UseWhat what you have. Get ideas for making,
+        repairing, reusing, saving money, or creating something useful.
+    </p>
 
 
-<div class="search-wrapper">
+    <div class="search-area">
 
-<div class="search-box">
+        <div class="search-box">
 
-<div class="search-icon">🔍</div>
+            <div class="search-icon">🔍</div>
 
-<input
-id="searchInput"
-type="text"
-autocomplete="off"
-placeholder="Ask UseWhat anything..."
->
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="What do you have?"
+                autocomplete="off"
+            >
 
-<button
-class="search-option"
-id="imageSearchBtn"
-title="Image Search">
-🖼️ Image
-</button>
+            <button
+                class="image-btn"
+                id="imageBtn"
+                title="Search with image"
+            >
+                📷
+            </button>
 
-<button
-class="search-option"
-id="cameraBtn"
-title="Upload or take a photo">
-📷
-</button>
+            <input
+                type="file"
+                id="imageInput"
+                accept="image/*"
+            >
 
-<button
-class="search-btn"
-id="searchBtn">
-Search
-</button>
+            <button
+                class="search-btn"
+                id="searchBtn"
+            >
+                Find Ideas
+            </button>
 
-</div>
+        </div>
 
-<input
-type="file"
-id="imageInput"
-accept="image/*"
-capture="environment"
->
+        <div class="quick" id="quickText">
+            Try something like:
+        </div>
 
-<div class="quick" id="quickText">
-Try something like:
-</div>
+        <div class="examples">
 
-<div class="examples">
+            <button class="example">Plastic bottles</button>
+            <button class="example">Old clothes</button>
+            <button class="example">Broken chair</button>
+            <button class="example">Rice & eggs</button>
 
-<button class="example">Plastic bottles</button>
-<button class="example">Broken chair</button>
-<button class="example">Rice & eggs</button>
-<button class="example">Old clothes</button>
+        </div>
 
-</div>
+        <div class="search-info" id="searchInfo">
+            Search ideas from the UseWhat database
+        </div>
 
-<div class="ai-mode">
-
-<button class="mode active" id="aiMode">
-🤖 AI Search
-</button>
-
-<button class="mode" id="imageMode">
-🖼️ Image Search
-</button>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<section class="results-section" id="resultsSection">
+<section
+    class="results-section"
+    id="resultsSection"
+>
 
-<h2 class="results-title" id="resultsTitle">
-Results
-</h2>
+    <div class="results-header">
 
-<div id="aiAnswer"></div>
+        <h2
+            class="results-title"
+            id="resultsTitle"
+        >
+            Ideas for you
+        </h2>
 
-<div class="result-grid" id="results"></div>
+        <span
+            class="result-count"
+            id="resultCount"
+        ></span>
 
-<div class="image-results" id="imageResults" style="display:none;">
+    </div>
 
-<h3 id="imageResultsTitle">
-🖼️ Image Results
-</h3>
-
-<div class="image-grid" id="imageGrid"></div>
-
-</div>
+    <div
+        class="result-grid"
+        id="results"
+    ></div>
 
 </section>
 
 
-<section class="features" id="features">
+<section
+    class="features"
+    id="features"
+>
 
-<div class="section-heading">
+    <div class="section-heading">
 
-<h2 id="featureTitle">
-One place. Many possibilities.
-</h2>
+        <h2 id="featureTitle">
+            One place. Many possibilities.
+        </h2>
 
-<p id="featureSubtitle">
-Use what you already have in smarter ways.
-</p>
+        <p id="featureSubtitle">
+            Use what you already have in smarter ways.
+        </p>
 
-</div>
-
-
-<div class="feature-grid">
-
-<div class="feature-card">
-
-<div class="icon">🤖</div>
-
-<h3 id="makeTitle">
-AI Answers
-</h3>
-
-<p id="makeText">
-Ask questions naturally and get practical answers and solutions.
-</p>
-
-</div>
+    </div>
 
 
-<div class="feature-card">
+    <div class="feature-grid">
 
-<div class="icon">📷</div>
+        <div class="feature-card">
 
-<h3 id="saveTitle">
-Search With Images
-</h3>
+            <div class="icon">🛠️</div>
 
-<p id="saveText">
-Take a photo or upload an image and let UseWhat understand it.
-</p>
+            <h3 id="makeTitle">
+                Make & Create
+            </h3>
 
-</div>
+            <p id="makeText">
+                Discover useful things you can create from
+                materials and items already around you.
+            </p>
+
+        </div>
 
 
-<div class="feature-card">
+        <div class="feature-card">
 
-<div class="icon">♻️</div>
+            <div class="icon">💰</div>
 
-<h3 id="reuseTitle">
-Reuse & Solve
-</h3>
+            <h3 id="saveTitle">
+                Save Money
+            </h3>
 
-<p id="reuseText">
-Discover ways to repair, reuse, create, save money, and solve everyday problems.
-</p>
+            <p id="saveText">
+                Find practical alternatives before spending
+                money on something new.
+            </p>
 
-</div>
+        </div>
 
-</div>
+
+        <div class="feature-card">
+
+            <div class="icon">♻️</div>
+
+            <h3 id="reuseTitle">
+                Reuse & Repair
+            </h3>
+
+            <p id="reuseText">
+                Give old, unused, or broken things another
+                useful life.
+            </p>
+
+        </div>
+
+    </div>
 
 </section>
 
 
 <footer id="about">
-© 2026 UseWhat — Make More From What You Have.
+    © 2026 UseWhat — Make More From What You Have.
 </footer>
 
 
 <script>
 
-/* ==========================================
-   SUPABASE
-========================================== */
+/* =====================================================
+   SUPABASE CONFIG
+===================================================== */
 
 const SUPABASE_URL =
-"https://ohzqkhefigdzzzvpgrep.supabase.co";
+    "https://ohzqkhefigdzzzvpgrep.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_XKuSD9VWGxKBcjwPiQtKfA_szPm0ZTj";
+    "sb_publishable_XKuSD9VWGxKBcjwPiQtKfA_szPm0ZTj";
 
 
-/* ==========================================
-   ELEMENTS
-========================================== */
+/* =====================================================
+   TRANSLATIONS
+===================================================== */
 
-const languageSelect =
-document.getElementById("languageSelect");
-
-const mobileLanguage =
-document.getElementById("mobileLanguage");
-
-const searchInput =
-document.getElementById("searchInput");
-
-const searchBtn =
-document.getElementById("searchBtn");
-
-const imageSearchBtn =
-document.getElementById("imageSearchBtn");
-
-const cameraBtn =
-document.getElementById("cameraBtn");
-
-const imageInput =
-document.getElementById("imageInput");
-
-const resultsSection =
-document.getElementById("resultsSection");
-
-const results =
-document.getElementById("results");
-
-const aiAnswer =
-document.getElementById("aiAnswer");
-
-const imageResults =
-document.getElementById("imageResults");
-
-const imageGrid =
-document.getElementById("imageGrid");
-
-const menuBtn =
-document.getElementById("menuBtn");
-
-const mobileMenu =
-document.getElementById("mobileMenu");
-
-let currentMode="ai";
-
-
-/* ==========================================
-   LANGUAGE DATA
-========================================== */
-
-const LANG={
+const T = {
 
 en:{
-home:"Home",
-how:"How It Works",
-about:"About",
+navHome:"Home",
+navHow:"How It Works",
+navAbout:"About",
 badge:"✨ Discover more from what you already have",
 line1:"Turn What You Have Into",
 line2:"What You Need.",
-hero:"Ask UseWhat anything. Find ideas, solutions, repairs, recipes, ways to save money, reuse items, and more.",
-placeholder:"Ask UseWhat anything...",
-search:"Search",
+hero:"Tell UseWhat what you have. Get ideas for making, repairing, reusing, saving money, or creating something useful.",
+placeholder:"What do you have?",
+button:"Find Ideas",
 quick:"Try something like:",
-results:"Results",
-imageResults:"🖼️ Image Results",
+results:"Ideas for you",
+searchInfo:"Search ideas from the UseWhat database",
+emptyTitle:"No matching ideas found",
+emptyText:"Try another item or describe what you need.",
+loading:"Finding useful ideas...",
+error:"Something went wrong. Please try again.",
+count:"ideas found",
 featureTitle:"One place. Many possibilities.",
 featureSubtitle:"Use what you already have in smarter ways.",
-makeTitle:"AI Answers",
-makeText:"Ask questions naturally and get practical answers and solutions.",
-saveTitle:"Search With Images",
-saveText:"Take a photo or upload an image and let UseWhat understand it.",
-reuseTitle:"Reuse & Solve",
-reuseText:"Discover ways to repair, reuse, create, save money, and solve everyday problems.",
-loading:"Finding the best answer...",
-empty:"No matching results found. Try another question.",
-error:"Something went wrong. Please try again."
+makeTitle:"Make & Create",
+makeText:"Discover useful things you can create from materials and items already around you.",
+saveTitle:"Save Money",
+saveText:"Find practical alternatives before spending money on something new.",
+reuseTitle:"Reuse & Repair",
+reuseText:"Give old, unused, or broken things another useful life.",
+difficulty:"Difficulty"
 },
 
 bn:{
-home:"হোম",
-how:"কীভাবে কাজ করে",
-about:"আমাদের সম্পর্কে",
+navHome:"হোম",
+navHow:"কীভাবে কাজ করে",
+navAbout:"আমাদের সম্পর্কে",
 badge:"✨ আপনার কাছে থাকা জিনিস থেকে নতুন সম্ভাবনা খুঁজুন",
 line1:"আপনার কাছে যা আছে তা দিয়ে",
 line2:"আপনার প্রয়োজনীয় কিছু তৈরি করুন।",
-hero:"UseWhat-কে যেকোনো প্রশ্ন করুন। আইডিয়া, সমাধান, মেরামত, রেসিপি, টাকা বাঁচানো এবং পুনঃব্যবহারের উপায় খুঁজে নিন।",
-placeholder:"UseWhat-কে যেকোনো প্রশ্ন করুন...",
-search:"সার্চ",
+hero:"আপনার কাছে কী আছে লিখুন। তৈরি, মেরামত, পুনঃব্যবহার বা টাকা বাঁচানোর আইডিয়া খুঁজে নিন।",
+placeholder:"আপনার কাছে কী আছে?",
+button:"আইডিয়া খুঁজুন",
 quick:"এমন কিছু লিখে দেখুন:",
-results:"ফলাফল",
-imageResults:"🖼️ ছবির ফলাফল",
+results:"আপনার জন্য আইডিয়া",
+searchInfo:"UseWhat-এর আইডিয়া ডাটাবেস থেকে খুঁজুন",
+emptyTitle:"কোনো মিল পাওয়া যায়নি",
+emptyText:"অন্য কোনো জিনিস লিখে দেখুন বা আপনার প্রয়োজনটি বিস্তারিত লিখুন।",
+loading:"দরকারি আইডিয়া খোঁজা হচ্ছে...",
+error:"কিছু সমস্যা হয়েছে। আবার চেষ্টা করুন।",
+count:"টি আইডিয়া পাওয়া গেছে",
 featureTitle:"এক জায়গায় অনেক সম্ভাবনা।",
 featureSubtitle:"আপনার কাছে থাকা জিনিস আরও বুদ্ধিমানের মতো ব্যবহার করুন।",
-makeTitle:"AI উত্তর",
-makeText:"স্বাভাবিকভাবে প্রশ্ন করুন এবং ব্যবহারিক উত্তর ও সমাধান পান।",
-saveTitle:"ছবি দিয়ে সার্চ",
-saveText:"ছবি তুলুন বা আপলোড করুন এবং UseWhat-কে ছবিটি বুঝতে দিন।",
-reuseTitle:"পুনঃব্যবহার ও সমাধান",
-reuseText:"মেরামত, পুনঃব্যবহার, তৈরি, টাকা বাঁচানো এবং দৈনন্দিন সমস্যার সমাধান খুঁজুন।",
-loading:"সেরা উত্তর খোঁজা হচ্ছে...",
-empty:"কোনো ফলাফল পাওয়া যায়নি। অন্য প্রশ্ন চেষ্টা করুন।",
-error:"কিছু সমস্যা হয়েছে। আবার চেষ্টা করুন।"
+makeTitle:"তৈরি করুন",
+makeText:"আপনার কাছে থাকা জিনিস দিয়ে কী তৈরি করা যায় তা খুঁজে নিন।",
+saveTitle:"টাকা বাঁচান",
+saveText:"নতুন কিছু কেনার আগে আপনার কাছে থাকা জিনিস ব্যবহার করার উপায় খুঁজুন।",
+reuseTitle:"পুনঃব্যবহার ও মেরামত",
+reuseText:"পুরোনো, অব্যবহৃত বা ভাঙা জিনিসকে নতুন জীবন দিন।",
+difficulty:"কঠিনতা"
 },
 
 hi:{
-home:"होम",
-how:"यह कैसे काम करता है",
-about:"हमारे बारे में",
+navHome:"होम",
+navHow:"यह कैसे काम करता है",
+navAbout:"हमारे बारे में",
 badge:"✨ आपके पास मौजूद चीज़ों से नई संभावनाएँ खोजें",
 line1:"जो आपके पास है उससे",
 line2:"जो चाहिए वह बनाएं।",
-hero:"UseWhat से कोई भी सवाल पूछें और आइडिया, समाधान, मरम्मत, रेसिपी और पैसे बचाने के तरीके खोजें।",
-placeholder:"UseWhat से कुछ भी पूछें...",
-search:"सर्च",
+hero:"आपके पास जो है उसे लिखें और बनाने, मरम्मत, दोबारा उपयोग या पैसे बचाने के आइडिया खोजें।",
+placeholder:"आपके पास क्या है?",
+button:"आइडिया खोजें",
 quick:"ऐसा कुछ लिखें:",
-results:"परिणाम",
-imageResults:"🖼️ इमेज परिणाम",
+results:"आपके लिए आइडिया",
+searchInfo:"UseWhat डेटाबेस से आइडिया खोजें",
+emptyTitle:"कोई मिलती-जुलती आइडिया नहीं मिली",
+emptyText:"दूसरा आइटम या अपनी जरूरत लिखकर देखें।",
+loading:"उपयोगी आइडिया खोजी जा रही हैं...",
+error:"कुछ गलत हुआ। कृपया फिर कोशिश करें।",
+count:"आइडिया मिलीं",
 featureTitle:"एक जगह। कई संभावनाएँ।",
-featureSubtitle:"जो आपके पास है उसका बेहतर उपयोग करें।",
-makeTitle:"AI उत्तर",
-makeText:"स्वाभाविक सवाल पूछें और उपयोगी समाधान पाएं।",
-saveTitle:"इमेज से खोजें",
-saveText:"फोटो लें या अपलोड करें और UseWhat उसे समझेगा।",
-reuseTitle:"दोबारा उपयोग और समाधान",
-reuseText:"मरम्मत, पुन: उपयोग, निर्माण और बचत के तरीके खोजें।",
-loading:"सबसे अच्छा उत्तर खोजा जा रहा है...",
-empty:"कोई परिणाम नहीं मिला। दूसरा सवाल आज़माएं।",
-error:"कुछ गलत हुआ। फिर कोशिश करें।"
+featureSubtitle:"आपके पास मौजूद चीज़ों का बेहतर उपयोग करें।",
+makeTitle:"बनाएं और तैयार करें",
+makeText:"मौजूद चीज़ों से उपयोगी चीज़ें बनाने के तरीके खोजें।",
+saveTitle:"पैसे बचाएं",
+saveText:"नई चीज़ खरीदने से पहले मौजूद चीज़ों के विकल्प खोजें।",
+reuseTitle:"दोबारा उपयोग और मरम्मत",
+reuseText:"पुरानी या टूटी चीज़ों को नया उपयोग दें।",
+difficulty:"कठिनाई"
 },
 
 es:{
-home:"Inicio",
-how:"Cómo funciona",
-about:"Acerca de",
+navHome:"Inicio",
+navHow:"Cómo funciona",
+navAbout:"Acerca de",
 badge:"✨ Descubre más con lo que ya tienes",
 line1:"Convierte lo que tienes en",
 line2:"lo que necesitas.",
-hero:"Pregunta cualquier cosa a UseWhat y descubre ideas, soluciones, reparaciones, recetas y formas de ahorrar.",
-placeholder:"Pregunta lo que quieras...",
-search:"Buscar",
+hero:"Dinos qué tienes y descubre ideas para crear, reparar, reutilizar o ahorrar dinero.",
+placeholder:"¿Qué tienes?",
+button:"Buscar ideas",
 quick:"Prueba algo como:",
-results:"Resultados",
-imageResults:"🖼️ Resultados de imágenes",
+results:"Ideas para ti",
+searchInfo:"Busca ideas en la base de datos de UseWhat",
+emptyTitle:"No encontramos ideas coincidentes",
+emptyText:"Prueba otro artículo o describe lo que necesitas.",
+loading:"Buscando ideas útiles...",
+error:"Algo salió mal. Inténtalo de nuevo.",
+count:"ideas encontradas",
 featureTitle:"Un lugar. Muchas posibilidades.",
 featureSubtitle:"Usa mejor lo que ya tienes.",
-makeTitle:"Respuestas de IA",
-makeText:"Haz preguntas y obtén soluciones prácticas.",
-saveTitle:"Buscar con imágenes",
-saveText:"Toma o sube una foto para que UseWhat la entienda.",
-reuseTitle:"Reutilizar y resolver",
-reuseText:"Encuentra formas de reparar, reutilizar, crear y ahorrar.",
-loading:"Buscando la mejor respuesta...",
-empty:"No se encontraron resultados.",
-error:"Algo salió mal. Inténtalo de nuevo."
+makeTitle:"Crear",
+makeText:"Descubre cosas útiles que puedes crear con lo que ya tienes.",
+saveTitle:"Ahorrar dinero",
+saveText:"Encuentra alternativas antes de comprar algo nuevo.",
+reuseTitle:"Reutilizar y reparar",
+reuseText:"Dale una nueva vida a objetos viejos o rotos.",
+difficulty:"Dificultad"
 },
 
 fr:{
-home:"Accueil",
-how:"Comment ça marche",
-about:"À propos",
+navHome:"Accueil",
+navHow:"Comment ça marche",
+navAbout:"À propos",
 badge:"✨ Découvrez plus avec ce que vous avez déjà",
 line1:"Transformez ce que vous avez en",
 line2:"ce dont vous avez besoin.",
-hero:"Posez n'importe quelle question à UseWhat et découvrez des idées, solutions, réparations, recettes et économies.",
-placeholder:"Demandez n'importe quoi...",
-search:"Rechercher",
+hero:"Dites-nous ce que vous avez et découvrez des idées pour créer, réparer, réutiliser ou économiser.",
+placeholder:"Qu'avez-vous ?",
+button:"Trouver des idées",
 quick:"Essayez par exemple :",
-results:"Résultats",
-imageResults:"🖼️ Résultats d'images",
+results:"Idées pour vous",
+searchInfo:"Recherchez dans la base de données UseWhat",
+emptyTitle:"Aucune idée correspondante",
+emptyText:"Essayez un autre article ou décrivez votre besoin.",
+loading:"Recherche d'idées utiles...",
+error:"Une erreur s'est produite. Réessayez.",
+count:"idées trouvées",
 featureTitle:"Un endroit. Beaucoup de possibilités.",
 featureSubtitle:"Utilisez mieux ce que vous avez déjà.",
-makeTitle:"Réponses IA",
-makeText:"Posez vos questions et obtenez des solutions pratiques.",
-saveTitle:"Recherche par image",
-saveText:"Prenez ou téléchargez une photo pour que UseWhat l'analyse.",
-reuseTitle:"Réutiliser et résoudre",
-reuseText:"Trouvez des façons de réparer, réutiliser, créer et économiser.",
-loading:"Recherche de la meilleure réponse...",
-empty:"Aucun résultat trouvé.",
-error:"Une erreur s'est produite."
+makeTitle:"Créer",
+makeText:"Découvrez ce que vous pouvez créer avec les objets disponibles.",
+saveTitle:"Économiser",
+saveText:"Trouvez des alternatives avant d'acheter quelque chose de nouveau.",
+reuseTitle:"Réutiliser et réparer",
+reuseText:"Donnez une nouvelle vie aux objets anciens ou cassés.",
+difficulty:"Difficulté"
 },
 
 de:{
-home:"Startseite",
-how:"So funktioniert es",
-about:"Über uns",
+navHome:"Startseite",
+navHow:"So funktioniert es",
+navAbout:"Über uns",
 badge:"✨ Entdecke mehr mit dem, was du bereits hast",
 line1:"Mach aus dem, was du hast,",
 line2:"was du brauchst.",
-hero:"Stelle UseWhat jede Frage und finde Ideen, Lösungen, Reparaturen, Rezepte und Möglichkeiten zum Sparen.",
-placeholder:"Frage UseWhat alles...",
-search:"Suchen",
+hero:"Sag uns, was du hast, und entdecke Ideen zum Erstellen, Reparieren, Wiederverwenden oder Sparen.",
+placeholder:"Was hast du?",
+button:"Ideen finden",
 quick:"Versuche zum Beispiel:",
-results:"Ergebnisse",
-imageResults:"🖼️ Bildergebnisse",
+results:"Ideen für dich",
+searchInfo:"Ideen aus der UseWhat-Datenbank suchen",
+emptyTitle:"Keine passenden Ideen gefunden",
+emptyText:"Versuche einen anderen Gegenstand oder beschreibe dein Ziel.",
+loading:"Nützliche Ideen werden gesucht...",
+error:"Etwas ist schiefgelaufen. Bitte erneut versuchen.",
+count:"Ideen gefunden",
 featureTitle:"Ein Ort. Viele Möglichkeiten.",
 featureSubtitle:"Nutze besser, was du bereits hast.",
-makeTitle:"KI-Antworten",
-makeText:"Stelle Fragen und erhalte praktische Lösungen.",
-saveTitle:"Mit Bildern suchen",
-saveText:"Nimm ein Foto auf oder lade es hoch.",
-reuseTitle:"Wiederverwenden und lösen",
-reuseText:"Finde Möglichkeiten zum Reparieren, Wiederverwenden, Erstellen und Sparen.",
-loading:"Beste Antwort wird gesucht...",
-empty:"Keine Ergebnisse gefunden.",
-error:"Etwas ist schiefgelaufen."
+makeTitle:"Erstellen",
+makeText:"Entdecke nützliche Dinge, die du aus vorhandenen Materialien machen kannst.",
+saveTitle:"Geld sparen",
+saveText:"Finde Alternativen, bevor du etwas Neues kaufst.",
+reuseTitle:"Wiederverwenden und reparieren",
+reuseText:"Gib alten oder kaputten Dingen ein neues Leben.",
+difficulty:"Schwierigkeit"
 },
 
 pt:{
-home:"Início",
-how:"Como funciona",
-about:"Sobre",
+navHome:"Início",
+navHow:"Como funciona",
+navAbout:"Sobre",
 badge:"✨ Descubra mais usando o que você já tem",
 line1:"Transforme o que você tem em",
 line2:"o que você precisa.",
-hero:"Pergunte qualquer coisa ao UseWhat e encontre ideias, soluções, reparos, receitas e formas de economizar.",
-placeholder:"Pergunte qualquer coisa...",
-search:"Pesquisar",
+hero:"Diga o que você tem e descubra ideias para criar, reparar, reutilizar ou economizar.",
+placeholder:"O que você tem?",
+button:"Encontrar ideias",
 quick:"Experimente algo como:",
-results:"Resultados",
-imageResults:"🖼️ Resultados de imagens",
+results:"Ideias para você",
+searchInfo:"Pesquise ideias no banco de dados UseWhat",
+emptyTitle:"Nenhuma ideia correspondente",
+emptyText:"Tente outro item ou descreva o que você precisa.",
+loading:"Procurando ideias úteis...",
+error:"Algo deu errado. Tente novamente.",
+count:"ideias encontradas",
 featureTitle:"Um lugar. Muitas possibilidades.",
 featureSubtitle:"Use melhor o que você já tem.",
-makeTitle:"Respostas de IA",
-makeText:"Faça perguntas e receba soluções práticas.",
-saveTitle:"Pesquisar com imagens",
-saveText:"Tire ou envie uma foto para análise.",
-reuseTitle:"Reutilizar e resolver",
-reuseText:"Encontre maneiras de reparar, reutilizar, criar e economizar.",
-loading:"Procurando a melhor resposta...",
-empty:"Nenhum resultado encontrado.",
-error:"Algo deu errado."
+makeTitle:"Criar",
+makeText:"Descubra coisas úteis que você pode criar com o que já tem.",
+saveTitle:"Economizar",
+saveText:"Encontre alternativas antes de comprar algo novo.",
+reuseTitle:"Reutilizar e reparar",
+reuseText:"Dê uma nova vida a objetos antigos ou quebrados.",
+difficulty:"Dificuldade"
 },
 
 ar:{
-home:"الرئيسية",
-how:"كيف يعمل",
-about:"حول",
+navHome:"الرئيسية",
+navHow:"كيف يعمل",
+navAbout:"حول",
 badge:"✨ اكتشف المزيد مما لديك بالفعل",
 line1:"حوّل ما لديك إلى",
 line2:"ما تحتاجه.",
-hero:"اسأل UseWhat عن أي شيء واحصل على أفكار وحلول وإصلاحات ووصفات وطرق لتوفير المال.",
-placeholder:"اسأل UseWhat عن أي شيء...",
-search:"بحث",
+hero:"أخبرنا بما لديك واكتشف أفكارًا لصنع الأشياء أو إصلاحها أو إعادة استخدامها أو توفير المال.",
+placeholder:"ماذا لديك؟",
+button:"ابحث عن أفكار",
 quick:"جرّب شيئًا مثل:",
-results:"النتائج",
-imageResults:"🖼️ نتائج الصور",
+results:"أفكار لك",
+searchInfo:"ابحث في قاعدة بيانات UseWhat",
+emptyTitle:"لم نجد أفكارًا مطابقة",
+emptyText:"جرّب عنصرًا آخر أو اكتب ما تحتاج إليه.",
+loading:"جارٍ البحث عن أفكار مفيدة...",
+error:"حدث خطأ. حاول مرة أخرى.",
+count:"أفكار موجودة",
 featureTitle:"مكان واحد. إمكانيات كثيرة.",
 featureSubtitle:"استخدم ما لديك بطريقة أكثر ذكاءً.",
-makeTitle:"إجابات الذكاء الاصطناعي",
-makeText:"اطرح الأسئلة واحصل على حلول عملية.",
-saveTitle:"البحث بالصور",
-saveText:"التقط صورة أو ارفعها ودع UseWhat يحللها.",
-reuseTitle:"إعادة الاستخدام والحلول",
-reuseText:"اكتشف طرق الإصلاح وإعادة الاستخدام والتوفير.",
-loading:"جارٍ البحث عن أفضل إجابة...",
-empty:"لم يتم العثور على نتائج.",
-error:"حدث خطأ. حاول مرة أخرى."
+makeTitle:"اصنع وأنشئ",
+makeText:"اكتشف أشياء مفيدة يمكنك صنعها من الأشياء الموجودة لديك.",
+saveTitle:"وفر المال",
+saveText:"ابحث عن بدائل قبل شراء شيء جديد.",
+reuseTitle:"إعادة الاستخدام والإصلاح",
+reuseText:"امنح الأشياء القديمة أو المكسورة حياة جديدة.",
+difficulty:"الصعوبة"
 },
 
 zh:{
-home:"首页",
-how:"工作原理",
-about:"关于我们",
+navHome:"首页",
+navHow:"工作原理",
+navAbout:"关于我们",
 badge:"✨ 用你已有的东西发现更多可能",
 line1:"把你拥有的变成",
 line2:"你需要的。",
-hero:"向 UseWhat 提出任何问题，寻找创意、解决方案、维修方法、食谱和省钱方法。",
-placeholder:"向 UseWhat 提问...",
-search:"搜索",
+hero:"告诉 UseWhat 你有什么，我们会帮你找到制作、维修、再利用和省钱的方法。",
+placeholder:"你有什么？",
+button:"寻找创意",
 quick:"试试输入：",
-results:"结果",
-imageResults:"🖼️ 图片结果",
+results:"为你推荐",
+searchInfo:"从 UseWhat 数据库搜索创意",
+emptyTitle:"没有找到匹配的创意",
+emptyText:"尝试其他物品或描述你的需求。",
+loading:"正在寻找有用的创意...",
+error:"出现问题，请重试。",
+count:"个创意",
 featureTitle:"一个地方。无限可能。",
 featureSubtitle:"更聪明地使用你已经拥有的东西。",
-makeTitle:"AI 答案",
-makeText:"自然地提问并获得实用解决方案。",
-saveTitle:"图片搜索",
-saveText:"拍照或上传图片，让 UseWhat 理解它。",
-reuseTitle:"再利用与解决",
-reuseText:"寻找维修、再利用、创造和省钱的方法。",
-loading:"正在寻找最佳答案...",
-empty:"没有找到结果。",
-error:"出现问题，请重试。"
+makeTitle:"制作与创造",
+makeText:"发现如何利用现有材料制作有用的东西。",
+saveTitle:"节省金钱",
+saveText:"购买新东西之前，先寻找现有物品的替代方法。",
+reuseTitle:"再利用与维修",
+reuseText:"让旧的或损坏的物品重新发挥作用。",
+difficulty:"难度"
 },
 
 ja:{
-home:"ホーム",
-how:"使い方",
-about:"概要",
+navHome:"ホーム",
+navHow:"使い方",
+navAbout:"概要",
 badge:"✨ 今あるものから新しい可能性を発見",
 line1:"持っているものを",
 line2:"必要なものに変える。",
-hero:"UseWhatに何でも質問してください。アイデア、修理、レシピ、節約方法などを見つけられます。",
-placeholder:"UseWhatに質問...",
-search:"検索",
+hero:"持っているものを入力すると、作る・修理する・再利用する・節約するアイデアを見つけられます。",
+placeholder:"何を持っていますか？",
+button:"アイデアを探す",
 quick:"例えば：",
-results:"結果",
-imageResults:"🖼️ 画像結果",
+results:"あなたへのアイデア",
+searchInfo:"UseWhat データベースから検索",
+emptyTitle:"一致するアイデアがありません",
+emptyText:"別のアイテムや必要なものを入力してください。",
+loading:"役立つアイデアを探しています...",
+error:"問題が発生しました。もう一度お試しください。",
+count:"件のアイデア",
 featureTitle:"一つの場所。たくさんの可能性。",
 featureSubtitle:"今あるものをもっと賢く使いましょう。",
-makeTitle:"AI回答",
-makeText:"質問して実用的な解決策を見つけましょう。",
-saveTitle:"画像検索",
-saveText:"写真を撮るかアップロードして分析できます。",
-reuseTitle:"再利用と解決",
-reuseText:"修理、再利用、制作、節約の方法を探します。",
-loading:"最適な回答を探しています...",
-empty:"結果が見つかりませんでした。",
-error:"問題が発生しました。"
+makeTitle:"作る・創る",
+makeText:"今ある材料から便利なものを作る方法を見つけます。",
+saveTitle:"節約",
+saveText:"新しいものを買う前に、今あるものを活用する方法を探します。",
+reuseTitle:"再利用・修理",
+reuseText:"古いものや壊れたものに新しい使い道を与えます。",
+difficulty:"難易度"
 }
 
 };
 
 
-/* ==========================================
-   LANGUAGE
-========================================== */
+/* =====================================================
+ELEMENTS
+===================================================== */
 
-function applyLanguage(lang){
+const languageSelect =
+    document.getElementById("languageSelect");
 
-    const t=LANG[lang]||LANG.en;
+const searchInput =
+    document.getElementById("searchInput");
 
-    document.querySelectorAll("[data-i18n]")
-    .forEach(el=>{
-        const key=el.getAttribute("data-i18n");
-        if(t[key]) el.textContent=t[key];
-    });
+const searchBtn =
+    document.getElementById("searchBtn");
 
-    document.getElementById("badge").textContent=t.badge;
-    document.getElementById("heroLine1").textContent=t.line1;
-    document.getElementById("heroLine2").textContent=t.line2;
-    document.getElementById("heroText").textContent=t.hero;
+const imageBtn =
+    document.getElementById("imageBtn");
 
-    searchInput.placeholder=t.placeholder;
-    searchBtn.textContent=t.search;
-    document.getElementById("quickText").textContent=t.quick;
-    document.getElementById("resultsTitle").textContent=t.results;
-    document.getElementById("imageResultsTitle").textContent=t.imageResults;
+const imageInput =
+    document.getElementById("imageInput");
 
-    document.getElementById("featureTitle").textContent=t.featureTitle;
-    document.getElementById("featureSubtitle").textContent=t.featureSubtitle;
-    document.getElementById("makeTitle").textContent=t.makeTitle;
-    document.getElementById("makeText").textContent=t.makeText;
-    document.getElementById("saveTitle").textContent=t.saveTitle;
-    document.getElementById("saveText").textContent=t.saveText;
-    document.getElementById("reuseTitle").textContent=t.reuseTitle;
-    document.getElementById("reuseText").textContent=t.reuseText;
+const resultsSection =
+    document.getElementById("resultsSection");
 
-    document.documentElement.lang=lang;
+const results =
+    document.getElementById("results");
 
-    document.body.dir=
-        lang==="ar" ? "rtl" : "ltr";
+const resultCount =
+    document.getElementById("resultCount");
 
-    languageSelect.value=lang;
-    mobileLanguage.value=lang;
 
-    localStorage.setItem("usewhat_language",lang);
+/* =====================================================
+LANGUAGE
+===================================================== */
+
+function updateLanguage(){
+
+    const lang = languageSelect.value;
+    const t = T[lang] || T.en;
+
+    document.getElementById("navHome").textContent =
+        t.navHome;
+
+    document.getElementById("navHow").textContent =
+        t.navHow;
+
+    document.getElementById("navAbout").textContent =
+        t.navAbout;
+
+    document.getElementById("badge").textContent =
+        t.badge;
+
+    document.getElementById("heroLine1").textContent =
+        t.line1;
+
+    document.getElementById("heroLine2").textContent =
+        t.line2;
+
+    document.getElementById("heroText").textContent =
+        t.hero;
+
+    searchInput.placeholder =
+        t.placeholder;
+
+    searchBtn.textContent =
+        t.button;
+
+    document.getElementById("quickText").textContent =
+        t.quick;
+
+    document.getElementById("resultsTitle").textContent =
+        t.results;
+
+    document.getElementById("searchInfo").textContent =
+        t.searchInfo;
+
+    document.getElementById("featureTitle").textContent =
+        t.featureTitle;
+
+    document.getElementById("featureSubtitle").textContent =
+        t.featureSubtitle;
+
+    document.getElementById("makeTitle").textContent =
+        t.makeTitle;
+
+    document.getElementById("makeText").textContent =
+        t.makeText;
+
+    document.getElementById("saveTitle").textContent =
+        t.saveTitle;
+
+    document.getElementById("saveText").textContent =
+        t.saveText;
+
+    document.getElementById("reuseTitle").textContent =
+        t.reuseTitle;
+
+    document.getElementById("reuseText").textContent =
+        t.reuseText;
+
+    document.documentElement.lang = lang;
+
+    if(lang === "ar"){
+
+        document.body.classList.add("rtl");
+
+    }else{
+
+        document.body.classList.remove("rtl");
+
+    }
 }
 
 
-languageSelect.addEventListener(
-"change",
-()=>{
-    applyLanguage(languageSelect.value);
-});
+/* =====================================================
+TEXT NORMALIZATION
+===================================================== */
+
+function normalizeText(value){
+
+    return String(value || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"")
+        .replace(/[^\p{L}\p{N}\s]/gu," ")
+        .replace(/\s+/g," ")
+        .trim();
+}
 
 
-mobileLanguage.addEventListener(
-"change",
-()=>{
-    applyLanguage(mobileLanguage.value);
-    mobileMenu.classList.remove("active");
-});
+/* =====================================================
+CREATE SEARCH TERMS
+===================================================== */
 
+function getSearchTerms(query){
 
-/* ==========================================
-   MOBILE MENU
-========================================== */
+    const normalized =
+        normalizeText(query);
 
-menuBtn.addEventListener(
-"click",
-()=>{
-    mobileMenu.classList.toggle("active");
-});
-
-
-document.querySelectorAll(".mobile-menu a")
-.forEach(link=>{
-    link.addEventListener(
-    "click",
-    ()=>{
-        mobileMenu.classList.remove("active");
-    });
-});
-
-
-/* ==========================================
-   MODE
-========================================== */
-
-const aiMode=document.getElementById("aiMode");
-const imageMode=document.getElementById("imageMode");
-
-aiMode.addEventListener(
-"click",
-()=>{
-    currentMode="ai";
-    aiMode.classList.add("active");
-    imageMode.classList.remove("active");
-});
-
-
-imageMode.addEventListener(
-"click",
-()=>{
-    currentMode="image";
-    imageMode.classList.add("active");
-    aiMode.classList.remove("active");
-    searchInput.focus();
-});
-
-
-/* ==========================================
-   CAMERA / UPLOAD
-========================================== */
-
-cameraBtn.addEventListener(
-"click",
-()=>{
-    imageInput.click();
-});
-
-
-imageInput.addEventListener(
-"change",
-()=>{
-    if(imageInput.files.length){
-        analyzeImage(imageInput.files[0]);
+    if(!normalized){
+        return [];
     }
-});
+
+    const words =
+        normalized
+        .split(" ")
+        .filter(word => word.length >= 2);
+
+    return [
+        normalized,
+        ...words
+    ];
+}
 
 
-/* ==========================================
-   AI SEARCH
-========================================== */
+/* =====================================================
+FETCH ALL IDEAS
+===================================================== */
+
+async function fetchIdeas(){
+
+    const url =
+        SUPABASE_URL +
+        "/rest/v1/ideas" +
+        "?select=*";
+
+    const response =
+        await fetch(url,{
+            method:"GET",
+            headers:{
+                "apikey":SUPABASE_KEY,
+                "Authorization":
+                    "Bearer " + SUPABASE_KEY,
+                "Content-Type":
+                    "application/json"
+            }
+        });
+
+    if(!response.ok){
+
+        const errorText =
+            await response.text();
+
+        console.error(
+            "Supabase error:",
+            errorText
+        );
+
+        throw new Error(
+            "Could not load ideas"
+        );
+    }
+
+    return await response.json();
+}
+
+
+/* =====================================================
+LOCAL SMART MATCH
+===================================================== */
+
+function scoreIdea(idea,query){
+
+    const q =
+        normalizeText(query);
+
+    const terms =
+        getSearchTerms(query);
+
+    /*
+    We don't depend on item_keywords anymore.
+    We search every useful field returned
+    by the ideas table.
+    */
+
+    const fields = [
+
+        idea.title,
+        idea.category,
+        idea.items,
+        idea.materials,
+        idea.tools,
+        idea.instructions,
+        idea.description,
+        idea.goal,
+        idea.type
+
+    ];
+
+    const combined =
+        normalizeText(
+            fields
+            .filter(Boolean)
+            .join(" ")
+        );
+
+    if(!combined){
+        return 0;
+    }
+
+    let score = 0;
+
+    /* Exact phrase */
+
+    if(combined.includes(q)){
+        score += 100;
+    }
+
+    /* Individual words */
+
+    terms.forEach(term=>{
+
+        if(combined.includes(term)){
+
+            score +=
+                term === q
+                ? 50
+                : 10;
+
+        }
+
+    });
+
+    /* Title bonus */
+
+    const title =
+        normalizeText(idea.title);
+
+    if(title.includes(q)){
+        score += 70;
+    }
+
+    /* Category bonus */
+
+    const category =
+        normalizeText(idea.category);
+
+    if(category.includes(q)){
+        score += 40;
+    }
+
+    /* Items bonus */
+
+    const items =
+        normalizeText(idea.items);
+
+    if(items.includes(q)){
+        score += 60;
+    }
+
+    return score;
+}
+
+
+/* =====================================================
+SEARCH DATABASE
+===================================================== */
+
+async function searchDatabase(query){
+
+    const allIdeas =
+        await fetchIdeas();
+
+    const ranked =
+        allIdeas
+        .map(idea =>({
+
+            idea:idea,
+
+            score:
+                scoreIdea(
+                    idea,
+                    query
+                )
+
+        }))
+        .filter(item =>
+            item.score > 0
+        )
+        .sort(
+            (a,b)=>
+                b.score-a.score
+        );
+
+    return ranked
+        .slice(0,20)
+        .map(item=>item.idea);
+}
+
+
+/* =====================================================
+SEARCH
+===================================================== */
 
 async function searchIdeas(){
 
-    const query=
+    const query =
         searchInput.value.trim();
 
-    const lang=
+    const lang =
         languageSelect.value;
 
-    const t=
-        LANG[lang];
+    const t =
+        T[lang] || T.en;
+
 
     if(!query){
 
@@ -1391,328 +1479,371 @@ async function searchIdeas(){
         return;
     }
 
-    resultsSection.style.display="block";
 
-    aiAnswer.innerHTML=
-    `<div class="loading">🤖 ${t.loading}</div>`;
+    resultsSection.style.display =
+        "block";
 
-    results.innerHTML="";
-    imageResults.style.display="none";
 
-    /*
-       IMPORTANT:
+    results.innerHTML =
+        `<div class="loading">
+            🔎 ${escapeHTML(t.loading)}
+        </div>`;
 
-       This frontend is ready for
-       Cloudflare Worker AI.
 
-       Worker endpoint will be added
-       in the next step.
+    searchBtn.disabled =
+        true;
 
-       For now we search Supabase.
-    */
 
     try{
 
-        const response=
-        await fetch(
-            SUPABASE_URL+
-            "/rest/v1/ideas?select=title,category,items,description,difficulty&or=("+
-            "title.ilike.*"+
-            encodeURIComponent(query)+
-            "*,"+
-            "items.ilike.*"+
-            encodeURIComponent(query)+
-            "*,"+
-            "description.ilike.*"+
-            encodeURIComponent(query)+
-            "*)&limit=10",
-            {
-                headers:{
-                    "apikey":SUPABASE_KEY,
-                    "Authorization":
-                    "Bearer "+SUPABASE_KEY
-                }
-            }
+        const ideas =
+            await searchDatabase(query);
+
+
+        if(!ideas.length){
+
+            resultCount.textContent =
+                "";
+
+            results.innerHTML = `
+
+                <div class="no-result">
+
+                    <div class="no-result-icon">
+                        💡
+                    </div>
+
+                    <h3>
+                        ${escapeHTML(t.emptyTitle)}
+                    </h3>
+
+                    <p>
+                        ${escapeHTML(t.emptyText)}
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        resultCount.textContent =
+            ideas.length +
+            " " +
+            t.count;
+
+
+        displayResults(
+            ideas,
+            lang
         );
 
-        let data=[];
-
-        if(response.ok){
-            data=await response.json();
-        }
-
-        /*
-           If database has results,
-           show them.
-        */
-
-        if(data.length){
-
-            aiAnswer.innerHTML=
-            `<div class="ai-answer">
-                <div class="ai-header">
-                    <div class="ai-icon">🤖</div>
-                    <h3>UseWhat</h3>
-                </div>
-
-                <div class="ai-content">
-                    ${escapeHTML(
-                        data[0].description ||
-                        t.loading
-                    )}
-                </div>
-            </div>`;
-
-            displayResults(data);
-
-        }else{
-
-            /*
-              Temporary message until
-              Cloudflare AI Worker is connected.
-            */
-
-            aiAnswer.innerHTML=
-            `<div class="ai-answer">
-
-                <div class="ai-header">
-                    <div class="ai-icon">🤖</div>
-
-                    <h3>UseWhat AI</h3>
-                </div>
-
-                <div class="ai-content">
-                    ${escapeHTML(t.empty)}
-
-                    <br><br>
-
-                    <small>
-                    AI Search will be connected through
-                    Cloudflare Worker in the next step.
-                    </small>
-                </div>
-
-            </div>`;
-
-        }
 
     }catch(error){
 
-        console.error(error);
-
-        aiAnswer.innerHTML=
-        `<div class="ai-answer">
-            <div class="ai-content">
-                ⚠️ ${escapeHTML(t.error)}
-            </div>
-        </div>`;
-
-    }
-}
+        console.error(
+            "Search error:",
+            error
+        );
 
 
-/* ==========================================
-   DISPLAY DATABASE RESULTS
-========================================== */
+        results.innerHTML = `
 
-function displayResults(data){
+            <div class="no-result">
 
-    results.innerHTML=
-    data.map(idea=>`
-
-        <div class="result-card">
-
-            <span class="result-category">
-                ${escapeHTML(
-                    idea.category||"Idea"
-                )}
-            </span>
-
-            <h3>
-                ${escapeHTML(
-                    idea.title||""
-                )}
-            </h3>
-
-            <p>
-                ${escapeHTML(
-                    idea.description||""
-                )}
-            </p>
-
-            ${
-                idea.difficulty
-                ?
-                `<div class="difficulty">
-                    Difficulty:
-                    ${escapeHTML(
-                        idea.difficulty
-                    )}
-                </div>`
-                :
-                ""
-            }
-
-        </div>
-
-    `).join("");
-}
-
-
-/* ==========================================
-   IMAGE SEARCH
-========================================== */
-
-imageSearchBtn.addEventListener(
-"click",
-()=>{
-    imageMode.click();
-    searchIdeas();
-});
-
-
-/*
-   This is the UI-ready image search area.
-
-   Real image API will be connected
-   through Cloudflare Worker.
-*/
-
-
-/* ==========================================
-   IMAGE ANALYSIS
-========================================== */
-
-async function analyzeImage(file){
-
-    const lang=
-        languageSelect.value;
-
-    const t=
-        LANG[lang];
-
-    resultsSection.style.display="block";
-
-    aiAnswer.innerHTML=
-    `<div class="loading">
-        📷 ${t.loading}
-    </div>`;
-
-    results.innerHTML="";
-    imageResults.style.display="none";
-
-    /*
-       Real AI Vision processing will happen
-       through Cloudflare Worker.
-
-       We do NOT put an AI secret key
-       inside this frontend.
-    */
-
-    const reader=
-    new FileReader();
-
-    reader.onload=
-    function(){
-
-        aiAnswer.innerHTML=
-        `<div class="ai-answer">
-
-            <div class="ai-header">
-
-                <div class="ai-icon">
-                    📷
+                <div class="no-result-icon">
+                    ⚠️
                 </div>
 
                 <h3>
-                    UseWhat Image AI
+                    ${escapeHTML(t.error)}
                 </h3>
 
-            </div>
-
-            <div class="ai-content">
-
-                ${escapeHTML(
-                    t.loading
-                )}
-
-                <br><br>
-
-                <small>
-                Image AI will be connected
-                through Cloudflare Worker.
-                </small>
+                <p>
+                    Check your Supabase
+                    connection and table policy.
+                </p>
 
             </div>
 
-        </div>`;
+        `;
 
-    };
+    }finally{
 
-    reader.readAsDataURL(file);
+        searchBtn.disabled =
+            false;
+
+    }
+
 }
 
 
-/* ==========================================
-   EXAMPLES
-========================================== */
+/* =====================================================
+DISPLAY
+===================================================== */
 
-document.querySelectorAll(".example")
+function displayResults(
+    ideas,
+    lang
+){
+
+    const t =
+        T[lang] || T.en;
+
+
+    results.innerHTML =
+        ideas.map(idea=>{
+
+            const title =
+                idea.title ||
+                "Untitled idea";
+
+            const category =
+                idea.category ||
+                "Idea";
+
+            const description =
+                idea.description ||
+                "Useful idea from UseWhat.";
+
+            const difficulty =
+                idea.difficulty ||
+                "";
+
+            const items =
+                idea.items ||
+                "";
+
+
+            return `
+
+                <article
+                    class="result-card"
+                >
+
+                    <span
+                        class="result-category"
+                    >
+                        ${escapeHTML(category)}
+                    </span>
+
+                    <h3>
+                        ${escapeHTML(title)}
+                    </h3>
+
+                    <p>
+                        ${escapeHTML(description)}
+                    </p>
+
+                    <div
+                        class="result-meta"
+                    >
+
+                        ${
+                            difficulty
+                            ?
+                            `
+                            <span class="meta">
+                                ${escapeHTML(
+                                    t.difficulty
+                                )}:
+                                ${escapeHTML(
+                                    difficulty
+                                )}
+                            </span>
+                            `
+                            :
+                            ""
+                        }
+
+                        ${
+                            items
+                            ?
+                            `
+                            <span class="meta">
+                                ${escapeHTML(
+                                    items
+                                )}
+                            </span>
+                            `
+                            :
+                            ""
+                        }
+
+                    </div>
+
+                </article>
+
+            `;
+
+        }).join("");
+}
+
+
+/* =====================================================
+EXAMPLE BUTTONS
+===================================================== */
+
+document
+.querySelectorAll(".example")
 .forEach(button=>{
 
     button.addEventListener(
-    "click",
-    ()=>{
-        searchInput.value=
-            button.textContent;
+        "click",
+        ()=>{
 
-        searchIdeas();
-    });
+            searchInput.value =
+                button.textContent;
+
+            searchIdeas();
+
+        }
+    );
 
 });
 
 
-/* ==========================================
-   ENTER
-========================================== */
+/* =====================================================
+ENTER KEY
+===================================================== */
 
 searchInput.addEventListener(
-"keydown",
-event=>{
+    "keydown",
+    event=>{
 
-    if(event.key==="Enter"){
-        searchIdeas();
+        if(event.key === "Enter"){
+
+            event.preventDefault();
+
+            searchIdeas();
+
+        }
+
     }
+);
 
-});
+
+/* =====================================================
+SEARCH BUTTON
+===================================================== */
+
+searchBtn.addEventListener(
+    "click",
+    searchIdeas
+);
 
 
-/* ==========================================
-   SECURITY
-========================================== */
+/* =====================================================
+IMAGE SEARCH BUTTON
+===================================================== */
+
+imageBtn.addEventListener(
+    "click",
+    ()=>{
+
+        imageInput.click();
+
+    }
+);
+
+
+/* =====================================================
+IMAGE UPLOAD
+===================================================== */
+
+imageInput.addEventListener(
+    "change",
+    event=>{
+
+        const file =
+            event.target.files[0];
+
+        if(!file){
+            return;
+        }
+
+        /*
+        Image AI will be connected through
+        Cloudflare Worker later.
+
+        For now we show the selected image
+        and prepare the UI.
+        */
+
+        searchInput.value =
+            file.name;
+
+        const lang =
+            languageSelect.value;
+
+        const messages={
+
+            en:"Image selected. Image AI will analyze it after the AI Worker is connected.",
+
+            bn:"ছবি নির্বাচন করা হয়েছে। AI Worker যুক্ত হলে ছবিটি বিশ্লেষণ করে ফলাফল দেখাবে।",
+
+            hi:"छवि चुनी गई है। AI Worker जुड़ने के बाद इसका विश्लेषण किया जाएगा।",
+
+            es:"Imagen seleccionada. El análisis de IA estará disponible después de conectar el AI Worker.",
+
+            fr:"Image sélectionnée. L'analyse IA sera disponible après la connexion du Worker IA.",
+
+            de:"Bild ausgewählt. Die KI-Analyse funktioniert nach der Verbindung mit dem AI Worker.",
+
+            pt:"Imagem selecionada. A análise de IA estará disponível após conectar o AI Worker.",
+
+            ar:"تم اختيار الصورة. سيصبح تحليل الصورة متاحًا بعد ربط AI Worker.",
+
+            zh:"已选择图片。连接 AI Worker 后即可进行图片分析。",
+
+            ja:"画像を選択しました。AI Worker を接続すると画像分析が利用できます。"
+
+        };
+
+
+        document.getElementById(
+            "searchInfo"
+        ).textContent =
+            messages[lang] ||
+            messages.en;
+
+    }
+);
+
+
+/* =====================================================
+LANGUAGE
+===================================================== */
+
+languageSelect.addEventListener(
+    "change",
+    updateLanguage
+);
+
+
+/* =====================================================
+ESCAPE HTML
+===================================================== */
 
 function escapeHTML(value){
 
-    return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
 
-/* ==========================================
-   START
-========================================== */
+/* =====================================================
+START
+===================================================== */
 
-const savedLanguage=
-localStorage.getItem(
-    "usewhat_language"
-) || "en";
-
-applyLanguage(savedLanguage);
+updateLanguage();
 
 </script>
 
